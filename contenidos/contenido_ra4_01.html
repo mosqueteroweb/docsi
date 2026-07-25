@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de usuarios y grupos | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra4.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA4 · Contenido 01</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Configuración de usuarios y grupos | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA4</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Configuración de usuarios y grupos locales</h2><p class="text-slate-700 leading-relaxed mb-3">En cualquier sistema multiusuario, la <b>gestión de cuentas</b> es la base de la seguridad y del trabajo colaborativo. Un <b>usuario</b> es la identidad con la que una persona o un proceso accede al sistema; un <b>grupo</b> es una colección de usuarios a la que se le pueden asignar permisos de forma conjunta. Tanto en GNU/Linux como en Windows existen herramientas de línea de comandos y gráficas para crear, modificar y eliminar cuentas.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Usuarios y grupos locales</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Cuenta de usuario:</b> identidad con nombre, contraseña y directorio personal (home).</li><li><b>Cuenta de sistema:</b> creada por el SO para que un servicio (p.ej. www-data, nobody) funcione aislado.</li><li><b>Grupos primario y suplementarios:</b> cada usuario tiene un grupo primario y puede pertenecer a varios grupos adicionales.</li><li><b>Administrador/root:</b> en Linux el superusuario <code>root</code> (UID 0) lo controla todo; en Windows es el grupo <code>Administradores</code>.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Identificadores UID y GID</h3><p class="text-slate-700 leading-relaxed mb-3">El sistema no trabaja con nombres sino con números. Cada usuario recibe un <b>UID</b> (User ID) y cada grupo un <b>GID</b> (Group ID). Los permisos de los archivos se registran por UID/GID, no por nombre, por lo que renombrar una cuenta sin cambiar su UID puede causar incoherencias.</p><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Rango UID (Linux)</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Significado</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">0</td><td class="px-4 py-2 border border-slate-200 align-top">Superusuario root</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">1–999</td><td class="px-4 py-2 border border-slate-200 align-top">Usuarios/servicios de sistema</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">1000+</td><td class="px-4 py-2 border border-slate-200 align-top">Usuarios humanos (normales)</td></tr></tbody></table><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Gestión por línea de comandos en Linux</h3><p class="text-slate-700 leading-relaxed mb-3">Los archivos maestros son <code>/etc/passwd</code> (cuentas), <code>/etc/shadow</code> (contraseñas cifradas) y <code>/etc/group</code> (grupos).</p><pre class="code"><code>sudo useradd -m -s /bin/bash -G desarrollo ana   # crea usuario ana, lo mete en el grupo desarrollo
+sudo groupadd ventas                        # crea el grupo ventas
+sudo usermod -aG ventas ana                  # añade ana al grupo ventas (conserva los demás)
+sudo passwd ana                             # fija/ cambia la contraseña de ana
+sudo userdel -r ana                          # elimina la cuenta y su home</code></pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Gestión por línea de comandos en Windows</h3><p class="text-slate-700 leading-relaxed mb-3">En Windows los comandos equivalentes son <code>net user</code> y <code>net localgroup</code>; en versiones modernas también existe <code>New-LocalUser</code> de PowerShell.</p><pre class="code"><code>net user ana /add /passwordreq:yes            # crea usuario local ana
+net localgroup ventas /add                    # crea el grupo local ventas
+net localgroup ventas ana /add                # añade ana al grupo ventas
+net user ana /delete                          # elimina la cuenta</code></pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">5. Gestión mediante interfaz gráfica (GUI)</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Linux (GNOME/KDE):</b> Ajustes → Usuarios, o la herramienta <code>users-admin</code>.</li><li><b>Windows:</b> <code>lusrmgr.msc</code> (Usuarios y grupos locales) o Configuración → Cuentas → Otras personas.</li><li>La GUI escriben en los mismos archivos/archivo de seguridad que la línea de comandos, por lo que ambos métodos son equivalentes.</li></ul><pre class="mermaid">
+graph TD
+  A[Usuario ana - UID 1001] --> G1[Grupo primario ana - GID 1001]
+  A --> G2[Grupo suplementario desarrollo - GID 2001]
+  A --> G3[Grupo suplementario ventas - GID 2002]
+  S[/etc/passwd] -->|define| A
+  SH[/etc/shadow] -->|guarda hash| A
+  GRP[/etc/group] -->|lista| G2
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Cuentas))
+    Usuario
+      UID
+      Home
+      Shell
+    Grupo
+      GID
+      Primario
+      Suplementario
+    Ficheros
+      passwd
+      shadow
+      group
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Crear un usuario y añadirlo a un grupo.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Abre 'Usuarios y grupos' (Linux: <code>useradd -m ana</code>; Windows: cuenta local).</li><li>Crea el grupo 'profes' y añade a ana: <code>usermod -aG profes ana</code>.</li><li>Verifica con <code>groups ana</code> que pertenece a profes.</li><li>Explica que los <b>grupos</b> sirven para aplicar permisos a varios usuarios a la vez.</li></ol>
+<pre class="mermaid">
+graph TD
+  U[Usuario ana] --> G[Grupo profes]
+  G --> PERM[Permisos comunes]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno crea un usuario, lo mete en un grupo y verifica la pertenencia.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Usuario = "el carné"; grupo = "el equipo".</b> El usuario es la persona (o proceso) que accede; el grupo es una etiqueta que agrupa varios para darles los mismos permisos de golpe.</li>
+<li><b>El sistema no lee nombres, lee números.</b> Por dentro usa UID/GID; el nombre es solo decoración. Por eso renombrar sin cuidado rompe la coherencia.</li>
+<li><b>Cuenta de sistema ≠ cuenta de persona.</b> www-data o nobody existen para que un servicio corra aislado; no son para que un humano inicie sesión.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Archivos que lo definen (Linux).</b> <code>/etc/passwd</code> tiene UID, home y shell; <code>/etc/shadow</code> guarda el hash de la contraseña (solo root); <code>/etc/group</code> lista grupos y sus miembros. La CLI y la GUI escriben ahí, por eso son equivalentes.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>UID 0 = root.</b> Cualquier cuenta con UID 0 es superusuario; por eso no se juega con los UID. Los usuarios normales empiezan en 1000+. Un proceso con UID 0 puede hacerlo todo: de ahí la regla "no trabajes como root".</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Grupo primario vs suplementarios.</b> El primario es el grupo por defecto de sus archivos nuevos; los suplementarios dan permisos adicionales sin cambiar el dueño. <code>usermod -aG</code> añade sin quitar los demás.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Windows: SAM y Administradores.</b> La base de datos de cuentas locales (SAM) guarda los hashes; el grupo <code>Administradores</code> equivale al root de Linux. <code>net user</code> y <code>lusrmgr.msc</code> son las vías.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Por qué importa en un aula.</b> Crear un alumno por puesto, meterlos en el grupo <code>alumnos</code> y limitar su acceso al home evita que toquen la configuración del profe. La gestión de cuentas es la primera línea de seguridad.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"Renombrar" no es "cambiar identidad".</b> Si cambias el nombre pero no el UID, el sistema sigue viendo al mismo número; y si reusas un UID, heredas permisos ajenos.</li>
+<li><b>root no es "el usuario admin normal".</b> Es UID 0 con control total; usar la sesión de root para tareas cotidianas es un riesgo. Se usa <code>sudo</code> puntual.</li>
+<li><b>userdel sin -r deja el home.</b> Borra la cuenta pero no su carpeta personal; eso acumula basura o, peor, conflictos de UID al crear otro usuario.</li>
+<li><b>Grupo primario y suplementario no son lo mismo.</b> El primario define el grupo de sus archivos nuevos; los suplementarios solo añaden permisos. Confundirlos da permisos mal configurados.</li>
+<li><b>Windows no tiene "root" con ese nombre.</b> Su equivalente es el grupo Administradores; la lógica de privilegio es parecida pero el término distinto.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) usuario vs grupo (persona vs equipo) → (2) UID/GID: el sistema usa números → (3) archivos passwd/shadow/group → (4) root/UID 0 y Administradores → (5) primario vs suplementario → (6) gestión en aula (crear, limitar, borrar con -r).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra4_02.html">Seguridad de cuentas</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra4_04.html">Permisos y ACL</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra4_a.html">Criterio RA4-a: cuentas y grupos</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Usuario_(inform%C3%A1tica)" target="_blank" rel="noopener">Wikipedia — Usuario (informática)</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://en.wikipedia.org/wiki/Group_identifier" target="_blank" rel="noopener">Wikipedia (EN) — Group identifier (GID)</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://wiki.archlinux.org/title/Users_and_groups" target="_blank" rel="noopener">ArchWiki — Users and groups</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Cuenta_de_usuario" target="_blank" rel="noopener">Wikipedia — Cuenta de usuario</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

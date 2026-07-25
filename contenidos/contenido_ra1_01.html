@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placas base. Formatos. | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra1.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA1 · Contenido 01</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Placas base. Formatos. | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA1</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Placas base. Formatos.</h2><p class="text-slate-700 leading-relaxed mb-3">La placa base (motherboard) es el componente principal que integra y conecta todos los elementos de un sistema microinformático: procesador, memoria, almacenamiento y periféricos. Actúa como el 'sistema nervioso' del equipo, proporcionando los buses, zócalos y controladores necesarios para que los componentes colaboren.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Funciones principales</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li>Alojar el microprocesador en su zócalo (socket).</li><li>Distribuir la memoria RAM en sus bancos (DIMM).</li><li>Proporcionar buses de expansión (PCIe) y puertos de E/S.</li><li>Integrar controladores (USB, audio, red, SATA).</li><li>Albergar la BIOS/UEFI y la gestión de arranque.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Formatos (factor de forma)</h3><p class="text-slate-700 leading-relaxed mb-3">El factor de forma define tamaño, posición de tornillos y distribución. Los más comunes en sobremesa:</p><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Formato</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Tamaño aprox.</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Uso típico</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Ranuras RAM/PCIe</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">ATX</td><td class="px-4 py-2 border border-slate-200 align-top">30,5 × 24,4 cm</td><td class="px-4 py-2 border border-slate-200 align-top">Sobremesa estándar</td><td class="px-4 py-2 border border-slate-200 align-top">4 DIMM / hasta 7 PCIe</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Micro-ATX</td><td class="px-4 py-2 border border-slate-200 align-top">24,4 × 24,4 cm</td><td class="px-4 py-2 border border-slate-200 align-top">Equipos compactos</td><td class="px-4 py-2 border border-slate-200 align-top">2-4 DIMM / 4 PCIe</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Mini-ITX</td><td class="px-4 py-2 border border-slate-200 align-top">17 × 17 cm</td><td class="px-4 py-2 border border-slate-200 align-top">HTPC / pequeño</td><td class="px-4 py-2 border border-slate-200 align-top">2 DIMM / 1 PCIe</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">E-ATX</td><td class="px-4 py-2 border border-slate-200 align-top">30,5 × 33 cm</td><td class="px-4 py-2 border border-slate-200 align-top">Estaciones de trabajo</td><td class="px-4 py-2 border border-slate-200 align-top">8 DIMM / muchas PCIe</td></tr></tbody></table><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Zócalo (socket) y chipset</h3><p class="text-slate-700 leading-relaxed mb-3">El <b>socket</b> determina qué procesadores son compatibles (ej. <b>LGA1700/1851</b> para Intel, <b>AM5</b> para AMD). El <b>chipset</b> (ej. B760, Z790, B650) gestiona las conexiones entre CPU, memoria y periféricos, y define características como el número de puertos USB, ranuras PCIe y overclocking.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Buses y conectores</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>PCIe</b> (Peripheral Component Interconnect Express): bus seria para tarjetas gráficas, SSD NVMe, redes. Versiones 3.0/4.0/5.0 con creciente ancho de banda.</li><li><b>SATA</b>: para discos y unidades ópticas.</li><li><b>USB</b>: conectividad externa general.</li><li>Conectores internos: alimentación (ATX 24 pines + EPS 8 pines), ventiladores, frontal.</li></ul><pre class="mermaid">
+graph TD
+  CPU[CPU en socket] -->|DMI| CHIP[Chipset]
+  CHIP --> RAM[RAM DIMM]
+  CHIP --> PCIE[PCIe slots]
+  CHIP --> USB[USB]
+  CHIP --> SATA[SATA]
+  CHIP --> LAN[Red]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Placa base))
+    Socket
+      LGA1700
+      AM5
+    Chipset
+      B760
+      Z790
+    Factores
+      ATX
+      mATX
+      ITX
+</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">5. Alimentación y fases</h3><p class="text-slate-700 leading-relaxed mb-3">El regulador de voltaje (VRM) de la placa convierte la alimentación de la fuente en los voltajes que requiere la CPU. Más fases = mejor estabilidad bajo carga y overclocking.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">6. BIOS y UEFI</h3><p class="text-slate-700 leading-relaxed mb-3">La <b>BIOS/UEFI</b> es el firmware que arranca el equipo, realiza el POST y carga el sistema operativo. UEFI es el reemplazo moderno (interfaz gráfica, arranque seguro Secure Boot, discos GPT).</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Identificar componentes en una placa base real.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Abre la caja y localiza la <b>placa base</b>; fíjate en el <b>socket</b> (donde va la CPU) y en el <b>chipset</b> (puente norte/sur).</li><li>Cuenta los <b>bancos de memoria RAM</b> (DIMM): aquí hay 4. Cada uno admite un módulo.</li><li>Localiza los <b>conectores de alimentación</b> (ATX de 24 pines) y los de datos (SATA para discos).</li><li>Comprueba el <b>formato</b>: mide la placa; si cabe en una caja estándar micro-ATX, es micro-ATX.</li></ol>
+<pre class="mermaid">
+graph LR
+  CPU[Socket CPU] --> CHIP[Chipset]
+  CHIP --> RAM[Bancos DIMM x4]
+  CHIP --> SATA[Puertos SATA]
+  ATX[Alim. ATX 24p] --> CHIP
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno debe entregar un esquema etiquetado de la placa indicando socket, chipset, bancos de RAM y conectores principales.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<p class="text-slate-700 leading-relaxed mb-3">Antes de profundizar, conviene fijar tres ideas que sostienen todo lo visto:</p>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>La placa base es un "circuito de unión", no un componente aislado.</b> Su misión no es procesar datos (eso lo hace la CPU) sino <b>darles un camino común</b>: todos los componentes se comunican a través de ella mediante pistas de cobre (tracks) y chips auxiliares.</li><li><b>Bus = autopista compartida.</b> Un "bus" es simplemente un conjunto de líneas por donde viajan datos, direcciones y señales de control. Imagínalo como una carretera donde los datos son los coches; el ancho de la carretera (nº de bits) y el límite de velocidad (frecuencia) definen cuánto circula.</li><li><b>Compatibilidad antes que potencia.</b> Una placa magnífica sirve de poco si el socket no encaja con tu CPU o si la memoria no es del tipo admitido. Por eso se aprende primero el <b>socket</b> y el <b>chipset</b>, que son la "frontera" de lo que puedes montar.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Socket y chipset — la verdadera jerarquía.</b> El socket (p. ej. LGA1700 en Intel, AM5 en AMD) es mecánico y eléctrico: define cómo se acopla la CPU. Pero es el <b>chipset</b> (puente norte/sur unificado hoy en día) quien decide <b>qué</b> puedes conectar: nº de puertos USB, líneas PCIe, ranuras M.2, y sobre todo si puedes overclockear (serie Z/X vs B/H). El chipset habla con la CPU por un enlace serie (DMI en Intel, Infinity Fabric en AMD).</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Líneas PCIe y el cuello de botella invisible.</b> Cada ranura, cada M.2 y parte del USB consumen "líneas PCIe" que son finitas. Por eso una placa puede tener tres ranuras PCIe pero solo una a x16 reales: las otras comparten o reducen velocidad cuando están ocupadas. Entender esto explica por qué una tarjeta gráfica potente rinde menos en la segunda ranura.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>VRM y fases, vistas de cerca.</b> El VRM (Voltage Regulator Module) es un pequeño convertidor de corriente continua que baja los 12 V de la fuente a los ~1,2 V de la CPU. Cada "fase" es un conjunto de MOSFETs + bobina que alterna el trabajo para repartir el calor. Más fases = menos temperatura por fase = más margen para subir frecuencia (overclock) sin quemar la placa.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>BIOS vs UEFI, más allá de la interfaz.</b> La BIOS clásica usaba modo real de 16 bits y solo arrancaba desde discos MBR (límite 2,2 TB). UEFI usa 32/64 bits, arranca desde GPT (discos &gt; 2 TB), permite Secure Boot (firma criptográfica del cargador para bloquear malware en el arranque) y una interfaz gráfica con ratón. El "POST" sigue siendo el autotest inicial.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Formato y refrigeración.</b> Un formato pequeño (ITX) obliga a componentes compactos y limita disipación; un ATX da más ranuras pero también más superficie para pistas limpias y mejor señal. La elección del factor de forma condiciona todo el resto del equipo (caja, refrigeración, expansión).</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<p class="text-slate-700 leading-relaxed mb-3">Puntos clave para no confundirse al estudiar este tema:</p>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Placa base ≠ CPU.</b> La placa no calcula; interconecta. Error típico decir "la placa base procesa".</li><li><b>Socket y chipset no son lo mismo.</b> El socket encaja la CPU; el chipset decide compatibilidades y puertos. Una misma CPU (mismo socket) puede ir en placas con chipsets distintos y comportarse diferente.</li><li><b>ATX es el formato, no la marca.</b> microATX y Mini-ITX son más pequeños y caben en cajas ATX, pero no al revés.</li><li><b>PCIe x16 "físico" puede ser x4 "eléctrico".</b> Fíjate siempre en la velocidad eléctrica real, no en la longitud del conector.</li><li><b>UEFI no es "mejor BIOS" sino un firmware distinto</b> que reemplaza a la BIOS; hoy casi todas las placas traen UEFI, aunque se siga llamando "la BIOS" por costumbre.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) ¿qué es un bus? → (2) función de la placa → (3) socket y CPU → (4) chipset y puertos → (5) PCIe y expansión → (6) VRM/alimentación → (7) BIOS/UEFI y arranque. Siguiendo ese orden, cada concepto prepara el siguiente.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra1_02.html">Estructura y componentes</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra1_03.html">Periféricos y adaptadores</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra1_a.html">Criterio RA1-a: componentes físicos</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Placa_base" target="_blank" rel="noopener">Wikipedia — Placa base</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=1RQ8OmZfk8s" target="_blank" rel="noopener">Placas Madre: todo lo que necesitas saber</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=SQRw3GwktxA" target="_blank" rel="noopener">Cómo funciona un PC y qué hace cada componente</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=n2iodl7eASs" target="_blank" rel="noopener">Evolución de placas base de PC</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

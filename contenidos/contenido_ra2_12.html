@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualización y recuperación | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra2.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA2 · Contenido 12</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Actualización y recuperación | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA2</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Actualización y recuperación de sistemas operativos y aplicaciones</h2><p class="text-slate-700 leading-relaxed mb-3">Mantener el SO y las apps actualizados es clave para seguridad y estabilidad; disponer de un plan de recuperación evita pérdidas ante fallos.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Actualizaciones</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Linux:</b> <code>apt update && apt upgrade</code>; actualizaciones del núcleo y paquetes.</li><li><b>Windows:</b> Windows Update (acumulativos, drivers, características).</li><li><b>Apps:</b> gestores de paquetes y tiendas (Microsoft Store, Snapcraft).</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Recuperación ante fallos</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Punto de restauración:</b> (Windows) revierte configuración del sistema.</li><li><b>Live USB:</b> arranca un SO desde memoria para reparar el instalado.</li><li><b>Copias de seguridad:</b> imagen del sistema o archivos (véase RA3).</li><li><b>Modo seguro / recovery:</b> arranque mínimo para diagnosticar.</li></ul><pre class="mermaid">
+flowchart TD
+  A[Fallo del SO] --> B{¿Arranca?}
+  B -->|No| C[Live USB]
+  B -->|Sí| D[Restauración/Punto]
+  C --> E[Reparar gestor arranque]
+  D --> F[Recuperar copia]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Recuperación))
+    Actualizar
+    apt
+    Win Update
+    Restaurar
+    Punto
+    Live USB
+</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Política de mantenimiento</h3><p class="text-slate-700 leading-relaxed mb-3">Programar actualizaciones automáticas en horario de bajo uso, verificar copias de seguridad y documentar incidentes (véase contenido 13).</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Actualizar y recuperar el SO.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Abre 'Windows Update' / <code>apt upgrade</code> y aplica parches.</li><li>Crea un <b>punto de restauración</b> antes de cambios mayores.</li><li>Si falla el arranque, usa el <b>medio de recuperación</b> y 'Reparar inicio'.</li><li>Restaura desde <b>copia de seguridad</b> de sistema si es necesario.</li></ol>
+<pre class="mermaid">
+graph TD
+  UPD[Actualizar] --> PR[Punto restauración]
+  PR --> REC[Recuperación]
+  REC --> BAK[Copia seguridad]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno aplica actualizaciones y demuestra cómo crear/restaurar un punto de restauración.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Actualizar = "poner parches al coche mientras rueda".</b> Se corrigen fallos de seguridad y se mejoran cosas sin reinstalar. Ignorarlo es dejar el coche sin frenos nuevos.</li>
+<li><b>Recuperar ≠ reinstalar.</b> El plan de recuperación busca volver al estado bueno sin perder datos; reinstalar es el último recurso. Por eso existen puntos y copias.</li>
+<li><b>El fallo puede ser "no arranca" o "arranca mal".</b> Si no arranca, hace falta un medio externo (Live USB); si arranca, basta con restaurar dentro del SO.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Linux: apt update vs upgrade.</b> <code>update</code> solo refresca la lista de paquetes disponibles; <code>upgrade</code> los instala. Hay que hacer ambos. Las actualizaciones del núcleo exigen reinicio para aplicarse.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Windows Update.</b> Además de parches, trae actualizaciones acumulativas, de drivers y, a veces, nuevas características. Se puede pausar y programar; en aula se hace en horario de bajo uso para no interrumpir clase.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Punto de restauración (Windows).</b> Guarda el estado de los archivos del sistema y el registro; al restaurar, revierte cambios recientes sin tocar tus documentos. No sustituye a la copia de seguridad de datos.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Live USB y modo recovery.</b> Si el SO no arranca, el Live USB (Linux "en vivo") permite acceder al disco y reparar (p. ej. reinstalar GRUB). El modo recovery/seguro arranca con lo mínimo para diagnosticar.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Política de mantenimiento.</b> Automatizar actualizaciones, verificar que las copias funcionan (restaurar una de prueba) y documentar incidentes. Un plan sin copias probadas es un plan que fallará el día menos pensado.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"apt update" no actualiza nada.</b> Solo actualiza la lista; falta <code>upgrade</code>. Error típico creer que con update basta.</li>
+<li><b>Punto de restauración ≠ copia de datos.</b> El punto no salva tus documentos; si el disco falla, se pierden. Hace falta copia aparte (RA3).</li>
+<li><b>Live USB no es "reinstalar".</b> Es rescate sin tocar el disco instalado; útil para reparar arranque o recuperar archivos.</li>
+<li><b>Actualizar no es "opcional".</b> Las actualizaciones cierran agujeros de seguridad; no ponerlas expone el equipo.</li>
+<li><b>Programar no es "olvidarse".</b> Hay que comprobar que las copias se restauraían; una copia nunca probada puede estar corrupta.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) por qué actualizar (seguridad) → (2) Linux: update+upgrade, reinicio por núcleo → (3) Windows Update y programación → (4) recuperación: punto vs Live USB vs copia → (5) modo seguro/recovery → (6) políca de mantenimiento y prueba de copias.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra2_07.html">Gestores de arranque</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra2_13.html">Documentación</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra2_f.html">Criterio RA2-f: actualización/recuperación</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Sistema_operativo" target="_blank" rel="noopener">Wikipedia — Sistema operativo</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Copia_de_seguridad" target="_blank" rel="noopener">Wikipedia — Copia de seguridad</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=5oAexbSPygE" target="_blank" rel="noopener">Buenas prácticas y seguridad en el PC</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=n2iodl7eASs" target="_blank" rel="noopener">Evolución de placas base de PC</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

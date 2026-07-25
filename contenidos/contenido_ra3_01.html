@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de sistemas de archivos | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra3.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA3 · Contenido 01</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Gestión de sistemas de archivos | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA3</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Qué es un sistema de archivos</h2><p class="text-slate-700 leading-relaxed mb-3">El <b>sistema de archivos (file system)</b> es la forma en que el sistema operativo organiza, nombra, almacena y recupera los datos en los dispositivos de almacenamiento (discos duros, SSD, memorias USB). Define la estructura lógica (archivos, carpetas, metadatos) y las operaciones posibles sobre ellos.</p><p class="text-slate-700 leading-relaxed mb-3">Un mismo disco puede contener distintos sistemas de archivos. La elección depende del sistema operativo, el tamaño del disco y la necesidad de compatibilidad o seguridad (journaling, permisos, cifrado).</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Sistemas de archivos principales</h3><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Sistema</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">SO típico</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Características</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">ext4</td><td class="px-4 py-2 border border-slate-200 align-top">Linux</td><td class="px-4 py-2 border border-slate-200 align-top">Journaling, soporta archivos &gt;2 TB, rendimiento estable.</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">NTFS</td><td class="px-4 py-2 border border-slate-200 align-top">Windows</td><td class="px-4 py-2 border border-slate-200 align-top">Permisos ACL, compresión, cifrado, journaling.</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">FAT32 / exFAT</td><td class="px-4 py-2 border border-slate-200 align-top">Universal</td><td class="px-4 py-2 border border-slate-200 align-top">Máxima compatibilidad; FAT32 limita archivos a 4 GB.</td></tr></tbody></table><pre class="code"># Linux: crear un sistema de archivos ext4 en una partición
+sudo mkfs.ext4 /dev/sdb1
+# Montar la partición
+sudo mount /dev/sdb1 /mnt/datos</pre><pre class="mermaid">
+flowchart TD
+    A[Disco físico] --> B[Partición]
+    B --> C[Sistema de archivos]
+    C --> D{Tipo}
+    D --> E[ext4 - Linux]
+    D --> F[NTFS - Windows]
+    D --> G[FAT32/exFAT - Universal]
+    C --> H[Archivos y directorios]
+    H --> I[Metadatos: permisos, fechas, tamaño]
+</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Operaciones básicas por línea de comandos</h3><p class="text-slate-700 leading-relaxed mb-3">Las operaciones de gestión de archivos se realizan tanto en entornos gráficos (explorador de archivos) como por comandos. Los comandos más usados en GNU/Linux y, por extensión, en la terminal de Windows (WSL) son:</p><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>cp</b>: copiar archivos o directorios (<code>cp origen destino</code>).</li><li><b>mv</b>: mover o renombrar (<code>mv archivo.txt /tmp/</code>).</li><li><b>rm</b>: eliminar archivos (<code>rm -r</code> para directorios recursivamente).</li><li><b>ls</b>, <b>mkdir</b>, <b>touch</b>: listar, crear carpetas y crear archivos vacíos.</li></ul><pre class="code"># Copiar un directorio completo conservando atributos
+cp -a /home/usuario/docs /mnt/backup/docs
+# Mover (renombrar) un archivo
+mv informe.txt informe_final.txt
+# Eliminar de forma segura un directorio
+rm -ri /tmp/pruebas</pre><pre class="mermaid">
+mindmap
+  root((Gestión de archivos))
+    Comandos CLI
+      cp copiar
+      mv mover
+      rm eliminar
+      mkdir crear
+    Entorno gráfico
+      Explorador Windows
+      Nautilus Linux
+      Arrastrar y soltar
+    Buenas prácticas
+      Copia de seguridad
+      Confirmar rutas
+      Revisar permisos
+</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Entornos gráficos</h3><p class="text-slate-700 leading-relaxed mb-3">El explorador de archivos de Windows y gestores como Nautilus (GNOME) o Dolphin (KDE) ofrecen la misma funcionalidad de forma visual: copiar, mover, eliminar y cambiar propiedades. Aunque son más intuitivos, el conocimiento de los comandos es imprescindible para administración remota y automatización.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Explicar qué es un sistema de archivos con un USB.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Introduce un USB y ábrelo; observa que los datos se organizan en <b>archivos y carpetas</b>.</li><li>Diferencia <b>datos</b> (lo que guardas) de <b>metadatos</b> (fecha, permisos, tamaño) que guarda el SF.</li><li>Explica que el SF define cómo se reparte el espacio en <b>bloques/unidades de asignación</b>.</li><li>Compara FAT32 (simple, sin permisos) con NTFS/ext4 (journaling, permisos).</li></ol>
+<pre class="mermaid">
+graph TD
+  DAT[Datos] --> SF[Sistema de archivos]
+  SF --> META[Metadatos]
+  SF --> BLOQ[Bloques]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno explica con su USB la diferencia entre datos y metadatos y por qué el SF importa.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>El sistema de archivos es "el modo en que el disco habla".</b> El disco solo ve unos y ceros; el FS organiza eso en "archivos" y "carpetas" que tú puedes usar. Sin FS, el disco es un bloque ilegible.</li>
+<li><b>Partición ≠ sistema de archivos.</b> La partición es la "zona del disco"; el FS es el "formato" que se le da a esa zona. Puedes tener la partición y aún así no tener FS (disco sin formatear).</li>
+<li><b>Los metadatos son "la ficha del archivo".</b> No es el contenido, sino el nombre, tamaño, fecha y permisos. El FS guarda esos metadatos aparte del contenido.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>ext4, NTFS, FAT32/exFAT.</b> ext4 es el estándar en Linux (journaling: anota los cambios antes de hacerlos, lo que evita corrupción si se corta la luz). NTFS es el de Windows (permisos ACL finos, compresión, cifrado BitLocker). FAT32 es universal pero limitado (archivos &lt;4 GB); exFAT quita esa limitación para memorias grandes.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Journaling importa.</b> Un FS con journaling puede recuperarse tras un corte; uno sin él (FAT) puede quedar inconsistente. Por eso FAT32 en una memoria mal extraída a veces pide "formatear".</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Comandos vs explorador.</b> <code>cp</code>, <code>mv</code>, <code>rm</code>, <code>ls</code>, <code>mkdir</code> son la base en Linux y WSL. El explorador gráfico hace lo mismo "a punta de clic", pero para administración remota y scripts, la línea de comandos es imprescindible.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Montar = "darle una puerta al disco".</b> En Linux, una partición no aparece hasta montarla en un directorio (p. ej. <code>mount /dev/sdb1 /mnt/datos</code>). En Windows se asigna una letra (D:); en Linux se integra en el árbol único de directorios.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Permisos y seguridad.</b> NTFS y ext4 controlan quién puede leer/escribir/ejecutar. Eso es clave en aulas: un alumno no debe poder borrar la configuración del profe. El FS es quien lo aplica.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Partición y FS no son lo mismo.</b> Tener partición no implica tener FS formateado; un disco puede estar particionado pero "sin formatear".</li>
+<li><b>FAT32 no es "mejor por ser universal".</b> Su límite de 4 GB por archivo la hace inútil para vídeos grandes; ahí exFAT o NTFS.</li>
+<li><b>"rm -rf" no es "como la papelera".</b> Borra sin pasar por la papelera y sin confirmación; es peligroso en rutas como <code>/</code>.</li>
+<li><b>Journaling no evita borrar por error.</b> Solo protege contra corrupción por corte de luz; un <code>rm</code> accidental sí se pierde.</li>
+<li><b>Montar no es "conectar un USB".</b> Montar es asociar la partición a un punto del árbol de directorios; el USB es el soporte físico.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) ¿qué es un FS y por qué hace falta? → (2) partición vs FS → (3) ext4/NTFS/FAT32/exFAT y cuándo usar cada uno → (4) journaling y corrupción → (5) comandos (cp/mv/rm/ls/mkdir) vs explorador → (6) montar y permisos.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra3_02.html">Estructura de directorios</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra3_06.html">Herramientas de administración de discos</a></li><li><a class="text-blue-600 hover:underline" href="../actividades/criterio_ra3_a.html">Criterio RA3-a: comparar sistemas de archivos</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Sistema_de_archivos" target="_blank" rel="noopener">Wikipedia — Sistema de archivos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Ext4" target="_blank" rel="noopener">Wikipedia — Ext4</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/NTFS" target="_blank" rel="noopener">Wikipedia — NTFS</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/FAT" target="_blank" rel="noopener">Wikipedia — FAT</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

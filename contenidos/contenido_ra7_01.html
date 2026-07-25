@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software: tipos, requisitos, licencias | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra7.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA7 · Contenido 01</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Software: tipos, requisitos, licencias | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA7</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Software: tipos, requisitos, licencias</h2><p class="text-slate-700 leading-relaxed mb-3">El software de propósito general abarca las aplicaciones que un usuario de SI debe conocer y explotar: ofimática, navegadores, correo, compresión, antimalware, entre otros.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Clasificación</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Por propósito:</b> ofimática, navegación, comunicación, multimedia, utilidades.</li><li><b>Por arquitectura:</b> escritorio (local), web (SaaS), móvil.</li><li><b>Por licencia:</b> libre (GPL/MIT) vs propietario (EULA), freemium.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Requisitos</h3><p class="text-slate-700 leading-relaxed mb-3">Toda app declara requisitos mínimos (SO, RAM, CPU, disco, dependencias). Verificarlos evita fallos de instalación.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Licencias</h3><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Tipo</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Libertad de modificar</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Ejemplo</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Libre (GPL)</td><td class="px-4 py-2 border border-slate-200 align-top">Sí</td><td class="px-4 py-2 border border-slate-200 align-top">LibreOffice, Firefox</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Propietario</td><td class="px-4 py-2 border border-slate-200 align-top">No</td><td class="px-4 py-2 border border-slate-200 align-top">Microsoft 365, Photoshop</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Freemium</td><td class="px-4 py-2 border border-slate-200 align-top">Variable</td><td class="px-4 py-2 border border-slate-200 align-top">Spotify</td></tr></tbody></table><pre class="mermaid">
+graph TD
+  SW[Software] --> O[Ofimática]
+  SW --> N[Navegador]
+  SW --> C[Comunicación]
+  SW --> U[Utilidades]
+  O --> LO[LibreOffice]
+  O --> MO[MS Office]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Software))
+    Ofimática
+    Navegador
+    Correo
+    Utilidades
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Clasificar el software del equipo.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Abre la lista de programas instalados y separa <b>Sistema</b> (SO) de <b>Aplicación</b>.</li><li>Marca cada uno como <b>libre</b> o <b>propietario</b> según su licencia.</li><li>Anota los <b>requisitos</b> de los pesados (RAM, disco).</li><li>Explica la diferencia entre software de sistema y de aplicación.</li></ol>
+<pre class="mermaid">
+graph LR
+  SW[Software] --> SYS[Sistema]
+  SW --> APP[Aplicación]
+  APP --> LIB[Libre]
+  APP --> PROP[Propietario]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno clasifica 10 programas en sistema/aplicación y libre/propietario.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Software de propósito general = "las herramientas de uso diario".</b> Ofimática, navegador, correo, compresión... lo que cualquier equipo necesita para servir, no solo para administrar.</li>
+<li><b>Libre vs propietario = "receta abierta vs receta de pago".</b> El libre te deja ver y cambiar el código; el propietario te da el binario y poco más. La licencia marca qué puedes hacer.</li>
+<li><b>Requisitos = "lo mínimo para que arranque".</b> Si el equipo no llega (RAM, CPU, SO), la app no se instala o va fatal. Leerlos antes de bajar.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Clasificación.</b> Por propósito (ofimática, navegación, multimedia, utilidades); por arquitectura (escritorio local, web/SaaS, móvil); por licencia (libre GPL/MIT, propietario EULA, freemium).</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Requisitos mínimos.</b> Toda app declara SO, RAM, CPU, disco y dependencias (p.ej. .NET, Java). Verificarlos evita instalaciones fallidas y cuellos de botella.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Licencias libres.</b> GPL exige que las obras derivadas sigan siendo libres; MIT permite uso casi sin restricciones. Conocer la licencia decide si puedes integrar el código en tu proyecto.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Propietario / EULA.</b> El contrato limita copia, número de equipos y reversión. "Tengo la licencia" no es "puedo hacer lo que quiera" con el software.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Freemium.</b> Gratis con funciones básicas y de pago para avanzadas; no confundir "gratis" con "libre" (la licencia sigue siendo cerrada).</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"Gratis" no es "libre".</b> Freemium o de prueba es propietario y cerrado; libre (GPL/MIT) es cuestión de licencia del código, no de precio. No mezclar ambos conceptos.</li>
+<li><b>"No arranca" suele ser requisitos no cubiertos.</b> Falta de RAM, SO antiguo o dependencia ausente (Java/.NET) son la causa habitual, no un fallo del instalador.</li>
+<li><b>GPL no es "haz lo que quieras".</b> Exige liberar las derivadas; si integras código GPL en un cerrado, incumples. La libertad lleva obligación de devolver.</li>
+<li><b>SaaS no es "software instalado".</b> La app web vive en el servidor y se usa por navegador; no ocupa disco local, pero necesita conexión. Distinto de escritorio.</li>
+<li><b>La licencia cuenta equipos, no personas.</b> Una licencia de 5 puestos no autoriza 10 usuarios rotando. El EULA fija el número; pasarse es piratería.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) software de propósito general → (2) clasificación (propósito/arquitectura/licencia) → (3) requisitos mínimos → (4) licencias (GPL/MIT/EULA/freemium) → (5) SaaS vs escritorio → (6) errores (gratis≠libre, requisitos, GPL).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra7_02.html">Ofimática y colaborativo</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra7_03.html">Utilidades generales</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra7_a.html">Criterio RA7-a: clasificar</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Software" target="_blank" rel="noopener">Wikipedia — Software</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Aplicaci%C3%B3n_inform%C3%A1tica" target="_blank" rel="noopener">Wikipedia — Aplicación de propósito general</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Ofim%C3%A1tica" target="_blank" rel="noopener">Wikipedia — Ofimática</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=5oAexbSPygE" target="_blank" rel="noopener">Buenas prácticas y seguridad en el PC</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

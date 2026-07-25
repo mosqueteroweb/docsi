@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Periféricos y adaptadores | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra1.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA1 · Contenido 03</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Periféricos y adaptadores | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA1</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Periféricos. Adaptadores para la conexión de dispositivos.</h2><p class="text-slate-700 leading-relaxed mb-3">Los periféricos amplían las capacidades del equipo: entrada (teclado, ratón, escáner), salida (monitor, impresora) y mixtos (discos externos, pantallas táctiles). Se conectan mediante interfaces y adaptadores normalizados.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Clasificación</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Entrada:</b> teclado, ratón, micrófono, cámara, escáner.</li><li><b>Salida:</b> monitor, impresora, altavoces.</li><li><b>Mixtos:</b> pantalla táctil, unidad externa, tarjeta de red.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Interfaces y adaptadores</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>USB:</b> estándar universal (2.0, 3.0/3.2, USB4/Thunderbolt 4). Alimenta y transfiere.</li><li><b>PCIe:</b> para tarjetas internas (gráfica, red).</li><li><b>HDMI / DisplayPort:</b> vídeo. DisplayPort 2.1 y HDMI 2.1 soportan 4K/8K.</li><li><b>Bluetooth:</b> inalámbrico de corto alcance.</li><li><b>USB-C / Power Delivery:</b> conector reversible que unifica datos, vídeo y carga.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Instalación y configuración</h3><p class="text-slate-700 leading-relaxed mb-3">En sistemas modernos, muchos periféricos son <b>plug-and-play</b>: el SO detecta el dispositivo y carga su controlador. La configuración puede requerir ajustar resolución, botones, o instalar software del fabricante. En el criterio RA1-d se evalúa esta tarea.</p><pre class="mermaid">
+graph LR
+  EQUIPO[Equipo] --> USB[USB]
+  EQUIPO --> PCIE[PCIe]
+  EQUIPO --> HDMI[HDMI/DP]
+  USB --> TECL[Teclado]
+  USB --> DISCO[Disco ext.]
+  PCIE --> GPU[Tarjeta gráfica]
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Conectar un periférico y verificar su adaptador.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Conecta una impresora USB; el SO detecta el <b>adaptador</b> y busca el controlador.</li><li>Si es PS/2 (teclado ratón antiguo), usa el conector verde/morado: <b>no es hot-plug</b>, apaga antes.</li><li>Verifica en 'Administrador de dispositivos' que el periférico aparece sin errores.</li><li>Comprueba que el <b>adaptador</b> (p. ej. USB-C a USB-A) coincide con el puerto físico disponible.</li></ol>
+<pre class="mermaid">
+graph LR
+  PER[Periférico] --> AD[Adaptador/PUERTO]
+  AD --> BUS[Bus del equipo]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno conecta un periférico, instala su controlador y entrega captura del administrador de dispositivos sin errores.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>El equipo "habla" con el mundo a través de los periféricos.</b> Sin ellos, la CPU sería una caja que calcula en silencio: el teclado es el oído, el monitor los ojos, el disco la memoria externa. Por eso se dividen según el sentido del flujo de datos.</li><li><b>Cada interfaz es un "idioma + enchufe".</b> Una interfaz (USB, HDMI, PCIe) define tanto el conector físico como el protocolo eléctrico y lógico. Un adaptador (USB→HDMI) traduce de un idioma a otro cuando el equipo no tiene la salida nativa.</li><li><b>Controlador (driver) = traductor de software.</b> El SO no sabe cómo mover el brazo de una impresora concreta; el driver se lo dice. Por eso "plug-and-play" funciona solo cuando el driver está disponible (en el SO o descargable).</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Entrada/salida/mixto es según la dirección del dato.</b> Entrada = del mundo al equipo (teclado); salida = del equipo al mundo (monitor); mixto = ambos (disco externo, pantalla táctil que muestra y recibe pulsos). Una impresora 3D es salida (recibe el modelo), pero un escáner es entrada.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>USB: versiones y ancho de banda.</b> USB 2.0 (~480 Mb/s), USB 3.2 Gen1 (5 Gb/s), Gen2 (10 Gb/s), USB4/Thunderbolt 4 (40 Gb/s). Además, USB entrega corriente: carga móviles y alimenta discos sin fuente propia. El conector USB-C es reversible y, con Power Delivery, puede dar 100 W para cargar el portátil.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>HDMI vs DisplayPort.</b> Ambos llevan vídeo (y audio). DisplayPort suele usarse en PC y permite encadenar monitores (Daisy Chain, MST); HDMI domina la televisión y consolas. Las versiones 2.1/2.1 admiten 4K/8K a alto refresco. La elección importa para montar varias pantallas o jugar.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>PCIe para internos.</b> Las tarjetas internas (gráfica, red, capturadora) usan ranuras PCIe del mismo tema anterior: la gráfica va en la ranura x16 principal. Un adaptador PCIe→M.2 permite añadir discos rápidos a placas viejas.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Bluetooth y el rango corto.</b> Es inalámbrico de baja potencia (ratones, auriculares, teclados). Compite con Wi-Fi para datos, pero está pensado para dispositivos cercanos y bajo consumo; necesita un adaptador (interno o USB) y emparejamiento (pairing) previo.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Una pantalla táctil es mixta, no solo salida.</b> Muestra imagen (salida) y recibe toques (entrada). Error típico clasificarla solo como monitor.</li><li><b>USB-C es el conector, no la velocidad.</b> Un puerto USB-C puede ser 2.0 lento o USB4 rápido; mirar la versión, no la forma.</li><li><b>Adaptador ≠ controlador.</b> El adaptador es hardware que cambia el conector/protocolo; el controlador es el software que lo hace funcionar.</li><li><b>Plug-and-play no es mágico.</b> Dependes de que el SO traiga el driver; si no, hay que instalarlo manualmente.</li><li><b>HDMI y DisplayPort no son intercambiables sin adaptador.</b> Mismo propósito (vídeo) pero conector y protocolo distintos.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) ¿para qué sirven los periféricos? → (2) clasificar por dirección del dato → (3) interfaces físicas (USB/HDMI/PCIe) → (4) inalámbricos (Bluetooth) → (5) drivers y plug-and-play → (6) instalación y configuración práctica.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra1_01.html">Placas base</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra1_02.html">Estructura</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra1_d.html">Criterio RA1-d: periféricos</a></li></ul>  <pre class="mermaid">
+flowchart TD
+  E[Entrada: teclado] --> CPU[CPU]
+  CPU --> S[Salida: monitor]
+  CPU --> M[Mixto: disco ext.]
+</pre>
+<section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Perif%C3%A9rico" target="_blank" rel="noopener">Wikipedia — Periférico</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/USB" target="_blank" rel="noopener">Wikipedia — USB</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=5oAexbSPygE" target="_blank" rel="noopener">Errores al elegir periféricos / tarjeta madre</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=1RQ8OmZfk8s" target="_blank" rel="noopener">Placas Madre: todo lo que necesitas saber</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

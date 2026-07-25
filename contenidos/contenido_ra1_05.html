@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Características de las redes | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra1.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA1 · Contenido 05</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Características de las redes | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA1</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Características de las redes. Ventajas e inconvenientes.</h2><p class="text-slate-700 leading-relaxed mb-3">Una red se define por propiedades que determinan su utilidad y sus limitaciones. Entenderlas ayuda a diseñar soluciones equilibradas.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Propiedades fundamentales</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Topología:</b> disposición de nodos y enlaces.</li><li><b>Medio de transmisión:</b> cableado o inalámbrico.</li><li><b>Protocolo:</b> reglas de comunicación (TCP/IP).</li><li><b>Arquitectura:</b> cliente-servidor o P2P.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Métricas de rendimiento</h3><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Métrica</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Significado</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Ancho de banda</td><td class="px-4 py-2 border border-slate-200 align-top">Capacidad máxima de transmisión (bps)</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Latencia</td><td class="px-4 py-2 border border-slate-200 align-top">Retardo en llegar un dato (ms)</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Pérdida de paquetes</td><td class="px-4 py-2 border border-slate-200 align-top">% de datos que no llegan</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Jitter</td><td class="px-4 py-2 border border-slate-200 align-top">Variación de la latencia</td></tr></tbody></table><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Ventajas e inconvenientes</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Ventajas:</b> compartir recursos (impresoras, Internet), centralizar copias de seguridad, facilitar la colaboración, administración centralizada.</li><li><b>Inconvenientes:</b> coste de infraestructura, necesidad de administración, riesgos de seguridad y dependencia de la red (si cae, se paraliza el trabajo).</li></ul><pre class="mermaid">
+graph TD
+  V[Ventajas] --> V1[Compartir recursos]
+  V --> V2[Copia centralizada]
+  I[Inconvenientes] --> I1[Coste]
+  I --> I2[Seguridad]
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Comparar red cableada vs inalámbrica en el aula.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Anota 3 <b>ventajas</b> de la cableada: mayor velocidad, menor latencia, sin interferencias.</li><li>Anota 3 <b>inconvenientes</b>: coste de cableado, movilidad nula, mantenimiento de latiguillos.</li><li>Repite lo mismo para la inalámbrica (ventaja: movilidad; inconveniente: seguridad, alcance).</li><li>Concluye: en aula taller, cableada para puestos fijos; inalámbrica para dispositivos móviles.</li></ol>
+<pre class="mermaid">
+graph LR
+  CAB[Cableada] -->|velocidad| V1[+]
+  WIF[Inalámbrica] -->|movilidad| V2[+]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno entrega una tabla comparativa con al menos 3 ventajas e inconvenientes de cada tipo.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Una red es "compartir", no solo "conectar".</b> El cable o la Wi-Fi solo son el medio; el valor aparece cuando varios equipos usan un mismo recurso (archivo, impresora, internet). Por eso la primera pregunta es siempre: ¿qué se comparte?</li><li><b>Las métricas explican la experiencia real.</b> "Tengo 600 Mb" (ancho de banda) no significa "baja instantáneo": si la latencia es alta o hay jitter, una videollamada da saltos. Ancho de banda, latencia y jitter son tres cosas distintas.</li><li><b>Toda red es un compromiso.</b> Más velocidad suele costar más dinero o más complejidad; más comodidad (inalámbrico) suele restar algo de fiabilidad. Por eso se habla de ventajas e inconvenientes.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Topología, medio y protocolo son tres ejes.</b> La topología (bus/estrella/malla) es la forma; el medio (cobre, fibra, aire) es por donde viaja; el protocolo (TCP/IP) es el idioma. Se pueden combinar libremente: una estrella puede ser de cobre o fibra, siempre sobre TCP/IP.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ancho de banda vs throughput (caudal real).</b> El ancho de banda es la capacidad teórica del enlace; el throughput es lo que realmente se aprovecha tras cabeceras, colisiones y otros usuarios. Por eso contratar 600 Mb no implica transferir 600 Mb/s de datos útiles.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Latencia y jitter en tiempo real.</b> La latencia es el viaje de ida (ms); el jitter es cuánto varía ese viaje entre paquetes. En voz/vídeo, un jitter alto rompe la fluidez aunque la latencia media sea baja. La pérdida de paquetes obliga a retransmitir y añade retardo.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Cliente-servidor vs P2P.</b> En cliente-servidor, un nodo central (servidor) da el servicio y los demás lo consumen (más control, pero punto único de fallo). En P2P, todos son a la vez cliente y servidor (más resiliente, pero más difícil de gestionar y asegurar). Elegir arquitectura condiciona la seguridad y el escalado.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ventajas reales e inconvenientes honestos.</b> Compartir recursos y centralizar copias ahorra dinero y facilita el mantenimiento; pero añade coste inicial (cableado, servidores, formación) y expone un nuevo riesgo: si la red cae, caen todos los servicios. La seguridad pasa a ser crítica.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Ancho de banda ≠ velocidad percibida.</b> Es capacidad máxima; el throughput útil es menor. No decir "mi red va a 600 Mb" como si fuera la velocidad real de descarga.</li><li><b>Latencia y jitter no son lo mismo.</b> Latencia = retardo; jitter = variación del retardo. Para gaming/voip importa especialmente el jitter.</li><li><b>Topología, medio y protocolo son independientes.</b> No confundir "estrella" (forma) con "cableado" (medio) ni con "TCP/IP" (idioma).</li><li><b>P2P no es "sin servidor" en el sentido de sin gestión.</b> Simplemente el rol se reparte; sigue necesitando cuidado (y a menudo es ilegal si se usa para compartir contenido pirateado).</li><li><b>Red caída = servicios caídos.</b> Al centralizar, el fallo de red es fallo de todo. La disponibilidad es una ventaja a proteger, no una garantía.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) ¿para qué sirve una red? (compartir) → (2) ejes: topología/medio/protocolo → (3) arquitectura (cliente-servidor/P2P) → (4) métricas (ancho/latencia/jitter/pérdida) → (5) ventajas e inconvenientes → (6) implicaciones de seguridad.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra1_06.html">Tipos de redes</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra1_07.html">Componentes</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra1_e.html">Criterio RA1-e: tipos de redes</a></li></ul>  <pre class="mermaid">
+mindmap
+  root((Red))
+    Topología
+    Medio
+    Protocolo
+    Rendimiento
+      Ancho banda
+      Latencia
+</pre>
+<section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Red_de_computadoras" target="_blank" rel="noopener">Wikipedia — Red de computadoras</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Red_de_%C3%A1rea_local" target="_blank" rel="noopener">Wikipedia — Red de área local (LAN)</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=_JNPvSxG6oM" target="_blank" rel="noopener">Conceptos básicos de redes en 15 minutos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=Gky8-OVYmT4" target="_blank" rel="noopener">Diferencias entre HUB, SWITCH y ROUTER</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

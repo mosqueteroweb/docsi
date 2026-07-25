@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones de un sistema operativo | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra2.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA2 · Contenido 02</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Funciones de un sistema operativo | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA2</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Funciones de un sistema operativo</h2><p class="text-slate-700 leading-relaxed mb-3">El SO actúa como intermediario entre el hardware y las aplicaciones. Sus funciones esenciales garantizan que varios procesos compitan de forma justa y segura por los recursos.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Gestión de procesos</h3><p class="text-slate-700 leading-relaxed mb-3">El SO crea, planifica y finaliza <b>procesos</b> (programas en ejecución). El <b>planificador</b> reparte la CPU entre ellos (FIFO, Round Robin, prioridades). La <b>multitarea</b> da sensación de paralelismo repartiendo el tiempo de CPU.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Gestión de memoria</h3><p class="text-slate-700 leading-relaxed mb-3">Asigna y libera memoria RAM a los procesos, implementa <b>memoria virtual</b> (swap) para usar disco como RAM ampliada y protege el espacio de cada proceso.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Gestión de entrada/salida y archivos</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li>Controla drivers y dispositivos periféricos.</li><li>Ofrece un sistema de archivos jerárquico (directorios).</li><li>Abstrae el hardware para que las apps no lo gestionen directamente.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Seguridad y servicios</h3><p class="text-slate-700 leading-relaxed mb-3">Gestiona cuentas, permisos y aislamiento; ofrece APIs y servicios (red, impresión) a las aplicaciones.</p><pre class="mermaid">
+graph TD
+  APP[Aplicación] -->|syscall| SO[Sistema Operativo]
+  SO --> K[Núcleo/Kernel]
+  K --> CPU[CPU]
+  K --> RAM[Memoria]
+  K --> DISCO[Disco]
+  K --> ESO[E/S]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Funciones SO))
+    Procesos
+    Memoria
+    E/S
+    Archivos
+    Seguridad
+</pre><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Función</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Responsabilidad</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Procesos</td><td class="px-4 py-2 border border-slate-200 align-top">Planificar y aislar tareas</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Memoria</td><td class="px-4 py-2 border border-slate-200 align-top">Asignar RAM y swap</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">E/S</td><td class="px-4 py-2 border border-slate-200 align-top">Drivers y periféricos</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Archivos</td><td class="px-4 py-2 border border-slate-200 align-top">Sistema de ficheros</td></tr></tbody></table>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Listar las funciones de un SO.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Abre el administrador de tareas y observa la <b>gestión de procesos</b> (SO asigna CPU).</li><li>Crea una carpeta: el SO gestiona el <b>sistema de archivos</b> en disco.</li><li>Conéctate a la red: el SO gestiona <b>periféricos y red</b> mediante controladores.</li><li>Abre dos programas a la vez: el SO hace <b>multiprogramación</b> (memoria virtual).</li></ol>
+<pre class="mermaid">
+graph TD
+  SO[SO] --> P[Procesos]
+  SO --> F[Archivos]
+  SO --> R[Red]
+  SO --> M[Memoria]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno enumera 5 funciones del SO y da un ejemplo observable de cada una en su equipo.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>El SO es un "recepcionista" que media.</b> La app no habla con el disco ni con la red directamente: pide al SO ("syscall") y él gestiona. Eso simplifica a las apps y protege al hardware.</li><li><b>Proceso ≠ programa.</b> El programa es el archivo en disco; el proceso es ese programa "vivo" en ejecución, con su memoria y estado. Puedes tener el mismo programa en 3 procesos.</li><li><b>Todo recurso se comparte.</b> CPU, RAM y disco son finitos; el SO decide a quién toca y cuándo. Por eso existen las funciones de gestión.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Planificación (scheduling).</b> FIFO atiende por orden; Round Robin da un turno fijo a cada proceso (justo, típico en sistemas interactivos); por prioridades atiende primero a los críticos. El modo de cambiar de proceso se llama <b>context switch</b> y tiene coste (guardar/restore estado), por eso muchos cambios perjudican.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Memoria virtual y swap.</b> Cada proceso "cree" tener toda la RAM para él (espacio de direcciones virtual); el SO lo mapea a la física real. Si falta RAM, mueve páginas a disco (swap): lento pero evita que todo se caiga. Demasiado swap = "thrashing" (la máquina se pasa el tiempo moviendo memoria).</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Aislamiento de procesos.</b> El SO impide que un proceso lea la memoria de otro; si uno falla, los demás siguen. Ese muro (modo usuario vs modo kernel) es la base de la estabilidad.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Sistema de archivos.</b> El SO da nombres y carpetas sobre el disco físico; las apps abren "documento.txt" sin saber en qué sector está. La abstracción es clave: cambiar de disco no obliga a reescribir las apps.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>APIs y servicios.</b> El SO ofrece funciones (API) para ventanas, red, impresión. Las apps las usan en lugar de programar lo bajo nivel; eso es lo que hace posible el software variado.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Programa ≠ proceso.</b> El programa está en disco; el proceso está en ejecución. Error típico igualarlos.</li><li><b>Memoria virtual no es "RAM infinita".</b> Usa disco y es lenta; abusar da thrashing. No confundir con más RAM real.</li><li><b>Syscall no es "llamar a una función normal".</b> Es pedir al kernel en modo privilegiado; tiene su coste y su protección.</li><li><b>El SO no "acelera" la CPU.</b> La reparte; si hay muchos procesos, cada uno recibe menos tiempo.</li><li><b>Multitarea es ilusión de paralelismo en un solo núcleo.</b> En un núcleo, alterna; con varios núcleos, sí hay paralelismo real.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) el SO como mediador (syscall) → (2) gestión de procesos (planificador, context switch) → (3) gestión de memoria (virtual, swap) → (4) E/S y archivos (abstracción) → (5) seguridad y APIs → (6) por qué el aislamiento importa.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra2_01.html">Evolución y clasificación</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra2_03.html">Tipos de SO</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra2_b.html">Criterio RA2-b: funciones/arquitectura</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Sistema_operativo" target="_blank" rel="noopener">Wikipedia — Sistema operativo</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/N%C3%BAcleo_(inform%C3%A1tica)" target="_blank" rel="noopener">Wikipedia — Núcleo (kernel)</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=SQRw3GwktxA" target="_blank" rel="noopener">Cómo funciona un PC y qué hace cada componente</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=1RQ8OmZfk8s" target="_blank" rel="noopener">Placas Madre: todo lo que necesitas saber</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

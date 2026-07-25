@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Licencias de software | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra2.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA2 · Contenido 05</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Licencias de software | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA2</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Licencias y tipos de licencias de software</h2><p class="text-slate-700 leading-relaxed mb-3">La licencia define los derechos y obligaciones sobre un programa. La distinción fundamental es entre <b>software libre</b> y <b>software propietario</b>, con matices como el software de código abierto y las licencias comerciales.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Software libre</h3><p class="text-slate-700 leading-relaxed mb-3">Otoga al usuario las cuatro libertades: usar, estudiar, modificar y distribuir. Ejemplos de licencias: <b>GPL</b> (copyleft fuerte), <b>MIT</b> y <b>BSD</b> (permisivas), <b>Apache</b> (con patente). GNU/Linux se distribuye bajo estas licencias.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Software propietario</h3><p class="text-slate-700 leading-relaxed mb-3">El código es cerrado; el usuario solo recibe el derecho de uso bajo condiciones (EULA). Ejemplos: Microsoft Windows, la mayoría de videojuegos comerciales. Puede ser gratuito (freemium) o de pago.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Tipos de licenciamiento</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Por volumen/empresa:</b> licencias OEM, retail, suscripción (Microsoft 365).</li><li><b>Gratuito (freeware):</b> uso sin coste pero sin libertades.</li><li><b>Shareware:</b> prueba temporal.</li><li><b>Código abierto (open source):</b> a veces coincide con libre, pero no siempre exige copyleft.</li></ul><pre class="mermaid">
+graph TD
+  LIC[Licencia] --> LIBRE[Libre: GPL/MIT/BSD]
+  LIC --> PROP[Propietario: EULA]
+  LIBRE --> F[Libertades 4]
+  PROP --> P[Uso restringido]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Licencias))
+    Libre
+      GPL
+      MIT
+    Propietario
+      EULA
+    Modelos
+      Volumen
+      Freemium
+</pre><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Tipo</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Libertad de modificar</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Ejemplo</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Libre (GPL)</td><td class="px-4 py-2 border border-slate-200 align-top">Sí</td><td class="px-4 py-2 border border-slate-200 align-top">Linux, LibreOffice</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Propietario</td><td class="px-4 py-2 border border-slate-200 align-top">No</td><td class="px-4 py-2 border border-slate-200 align-top">Windows, Photoshop</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Freemium</td><td class="px-4 py-2 border border-slate-200 align-top">Variable</td><td class="px-4 py-2 border border-slate-200 align-top">Spotify</td></tr></tbody></table>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Leer una licencia de software.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Abre la licencia de una app libre (p. ej. la GPL de LibreOffice) y localiza si permite <b>usar, copiar y modificar</b>.</li><li>Compara con una <b>EULA</b> propietaria: suele prohibir la copia y la ingeniería inversa.</li><li>Distingue <b>licencia de uso</b> (cuántas instalaciones) de <b>propiedad intelectual</b>.</li><li>Explica por qué el código abierto no es lo mismo que 'gratis'.</li></ol>
+<pre class="mermaid">
+graph LR
+  GPL[Libre: usar/copiar/modificar] --> SW[Software]
+  EULA[Propietario: restringe] --> SW
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno resume en 5 puntos qué permite y qué prohíbe una licencia libre frente a una propietaria.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Licencia = las reglas del juego del software.</b> El copyright existe por defecto; la licencia dice qué puedes hacer con el programa. Sin licencia, lo normal es que no puedas ni usarlo legalmente.</li>
+<li><b>Libre no es "gratis" (gratis≠libre).</b> "Libre" se refiere a libertad (usar/estudiar/modificar/distribuir), no a precio. Puede cobrarse y sigue siendo libre. "Gratis" (freeware) es sin coste pero sin libertades.</li>
+<li><b>Código abierto ≠ siempre libre.</b> Open source publica el código, pero algunas licencias no exigen que tus modificaciones también lo sean. La "libertad" plena la garantiza el copyleft (GPL).</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Las cuatro libertades.</b> Usar para cualquier fin, estudiar el código, modificarlo y distribuirlo (original o modificado). El copyleft (GPL) añade que las obras derivadas deben mantener la misma licencia; las permisivas (MIT/BSD/Apache) permiten integrarlo en software propietario.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>EULA del propietario.</b> El contrato de uso (EULA) concede solo el derecho de ejecutar el programa, a menudo con límites (nº de equipos, no ingeniería inversa). El código cerrado impide estudiarlo o mejorarlo.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Modelos de pago.</b> OEM (atado al hardware de fábrica), retail (caja, reusable en ciertos límites), suscripción (Microsoft 365, pagas mientras uses). El freemium da una base gratis y cobra por extras; el shareware es prueba temporal.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Por qué importa en administración.</b> Elegir licencias afecta al coste del aula, a la auditoría (cumplimiento) y a la portabilidad (lo libre evita depender de un solo fabricante). Por eso el tema se evalúa en RA2-c.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Apache y patentes.</b> La licencia Apache incluye concesión de patentes del contribuyente, útil en entornos empresariales; MIT/BSD son más cortas pero no mencionan patentes explícitamente.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Libre ≠ gratis.</b> Libertad de uso/modificación, no precio cero. Error de traducción frecuente.</li>
+<li><b>Open source no implica copyleft.</b> Puede ser permisivo; no asumas que "al abrir el código" heredas la obligación de abrir el tuyo.</li>
+<li><b>GPL obliga a liberar derivados.</b> Si usas código GPL en tu programa, tu programa debe ser GPL (o compatible). Eso lo diferencia de MIT.</li>
+<li><b>Freeware no es libre.</b> Gratis de usar, pero sin derecho a modificar ni ver código.</li>
+<li><b>OEM no es "mismo que retail".</b> La OEM va ligada al equipo y suele ser más barata pero menos transferible.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) copyright por defecto → (2) qué es una licencia → (3) libre (4 libertades) vs propietario (EULA) → (4) copyleft vs permisiva → (5) modelos de pago (OEM/retail/suscripción/freemium) → (6) implicaciones para el aula/empresa.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra2_04.html">Tipos de aplicaciones</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra2_09.html">Consideraciones previas</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra2_c.html">Criterio RA2-c: comparar SO</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Licencia_de_software" target="_blank" rel="noopener">Wikipedia — Licencia de software</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Software_libre" target="_blank" rel="noopener">Wikipedia — Software libre</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=5oAexbSPygE" target="_blank" rel="noopener">Errores al elegir periféricos / componentes</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=1RQ8OmZfk8s" target="_blank" rel="noopener">Placas Madre: todo lo que necesitas saber</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

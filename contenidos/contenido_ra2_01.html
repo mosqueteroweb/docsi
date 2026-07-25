@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolución y clasificación de SO | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra2.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA2 · Contenido 01</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Evolución y clasificación de SO | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA2</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Evolución histórica y clasificación de los sistemas operativos</h2><p class="text-slate-700 leading-relaxed mb-3">El sistema operativo (SO) es el software que gestiona los recursos hardware y ofrece una interfaz a las aplicaciones y al usuario. Su evolución pasó de los monitores residentes de los años 50, pasando por los sistemas de lote (batch), el tiempo compartido (multitarea), hasta los SO modernos gráficos y multiusuario.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Hitos históricos</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>1950s:</b> operación con tarjetas perforadas y monitores residentes sin SO como tal.</li><li><b>1960s:</b> tiempo compartido (CTSS, MULTICS) y aparece UNIX.</li><li><b>1980s:</b> SO con interfaz gráfica (Mac OS, Windows) y auge de MS-DOS.</li><li><b>1990s:</b> Linux y el software libre; Windows NT para servidores.</li><li><b>2000s–hoy:</b> virtualización, cloud, móviles (Android/iOS) y contenedores.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Clasificación de los SO</h3><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Criterio</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Tipos</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Número de tareas</td><td class="px-4 py-2 border border-slate-200 align-top">Monotarea / Multitarea</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Número de usuarios</td><td class="px-4 py-2 border border-slate-200 align-top">Monousuario / Multiusuario</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Interfaz</td><td class="px-4 py-2 border border-slate-200 align-top">Texto (CLI) / Gráfica (GUI) / Táctil</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Entorno</td><td class="px-4 py-2 border border-slate-200 align-top">Servidor / Escritorio / Empotrado / Móvil / Tiempo real</td></tr></tbody></table><pre class="mermaid">
+timeline
+  title Evolución de los SO
+  1950 : Monitores residentes
+  1960 : Tiempo compartido / UNIX
+  1980 : GUI (Mac, Windows)
+  1990 : Linux / Software libre
+  2000 : Virtualización y cloud
+</pre>
+<pre class="mermaid">
+mindmap
+  root((SO))
+    Por tarea
+      Monotarea
+      Multitarea
+    Por usuario
+      Mono
+      Multi
+    Interfaz
+      CLI
+      GUI
+</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Arquitectura básica</h3><p class="text-slate-700 leading-relaxed mb-3">Un SO se apoya en el <b>núcleo (kernel)</b> que gestiona CPU, memoria y dispositivos, y en <b>espacio de usuario</b> donde corren las aplicaciones. Los modelos varían entre <b>monolítico</b> (Linux, Windows) y <b>microkernel</b> (Mach, MINIX).</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Clasificar SO de un equipo del aula.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Abre 'Acerca de' (Windows) o <code>uname -a</code> (Linux) y anota el <b>sistema operativo</b> y versión.</li><li>Indica si es <b>monousuario/multiusuario</b> y <b>monotarea/multitarea</b> (casi todos hoy son multiusuario y multitarea).</li><li>Clasifícalo como <b>propietario</b> (Windows/macOS) o <b>libre</b> (Linux).</li><li>Explica su <b>evolución</b>: de DOS (línea de comandos) a los entornos gráficos actuales.</li></ol>
+<pre class="mermaid">
+graph LR
+  DOS[Linea comandos] --> GUI[Entorno gráfico]
+  GUI --> MOD[Multiusuario/Multitarea]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno clasifica el SO de su equipo (tipo, licencia, multiusuario/multitarea) y lo justifica.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>El SO es el "capataz" del hardware.</b> Sin él, cada programa tendría que hablar directo con el disco, la pantalla y la red. El SO centraliza esa gestión para que las aplicaciones sean fáciles de escribir.</li><li><b>Monotarea/multitarea y mono/multiusuario son ejes distintos.</b> Un SO puede ser multitarea pero monousuario (una sola persona, muchos programas), o multiusuario y multitarea a la vez. No son lo mismo.</li><li><b>Kernel vs aplicación: dos "pisos".</b> El núcleo (kernel) tiene privilegios totales y habla con el hardware; las apps viven en "espacio de usuario" y piden favores al kernel. Ese muro protege el sistema.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>De lote a tiempo compartido.</b> Al principio se metía un trabajo, se esperaba, y otro (batch). El tiempo compartido (CTSS, MULTICS) reparte el tiempo de CPU entre varios usuarios tan rápido que parece simultáneo: así nace la multitarea y el concepto de "sesión".</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>UNIX y su herencia.</b> UNIX (años 60) fijó ideas que perduran: "todo es un archivo", tuberías (pipes) para encadenar comandos, multiusuario con permisos. Linux, macOS e iOS descienden de esa filosofía; incluso Windows adoptó conceptos similares.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>CLI vs GUI.</b> La interfaz de texto (línea de comandos) es potente y scripteable; la gráfica (GUI) es accesible. Un mismo SO suele ofrecer ambas (Linux tiene bash y entorno gráfico; Windows tiene PowerShell y escritorio).</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Monolítico vs microkernel.</b> En el monolítico (Linux, Windows) todo el núcleo corre en modo privilegiado: rápido pero un fallo lo tumba todo. En el microkernel (Mach, MINIX) solo lo mínimo está en el núcleo y el resto son servicios en espacio de usuario: más seguro y modular, algo más lento. Es el compromiso rendimiento vs robustez.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>SO moderno: virtualización y contenedores.</b> Hoy el SO anfitrión (host) ejecuta máquinas virtuales o contenedores (Docker), permitiendo aislar aplicaciones y aprovechar mejor el hardware. Es la base de la nube.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Multitarea ≠ multiusuario.</b> Multitarea = varios programas a la vez; multiusuario = varias personas a la vez. Un SO puede tener una sin la otra.</li><li><b>Kernel no es "el SO entero".</b> Es su núcleo; encima corren servicios y aplicaciones. Decir "el kernel es el SO" es reduccionista.</li><li><b>Linux no es "un SO de los 90 olvidado".</b> Es la base de la mayoría de servidores, Android y la nube actual.</li><li><b>Monolítico no es "peor".</b> Es un diseño distinto; Linux es monolítico y compite en rendimiento con los microkernel.</li><li><b>CLI sigue existiendo.</b> No es "lo de antes"; administradores y scripts lo usan a diario.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) ¿qué es un SO y para qué? → (2) evolución (lote→tiempo compartido→GUI→libre→cloud) → (3) clasificar (tarea/usuario/interfaz) → (4) arquitectura (kernel/espacio usuario; monolítico/microkernel) → (5) SO actuales y virtualización.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra2_02.html">Funciones del SO</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra2_03.html">Tipos de SO</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra2_a.html">Criterio RA2-a: elementos funcionales</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Sistema_operativo" target="_blank" rel="noopener">Wikipedia — Sistema operativo</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/UNIX" target="_blank" rel="noopener">Wikipedia — UNIX</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=SQRw3GwktxA" target="_blank" rel="noopener">Cómo funciona un PC y qué hace cada componente</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=1RQ8OmZfk8s" target="_blank" rel="noopener">Placas Madre: todo lo que necesitas saber</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso a recursos y permisos | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra4.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA4 · Contenido 04</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Acceso a recursos y permisos | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA4</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Acceso a recursos y permisos</h2><p class="text-slate-700 leading-relaxed mb-3">El <b>control de acceso</b> decide quién puede leer, escribir o ejecutar cada archivo, carpeta o dispositivo. En sistemas multiusuario es la barrera principal para proteger la información. Existen permisos clásicos (rwx) y las <b>Listas de Control de Acceso (ACL)</b> para dar permisos más finos.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Permisos locales básicos (rwx)</h3><p class="text-slate-700 leading-relaxed mb-3">En UNIX/Linux cada archivo tiene tres conjuntos de permisos para tres categorías: <b>dueño (u)</b>, <b>grupo (g)</b> y <b>resto (o)</b>. Cada conjunto puede tener <b>r</b> (lectura), <b>w</b> (escritura) y <b>x</b> (ejecución).</p><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Permiso</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Significado en archivo</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Significado en directorio</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">r</td><td class="px-4 py-2 border border-slate-200 align-top">Leer el contenido</td><td class="px-4 py-2 border border-slate-200 align-top">Listar archivos</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">w</td><td class="px-4 py-2 border border-slate-200 align-top">Modificar el contenido</td><td class="px-4 py-2 border border-slate-200 align-top">Crear/borrar archivos</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">x</td><td class="px-4 py-2 border border-slate-200 align-top">Ejecutar como programa</td><td class="px-4 py-2 border border-slate-200 align-top">Entrar (cd) en él</td></tr></tbody></table><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Herencia y umask</h3><p class="text-slate-700 leading-relaxed mb-3">Al crear un archivo, sus permisos iniciales se calculan restando la <b>umask</b> de los permisos base (0666 en archivos, 0777 en directorios). La umask habitual (022) deja los archivos en 644 y los directorios en 755.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. chmod y chown (Linux)</h3><pre class="code"><code>chmod 750 script.sh            # dueño rwx, grupo rx, resto nada
+chmod u+x,go-w informe.txt   # añade ejecución al dueño, quita escritura a grupo/otros
+chown ana:desarrollo f.txt   # cambia dueño y grupo
+sudo chown -R ana:ana /home/ana</code></pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Listas de Control de Acceso (ACL)</h3><p class="text-slate-700 leading-relaxed mb-3">Los permisos rwx son limitados: solo distinguen dueño, grupo y otros. Las <b>ACL</b> permiten asignar permisos a usuarios o grupos concretos sin cambiar la estructura. En Linux se usan <code>setfacl</code> y <code>getfacl</code>; en Windows, <code>icacls</code>.</p><pre class="code"><code>setfacl -m u:marta:rw informe.txt   # marta tiene rw sobre informe.txt
+getfacl informe.txt                   # muestra las ACL
+# Windows equivalente:
+icacls documento.docx /grant marta:(R,W)</code></pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">5. icacls en Windows</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><code>icacls</code> muestra y modifica las listas DACL de archivos/carpetas.</li><li>Permite herencia desde carpetas padre y denegaciones explícitas.</li><li>Ejemplo: <code>icacls C:\datos /grant ventas:(OI)(CI)(M)</code> da modificar a 'ventas' con herencia.</li></ul><pre class="mermaid">
+flowchart TD
+  F[Archivo] --> U[user: dueño rwx]
+  F --> G[group: grupo r-x]
+  F --> O[other: resto r--]
+  ACL[ACL extra] -->|setfacl| U2[usuario concreto rw-]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Permisos))
+    Básicos
+      r lectura
+      w escritura
+      x ejecución
+    Comandos
+      chmod
+      chown
+    ACL
+      setfacl
+      getfacl
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Asignar permisos de carpeta.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Crea carpeta 'equipo' y dale permiso de lectura al grupo: <code>chmod 750 equipo</code>.</li><li>Explica <b>u/g/o</b> (usuario/grupo/otros) y <b>rwx</b> (leer/escribir/ejecutar).</li><li>En Windows: pestaña 'Seguridad' → editar permisos por grupo.</li><li>Verifica que un usuario fuera del grupo no puede entrar.</li></ol>
+<pre class="mermaid">
+graph LR
+  U[Usuario rwx] --> C[Carpeta]
+  G[Grupo rx] --> C
+  O[Otros ---] --> C
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno da permisos 750 a una carpeta y verifica acceso según grupo.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>El permiso es "el cartel en la puerta".</b> Dice quién puede entrar (leer), quien puede mover muebles (escribir) y quien puede usarlo (ejecutar). Sin cartel, cualquiera hace lo que quiera.</li>
+<li><b>Dueño, grupo y otros son "tres anillos".</b> El dueño manda sobre su archivo; el grupo son "sus compañeros de equipo"; "otros" es el resto del mundo. Tres niveles, no infinitos.</li>
+<li><b>rwx en carpeta no es lo mismo que en archivo.</b> En carpeta, x es "poder entrar (cd)"; en archivo, x es "poder ejecutarlo". Confundirlos da permisos raros.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>chmod y la notación.</b> La simbólica (<code>u+x,go-w</code>) añade/quita permisos; la octal (<code>755</code> = rwxr-xr-x) los fija de golpe. Cada dígito suma 4(r)+2(w)+1(x). Entender la octal evita errar al "copiar un 644 de memoria".</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>chown: dueño y grupo.</b> <code>chown ana:desarrollo</code> cambia ambos; con <code>-R</code> recorre la carpeta. Un archivo sin dueño correcto puede quedar inaccesible para quien lo necesita.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>rwx en directorio.</b> Sin x en la carpeta, no puedes entrar ni aunque veas el listado; sin r, ves nombres pero no detalles. La combinación importa más que cada letra suelta.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>ACL: la capa fina.</b> Los rwx solo dan 3 niveles; <code>setfacl -m u:marta:rw</code> da permiso a un usuario concreto sin tocar dueño/grupo. Ideal para compartir un archivo con alguien sin meterlo en el grupo.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Windows: icacls y herencia.</b> Las DACL de Windows son ACL completas; <code>icacls /grant</code> da permisos y la herencia (OI/CI) los propaga a subcarpetas. Una denegación explícita siempre gana sobre una concesión.</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"x en la carpeta no es x en el archivo".</b> En carpeta, x = poder entrar (cd); en archivo, x = ejecutar. Sin x en la carpeta, no entras aunque veas el listado.</li>
+<li><b>chmod 777 no es "arreglar permisos".</b> Da acceso total a todos; es un agujero de seguridad, no una solución. Se usa 755/644 según toque.</li>
+<li><b>chown sin -R solo cambia el archivo, no la carpeta.</b> Para una carpeta entera hay que usar <code>-R</code>; si no, los hijos quedan con dueño viejo.</li>
+<li><b>ACL no es "cambiar el grupo".</b> Es dar permiso a un usuario concreto sin tocar dueño/grupo. Confundirlo rompe el modelo de 3 niveles.</li>
+<li><b>En Windows, denegación explícita &gt; concesión.</b> Si deniegas a un usuario y se lo concedes por grupo, la denegación gana. No es "el último que manda".</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) permiso = cartel en la puerta → (2) dueño/grupo/otros (3 anillos) → (3) rwx en archivo vs carpeta → (4) chmod (simbólica y octal) y chown → (5) ACL finas (setfacl/icacls) → (6) errores típicos (777, denegación).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra4_01.html">Usuarios y grupos</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra4_03.html">Contraseñas</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra4_d.html">Criterio RA4-d: permisos y ACL</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://en.wikipedia.org/wiki/File_system_permissions" target="_blank" rel="noopener">Wikipedia (EN) — File system permissions</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Control_de_acceso" target="_blank" rel="noopener">Wikipedia — Control de acceso</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://wiki.archlinux.org/title/File_permissions_and_attributes" target="_blank" rel="noopener">ArchWiki — File permissions</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://wiki.archlinux.org/title/Access_Control_Lists" target="_blank" rel="noopener">ArchWiki — Access Control Lists (ACL)</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

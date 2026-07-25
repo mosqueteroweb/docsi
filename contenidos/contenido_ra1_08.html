@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topologías de red | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra1.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA1 · Contenido 08</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Topologías de red | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA1</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Topologías de red</h2><p class="text-slate-700 leading-relaxed mb-3">La topología de red describe cómo se disponen y conectan los nodos (equipos y dispositivos). Se distingue la <b>topología física</b> (cableado real) de la <b>lógica</b> (flujo de datos). La elección de topología influye directamente en el coste de instalación, la facilidad de mantenimiento, la tolerancia a fallos y el rendimiento global.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Topología en bus</h3><p class="text-slate-700 leading-relaxed mb-3">Todos los equipos comparten un único cable (conducto o backbone). Es simple y económica, pero presenta un <b>punto único de fallo</b>: un corte de cable paraliza toda la red, y al aumentar el tráfico crecen las colisiones. Por ello está prácticamente desaparecida en las LAN modernas (sustituida por el switch).</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Topología en estrella</h3><p class="text-slate-700 leading-relaxed mb-3">Cada equipo se conecta a un <b>nodo central</b> (hub o, preferentemente, switch). Ventajas: si se cae un cable solo se desconecta ese equipo, y el mantenimiento es sencillo. Inconveniente: el nodo central es un <b>SPOF (Single Point of Failure)</b>. Es la topología dominante en las redes actuales.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Topología en anillo</h3><p class="text-slate-700 leading-relaxed mb-3">Cada equipo se conecta con sus dos vecinos formando un círculo; la transmisión se hace mediante un <b>token</b> que circula (Token Ring). Ordenada y predecible, pero frágil: un fallo rompe el anillo. Se mitiga con <b>doble anillo</b> (ej. FDDI), donde el tráfico puede circular en sentido inverso si se corta un tramo.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Topología en malla (mesh)</h3><p class="text-slate-700 leading-relaxed mb-3">Los nodos están interconectados entre sí, total o parcialmente. Ofrece <b>máxima redundancia y tolerancia a fallos</b> (siempre hay rutas alternativas), pero a costa de un cableado complejo y costoso. Típica del backbone de Internet y de las redes inalámbricas dinámicas (mesh Wi-Fi).</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">5. Topología en árbol (jerárquica)</h3><p class="text-slate-700 leading-relaxed mb-3">Varias estrellas conectadas a un tronco o backbone principal. Muy <b>escalable</b> para campus y empresas: cada departamento es una estrella y todas cuelgan de un núcleo. El fallo del tronco afecta a toda la estructura.</p><pre class="mermaid">
+graph TD
+  subgraph BUS[Bus]
+    B1[Cable común] --- B2[PC1]
+    B0 --- B3[PC3]
+  end
+  subgraph STAR[Estrella]
+    S0((Switch)) --- S1[PC1]
+    S0 --- S2[PC2]
+    S0 --- S3[PC3]
+  end
+  subgraph RING[Anillo]
+    R1---R2---R3---R1
+  end
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Redes))
+    Alcance
+      PAN
+      LAN
+      MAN
+      WAN
+    Arquitectura
+      Cliente-Servidor
+      P2P
+    Medio
+      Cableada
+      Inalámbrica
+</pre><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Topología</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Ventaja principal</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Inconveniente principal</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Uso típico</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Bus</td><td class="px-4 py-2 border border-slate-200 align-top">Muy barata y simple</td><td class="px-4 py-2 border border-slate-200 align-top">Punto único de fallo en el cable</td><td class="px-4 py-2 border border-slate-200 align-top">Obsoleta / coaxial antiguo</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Estrella</td><td class="px-4 py-2 border border-slate-200 align-top">Fácil mantenimiento</td><td class="px-4 py-2 border border-slate-200 align-top">El centro es SPOF</td><td class="px-4 py-2 border border-slate-200 align-top">LAN moderna (estándar)</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Anillo</td><td class="px-4 py-2 border border-slate-200 align-top">Orden/token, sin colisiones</td><td class="px-4 py-2 border border-slate-200 align-top">Frágil ante cortes</td><td class="px-4 py-2 border border-slate-200 align-top">Token Ring, FDDI, MAN</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Malla</td><td class="px-4 py-2 border border-slate-200 align-top">Muy tolerante a fallos</td><td class="px-4 py-2 border border-slate-200 align-top">Cara y compleja</td><td class="px-4 py-2 border border-slate-200 align-top">Backbone, mesh Wi-Fi</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Árbol</td><td class="px-4 py-2 border border-slate-200 align-top">Escalable</td><td class="px-4 py-2 border border-slate-200 align-top">Depende del tronco</td><td class="px-4 py-2 border border-slate-200 align-top">Campus/empresa</td></tr></tbody></table><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Criterio de elección</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li>Red pequeña y económica: <b>estrella</b> con switch.</li><li>Alta disponibilidad crítica: <b>malla</b> o doble anillo.</li><li>Varios edificios: <b>árbol</b> con backbone de fibra.</li></ul>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Dibujar topología estrella del aula.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Coloca un nodo central: el <b>switch</b>.</li><li>Conecta cada PC al switch con un enlace punto a punto (cable UTP).</li><li>Señala que si un PC falla, el resto sigue conectado (ventaja de la estrella).</li><li>Compara con bus: en bus, si se rompe el cable, cae toda la red.</li></ol>
+<pre class="mermaid">
+graph TD
+  SW[Switch] --- PC1[PC1]
+  SW --- PC2[PC2]
+  SW --- PC3[PC3]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno dibuja la topología estrella del aula y explica por qué es la más usada.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Topología = mapa de "quién se conecta con quién".</b> Antes de comprar cable, hay que decidir la forma: eso determina coste y qué pasa cuando algo se rompe.</li><li><b>Física vs lógica no siempre coinciden.</b> Una "estrella" puede cablearse así pero usar un protocolo lógico distinto. La forma real y el flujo de datos son dos planos distintos.</li><li><b>El gran tema es el punto único de fallo (SPOF).</b> Toda topología se juzga por dónde se rompe: si al caer un cable cae todo, es frágil; si solo cae un equipo, es robusta.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Bus: el ejemplo del SPOF total.</b> Un solo cable compartido; un corte y se cae la red entera. Por eso murió con la llegada del switch (estrella conmutada).</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Estrella: SPOF en el centro.</b> Si el switch falla, cae todo; pero al ser un único dispositivo barato y redundante (se puede tener uno de repuesto), es el equilibrio preferido. Por eso domina.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Anillo y el token.</b> El token garantiza que solo hable uno a la vez (sin colisiones), pero un corte rompe el círculo. El doble anillo (FDDI) lo mitiga usando el sentido inverso.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Malla: robustez a cambio de coste.</b> Cada nodo conectado a varios; si cae un enlace, hay rutas alternativas. Ideal para backbones y para Wi-Fi mesh (repetidores que se conectan entre sí). El precio: mucho cable y complejidad.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Árbol (jerárquica):</b> varias estrellas unidas por un tronco; escala bien para Campus/Empresas. Su debilidad es el enlace troncal (si cae, se parten las subredes).</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Estrella no significa "sin fallo".</b> El switch central es SPOF; la ventaja es que el fallo es localizable y sustituible.</li><li><b>Bus está obsoleta, no "prohibida".</b> Entenderla sirve para leer redes antiguas y exámenes históricos.</li><li><b>Anillo ≠ estrella.</b> En anillo el fallo aislado rompe todo salvo doble anillo; no confundir con la estrella conmutada.</li><li><b>Malla es cara, no mejor siempre.</b> Para un aula pequeña no compensa; se reserva para backbone/mesh.</li><li><b>Física vs lógica.</b> No asumir que la forma del cable es el flujo de datos; pueden diferir.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) ¿qué es topología? (física/lógica) → (2) bus y su SPOF → (3) estrella (el estándar) → (4) anillo/token → (5) malla (redundancia) → (6) árbol (escalar) → (7) elegir según coste/tolerancia a fallos.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra1_06.html">Tipos de redes</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra1_07.html">Componentes de red</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra1_10.html">Mapas físico/lógico</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra1_f.html">Criterio RA1-f: componentes de red</a></li></ul>
+      <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Topolog%C3%ADa_de_red" target="_blank" rel="noopener">Wikipedia — Topología de red</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=Gky8-OVYmT4" target="_blank" rel="noopener">Diferencias entre HUB, SWITCH y ROUTER</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=_JNPvSxG6oM" target="_blank" rel="noopener">Conceptos básicos de redes en 15 minutos</a></li>
+    </ul>
+  </section>
+
+</main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

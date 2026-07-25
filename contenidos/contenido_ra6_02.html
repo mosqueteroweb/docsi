@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos compartidos | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra6.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA6 · Contenido 02</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Recursos compartidos | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA6</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Configuración de recursos compartidos. Permisos de acceso y directivas de seguridad</h2><p class="text-slate-700 leading-relaxed mb-3">Compartir una carpeta o impresora en red requiere configurar el recurso, los permisos de acceso y, en entornos empresariales, directivas de grupo (GPO).</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Compartición</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>SMB/CIFS</b> en Windows; <b>NFS</b> en Linux/Unix.</li><li>Se elige la carpeta, se habilita compartición y se da un nombre de recurso (p.ej. &#92;servidor&#92;datos).</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Permisos de acceso</h3><p class="text-slate-700 leading-relaxed mb-3">Se combina el permiso de compartición (nivel red) con el permiso NTFS/local (nivel archivo): aplica el MÁS RESTRICTIVO de ambos.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Directivas de seguridad</h3><p class="text-slate-700 leading-relaxed mb-3">En dominios (Active Directory) se aplican <b>GPO</b> que fuerzan políticas (unidades de red, cuotas, bloqueo de USB) a todos los equipos.</p><pre class="mermaid">
+graph TD
+  U[Usuario] -->|solicita| S[Servidor SMB]
+  S -->|permiso compartición| P1
+  S -->|permiso NTFS| P2
+  P1 -->|mínimo| R[Acceso]
+  P2 -->|mínimo| R
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Compartición))
+    SMB
+    NFS
+    Permisos
+      compartición
+      NTFS
+    GPO
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Compartir un recurso en la red.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Clic derecho en carpeta → 'Compartir con' → elegir usuarios.</li><li>En Linux: <code>samba</code> con <code>[comun] path=/srv/comun</code>.</li><li>Asigna <b>permisos de acceso</b> (lectura/escritura) por usuario/grupo.</li><li>Desde otro equipo, accede vía <code>&#92;&#92;servidor&#92;comun</code> (UNC).</li></ol>
+<pre class="mermaid">
+graph LR
+  PC1[Carpeta] --> SHARE[Compartir]
+  PC2[&#92;&#92;servidor&#92;comun] --> PC1
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno comparte una carpeta vía Samba y accede desde otro equipo.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Compartir = "poner el archivo en el recibidor común".</b> La carpeta deja de ser solo tuya y pasa a verse por la red con un nombre (&#92;servidor&#92;datos).</li>
+<li><b>SMB vs NFS = "el idioma del vecino".</b> Windows habla SMB; Linux/Unix suele usar NFS. Elegir el protocolo según quién consume el recurso.</li>
+<li><b>GPO = "un bando que se aplica a todos".</b> En vez de configurar equipo a equipo, el dominio impone la misma política a todos a la vez.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Compartición SMB/CIFS.</b> En Windows se habilita sobre la carpeta y se le da un nombre de recurso; en Linux, <code>samba</code> (smb.conf) publica la carpeta a clientes Windows. La ruta de red es &#92;servidor&#92;nombre.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>NFS.</b> Nativo en Linux/Unix; exporta directorios en /etc/exports y los monta el cliente con <code>mount -t nfs</code>. Más simple entre máquinas Linux, sin la sobrecarga de SMB.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Permisos en serie.</b> Acceso = mínimo entre permiso de compartición (nivel red) y NTFS/local (nivel archivo). Si compartición dice "todos" pero NTFS dice "solo lectura", es solo lectura.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>GPO en Active Directory.</b> Una directiva puede mapear una unidad de red (Z:), fijar cuotas o bloquear USB en todos los equipos del OU. Centraliza la seguridad sin tocar cada máquina.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Impresoras compartidas.</b> Lo mismo que una carpeta: se publica el cola y los clientes la usan por el nombre de red; los permisos deciden quién envía trabajos.</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"Lo compartí pero no aparece".</b> Puede ser el firewall (puerto 445 en SMB), que el servicio no arranca, o que el nombre de red no resuelve. Compartir no es "ya está visible".</li>
+<li><b>SMB no es NFS y viceversa.</b> Un cliente Windows no monta NFS sin extras; un Linux no lee SMB sin samba. El protocolo debe coincidir con quien consume.</li>
+<li><b>"Dí permiso total" no garantiza acceso.</b> Sigue habiendo el permiso NTFS/local en serie; si ese dice no, no entra. Son dos cerraduras.</li>
+<li><b>GPO no es "configurar un equipo".</b> Se aplica al OU/dominio; un equipo suelto fuera del OU no recibe la directiva. El ámbito importa.</li>
+<li><b>La unidad mapeada (Z:) es GPO, no magia.</b> Si no aparece, el equipo no se ha aplicado la directiva o no está en el OU correcto. No es fallo del recurso.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) compartir = carpeta visible por red → (2) SMB (Windows) vs NFS (Linux) → (3) permisos en serie (compartición + NTFS) → (4) GPO en AD → (5) impresoras compartidas → (6) errores (firewall 445, protocolo, ámbito GPO).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra6_01.html">Permisos</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra6_04.html">Servidores ficheros</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra6_b.html">Criterio RA6-b: recursos compartidos</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Servidor_de_archivos" target="_blank" rel="noopener">Wikipedia — Servidor de archivos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Cortafuegos_(inform%C3%A1tica)" target="_blank" rel="noopener">Wikipedia — Cortafuegos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=Gky8-OVYmT4" target="_blank" rel="noopener">Diferencias entre HUB, SWITCH y ROUTER</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=_JNPvSxG6oM" target="_blank" rel="noopener">Conceptos básicos de redes en 15 minutos</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

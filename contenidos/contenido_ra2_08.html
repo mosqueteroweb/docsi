@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologías de virtualización | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra2.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA2 · Contenido 08</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Tecnologías de virtualización | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA2</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Tecnologías de virtualización. Tipos.</h2><p class="text-slate-700 leading-relaxed mb-3">La <b>virtualización</b> permite ejecutar varios sistemas operativos (invitados) sobre uno físico (anfitrión) mediante una capa de abstracción. Es clave en servidores, laboratorios de clase y cloud.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Tipos según la capa</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Virtualización completa:</b> el hipervisor emula todo el hardware (más compatible, algo más lento).</li><li><b>Paravirtualización:</b> el SO invitado conoce que está virtualizado y colabora (más rendimiento, ej. Xen).</li><li><b>Contenedores:</b> aislan procesos compartiendo el núcleo (Docker, LXC); más ligeros que las MV.</li><li><b>Emulación:</b> imita una arquitectura distinta (QEMU).</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Hipervisores</h3><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Tipo</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Descripción</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Ejemplo</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Tipo 1 (bare-metal)</td><td class="px-4 py-2 border border-slate-200 align-top">Corre sobre el hardware directo</td><td class="px-4 py-2 border border-slate-200 align-top">VMware ESXi, Hyper-V, KVM</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Tipo 2 (hosted)</td><td class="px-4 py-2 border border-slate-200 align-top">Corre sobre un SO anfitrión</td><td class="px-4 py-2 border border-slate-200 align-top">VirtualBox, VMware Workstation</td></tr></tbody></table><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Componentes</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Máquina virtual (MV):</b> sistema invitado con CPU/RAM/disco virtuales.</li><li><b>Snapshot:</b> captura de estado para restaurar.</li><li><b>Migración en vivo:</b> mover MV entre anfitriones sin parar.</li></ul><pre class="mermaid">
+graph TD
+  HW[Hardware] --> HYP[Hipervisor]
+  HYP --> VM1[MV: Linux]
+  HYP --> VM2[MV: Windows]
+  HYP --> C[Contenedor Docker]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Virtualización))
+    Hipervisor
+      Tipo 1
+      Tipo 2
+    MV
+    Contenedores
+    Emulación
+</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Caso práctico</h3><p class="text-slate-700 leading-relaxed mb-3">En clase se usa VirtualBox para que cada alumno instale Windows y Linux en MV sobre su equipo, sin tocar el SO real, pudiendo hacer snapshots antes de configurar red.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Crear una MV con virtualización.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Abre VirtualBox y pulsa 'Nueva'; asigna 2 GB RAM y 20 GB disco (virtual).</li><li>Selecciona el <b>tipo de virtualización</b>: el anfitrión (host) comparte CPU/RAM con el invitado.</li><li>Arranca la MV e instala el SO invitado como si fuera hardware real.</li><li>Instala las <b>Guest Additions</b> para integración (carpetas compartidas, resolución).</li></ol>
+<pre class="mermaid">
+graph LR
+  HOST[Anfitrión] --> VMM[Hipervisor]
+  VMM --> GUEST[MV invitada]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno crea una MV, instala un SO y entrega captura de la MV funcionando.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Virtualizar = poner un "ordenador dentro del ordenador".</b> El equipo físico (anfitrión) simula varios equipos virtuales (invitados) que creen tener su propio hardware.</li>
+<li><b>El hipervisor es el "conserje".</b> Reparte CPU, RAM y disco real entre las máquinas virtuales y evita que se pisen. Sin él, las MV no sabrían compartir.</li>
+<li><b>MV vs contenedor: mismo objetivo, distinto nivel.</b> La MV virtualiza hasta el hardware (con su SO propio); el contenedor solo aísla procesos compartiendo el mismo núcleo. Por eso los contenedores son más ligeros.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Tipo 1 vs Tipo 2.</b> El hipervisor Tipo 1 (ESXi, Hyper-V, KVM) corre directo sobre el hardware: máximo rendimiento, típico en servidores. El Tipo 2 (VirtualBox, VMware Workstation) corre como programa sobre un SO normal: cómodo para clase, pero con una capa más.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Virtualización completa vs paravirtualización.</b> En la completa, el hipervisor imita el hardware y el SO invitado no se entera (compatible con cualquiera). En la paravirtualizada, el SO invitado "colabora" usando controladores especiales (virtio): más rápido, pero necesita soporte en el SO.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Contenedores (Docker/LXC).</b> No arrancan un SO completo: aísalan una aplicación y sus librerías compartiendo el núcleo del anfitrión. Arrancan en segundos y gastan poco; por eso dominan la nube y los microservicios.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Emulación (QEMU).</b> Imita una arquitectura distinta (ej. ejecutar ARM en x86). Es muy flexible pero lento, porque traduce cada instrucción. Útil para desarrollo de firmware o sistemas embebidos.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Por qué importa en clase y en la nube.</b> En el aula, una MV permite a cada alumno instalar Windows/Linux "dentro" de su equipo sin romper nada, con snapshots para volver atrás. En la nube, la virtualización es la base de todo (IaaS).</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>MV ≠ contenedor.</b> La MV lleva su propio SO y núcleo virtual; el contenedor comparte núcleo y solo aísla la app. No son intercambiables.</li>
+<li><b>Hipervisor Tipo 1 no es "mejor siempre".</b> Es más eficiente en servidor, pero para uso de escritorio el Tipo 2 (VirtualBox) es más práctico.</li>
+<li><b>Paravirtualización no es "virtualización a medias".</b> Es una técnica de rendimiento que exige que el SO invitado colabore; no es peor, es distinta.</li>
+<li><b>Emulación no es "lo mismo que virtualizar".</b> Virtualizar corre código nativo; emular traduce arquitectura. La emulación es más lenta.</li>
+<li><b>Snapshot no es copia de seguridad.</b> El snapshot guarda el estado de la MV en un momento; si se corrompe el disco base, el snapshot también se pierde. Para respaldo real hay que exportar la MV.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) ¿qué es virtualizar? → (2) hipervisor y su papel → (3) Tipo 1 vs Tipo 2 → (4) completa vs paravirtualización → (5) contenedores (Docker) vs MV → (6) emulación y casos de uso (clase/nube).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra2_09.html">Consideraciones previas</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra2_10.html">Instalación SO</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra2_g.html">Criterio RA2-g: virtualización</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Virtualizaci%C3%B3n" target="_blank" rel="noopener">Wikipedia — Virtualización</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Hipervisor" target="_blank" rel="noopener">Wikipedia — Hipervisor</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=n2iodl7eASs" target="_blank" rel="noopener">Evolución de placas base de PC</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=5oAexbSPygE" target="_blank" rel="noopener">Buenas prácticas y seguridad en el PC</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

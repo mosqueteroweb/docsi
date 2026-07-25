@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA3-b Estructura de directorios | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra3.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA3 · Criterio b</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">RA3-b Estructura de directorios | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Criterio de evaluación · RA3</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Criterio RA3-b: Identificar la estructura de directorios en SO libres y propietarios</h2><span class="criterio-tag">RA3-b</span><p class="text-slate-700 leading-relaxed mb-3">Se evalúa el conocimiento del árbol de directorios en Linux (FHS) y Windows, y la distinción entre rutas absolutas y relativas.</p><h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Test de conocimientos</h3><div class="mb-3"><p class="font-semibold text-slate-800">En Linux, el directorio personal del usuario se encuentra en:</p><ul class="list-[lower-alpha] pl-6 text-slate-700"><li>/usr</li><li>/home/usuario</li><li>/etc</li><li>C:\Users</li></ul><p class="text-sm text-green-700">Solución: b.</p></div><div class="mb-3"><p class="font-semibold text-slate-800">En Windows, la carpeta de usuarios es:</p><ul class="list-[lower-alpha] pl-6 text-slate-700"><li>/home</li><li>C:\Users</li><li>/var</li><li>D:\</li></ul><p class="text-sm text-green-700">Solución: b.</p></div><div class="mb-3"><p class="font-semibold text-slate-800">Una ruta absoluta en Linux siempre comienza por:</p><ul class="list-[lower-alpha] pl-6 text-slate-700"><li>~</li><li>./</li><li>/</li><li>..</li></ul><p class="text-sm text-green-700">Solución: c.</p></div><div class="mb-3"><p class="font-semibold text-slate-800">El símbolo .. en una ruta representa:</p><ul class="list-[lower-alpha] pl-6 text-slate-700"><li>El directorio actual</li><li>El directorio padre</li><li>La raíz</li><li>El usuario</li></ul><p class="text-sm text-green-700">Solución: b.</p></div><div class="mb-3"><p class="font-semibold text-slate-800">¿En qué directorio de Linux se guardan archivos de configuración del sistema?</p><ul class="list-[lower-alpha] pl-6 text-slate-700"><li>/var</li><li>/home</li><li>/etc</li><li>/tmp</li></ul><p class="text-sm text-green-700">Solución: c.</p></div><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Ejemplo resuelto (no evaluable)</h3><div class="bg-slate-50 border border-slate-200 rounded-xl p-5 mb-4"><p class="text-slate-700 leading-relaxed mb-2">Situación: desde <code>/home/usuario/docs</code> queremos listar el contenido de <code>/var/log</code> usando rutas relativas y absolutas.</p><p class="text-slate-700 leading-relaxed mb-2"><b>Solución:</b></p><pre class="code"># Ruta absoluta
+ls /var/log
+# Ruta relativa (subimos a /home/usuario, luego a /, luego var/log)
+ls ../../var/log</pre><p class="text-slate-700 leading-relaxed">Ambas comandan el mismo resultado; la absoluta es menos propensa a errores.</p></div><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Actividad evaluable</h3><p class="text-slate-700 leading-relaxed mb-3">Dibuja (en texto o con un esquema) el árbol de directorios típico de Linux mostrando al menos <code>/</code>, <code>/home</code>, <code>/etc</code>, <code>/var</code> y <code>/usr</code>, e indica el contenido de cada uno. Luego escribe 3 comandos usando rutas relativas para: crear una carpeta dentro de tu directorio actual, subir un nivel y listar su contenido, y copiar un archivo de la carpeta padre a la actual.</p><h4 class="text-lg font-bold text-slate-700 mt-4 mb-2">Rúbrica (total 10 puntos)</h4><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Criterio</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Puntos</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Árbol con 5 directorios y contenido correcto</td><td class="px-4 py-2 border border-slate-200 align-top">4</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Diferencia clara ruta absoluta/relativa</td><td class="px-4 py-2 border border-slate-200 align-top">3</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">3 comandos correctos y funcionales</td><td class="px-4 py-2 border border-slate-200 align-top">2</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Ortografía y claridad</td><td class="px-4 py-2 border border-slate-200 align-top">1</td></tr></tbody></table><pre class="mermaid">
+flowchart TD
+    R["/"] --> ETC[/etc]
+    R --> HOME[/home]
+    R --> VAR[/var]
+    R --> USR[/usr]
+    HOME --> U[/home/usuario]
+</pre><h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="../contenidos/contenido_ra3_02.html">Contenido 02: Estructura de directorios</a></li><li><a class="text-blue-600 hover:underline" href="../contenidos/contenido_ra3_03.html">Contenido 03: Búsqueda de información</a></li></ul>  
+<section class="space-y-4 scroll-mt-6 print-break">
+    <div class="border-b border-slate-200 pb-4">
+        <h2 class="text-xl font-black text-slate-800 tracking-tight">Rúbrica de valoración (3 estados)</h2>
+        <p class="text-slate-500 text-sm">Instrumento cualitativo para el profesor: Ra3-b estructura de directorios | sistemas informáticos.</p>
+    </div>
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 print-card">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border border-slate-200 rounded-xl overflow-hidden">
+                <thead class="bg-slate-50 text-slate-600 text-xs uppercase">
+                    <tr><th class="py-2 px-3">Estado</th><th class="py-2 px-3">Descripción</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="border-t border-slate-100">
+                        <td class="py-2 px-3 text-sm font-bold text-red-700 align-top">A mejorar</td>
+                        <td class="py-2 pl-3 text-sm text-slate-600 align-top">El alumno no alcanza el criterio: errores conceptuales, omisiones graves o trabajo incomplete. Requiere refuerzo antes de certificar.</td>
+                    </tr>
+                    <tr class="border-t border-slate-100">
+                        <td class="py-2 px-3 text-sm font-bold text-amber-700 align-top">Aceptable</td>
+                        <td class="py-2 pl-3 text-sm text-slate-600 align-top">El alumno cumple el criterio con corrección: resuelve lo esencial, aunque con alguna imprecisión o apoyo parcial del profesor.</td>
+                    </tr>
+                    <tr class="border-t border-slate-100">
+                        <td class="py-2 px-3 text-sm font-bold text-emerald-700 align-top">Excelente</td>
+                        <td class="py-2 pl-3 text-sm text-slate-600 align-top">El alumno supera el criterio: preciso, autónomo y con profundidad; explica el porqué y aplica el conocimiento a casos nuevos.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para preparar el criterio:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Sistema_de_archivos" target="_blank" rel="noopener">Wikipedia — Sistema de archivos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Sistema_operativo" target="_blank" rel="noopener">Wikipedia — Sistema operativo</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/L%C3%ADnea_de_comandos" target="_blank" rel="noopener">Wikipedia — Línea de comandos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Consola" target="_blank" rel="noopener">Wikipedia — Consola</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

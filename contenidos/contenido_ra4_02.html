@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguridad de cuentas de usuario | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra4.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA4 · Contenido 02</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Seguridad de cuentas de usuario | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA4</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Seguridad de las cuentas de usuario</h2><p class="text-slate-700 leading-relaxed mb-3">Además de crear cuentas, un administrador debe <b>proteger el acceso</b>: impedir el uso indebido, limitar los intentos fallidos y forzar el cambio periódico. Esto se consigue con <b>directivas de cuenta</b> (políticas de bloqueo y caducidad) aplicables tanto en Linux como en Windows.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Políticas de cuentas</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Caducidad de la cuenta:</b> fecha límite tras la cual la cuenta queda deshabilitada.</li><li><b>Bloqueo por intentos fallidos:</b> tras N intentos incorrectos, la cuenta se bloquea durante un tiempo.</li><li><b>Deshabilitación:</b> la cuenta existe pero nadie puede iniciar sesión (útil al marcharse un empleado).</li><li><b>Cuentas de servicio:</b> sin inicio de sesión interactivo, solo para ejecutar procesos.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Herramientas en Linux: chage y /etc/login.defs</h3><p class="text-slate-700 leading-relaxed mb-3">El comando <code>chage</code> gestiona la caducidad de contraseñas por usuario; el archivo <code>/etc/login.defs</code> fija los valores por defecto para las cuentas nuevas.</p><pre class="code"><code>sudo chage -M 90 -m 7 -W 14 ana   # caduca a los 90 días, mínimo 7, avisa 14 antes
+sudo chage -E 2026-12-31 ana            # la cuenta expira el 31/12/2026
+sudo passwd -l ana                      # bloquea (lock) la cuenta
+sudo passwd -u ana                      # la desbloquea</code></pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Bloqueo automático: faillock / pam_tally2</h3><p class="text-slate-700 leading-relaxed mb-3">En las distribuciones modernas el módulo PAM <code>pam_faillock</code> registra los intentos fallidos. Tras 3 fallos la cuenta se bloquea 10 minutos. Se configura en <code>/etc/security/faillock.conf</code>.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Directivas de cuenta en Windows</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Directiva de bloqueo de cuenta:</b> umbral, duración y restablecimiento (se configura en <code>secpol.msc</code>).</li><li><b>Cuentas deshabilitadas:</b> botón derecho → Propiedades → 'Cuenta deshabilitada'.</li><li><b>Directiva de contraseñas:</b> longitud mínima, antigüedad máxima, historial (véase contenido 03).</li></ul><pre class="code"><code>net accounts /lockoutthreshold:3 /lockoutduration:10 /minpwlen:8</code></pre><pre class="mermaid">
+flowchart TD
+  A[Intento de inicio] --> B{¿Contraseña correcta?}
+  B -->|Sí| C[Acceso concedido]
+  B -->|No| D[intentos++]
+  D --> E{¿Intentos &gt; umbral?}
+  E -->|No| A
+  E -->|Sí| F[Cuenta bloqueada]
+  F --> G[Espera o desbloqueo admin]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Seguridad cuenta))
+    Caducidad
+    Bloqueo
+      intentos
+      duración
+    Deshabilitar
+    Servicio
+    PAM
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Aplicar directivas de cuenta.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>En Windows: 'Directiva de seguridad local' → bloquear cuenta tras 3 intentos.</li><li>Define <b>caducidad</b> de la contraseña (p. ej. 90 días).</li><li>En Linux: <code>passwd -x 90 ana</code> fija caducidad.</li><li>Explica por qué bloquear la cuenta disuade ataques de fuerza bruta.</li></ol>
+<pre class="mermaid">
+graph TD
+  INT[3 intentos] --> BLOQ[Bloqueo]
+  CAD[Caducidad 90d] --> OBLIG[Cambio]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno configura bloqueo tras 3 intentos y caducidad en una cuenta.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Una cuenta sin proteger es "una puerta sin cerradura".</b> Crearla no basta; hay que impedir que la fuercen, la usen indebidamente o la dejen abierta para siempre.</li>
+<li><b>Caducidad ≠ bloqueo.</b> Caducar es "vencé en una fecha"; bloquear es "cierra ahora". Una cuenta caducada puede reactivarse; una bloqueada espera desbloqueo.</li>
+<li><b>El bloqueo por intentos es "el portero cansado".</b> Tras varios fallos, cierra el acceso un rato para que un atacante no pruebe millones de contraseñas.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>chage: caducidad de contraseña.</b> <code>-M 90</code> fuerza cambio a los 90 días; <code>-W 14</code> avisa 14 días antes; <code>-E fecha</code> expira la cuenta. Así el personal que se va queda cortado y las claves se renuevan.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>faillock (PAM): el muro de intentos.</b> Cuenta los fallos por cuenta/terminal; al superar el umbral, bloquea (p. ej. 10 min). Esto frena el ataque de fuerza bruta local. Convive con la política de Windows.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Cuentas de servicio sin login.</b> www-data, mysql, etc. existen para ejecutar procesos aislados; se les pone shell <code>/usr/sbin/nologin</code> o se bloquean, para que nadie inicie sesión con ellas. Son cuentas de sistema, no de personas.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Windows: secpol y net accounts.</b> <code>secpol.msc</code> fija umbral de bloqueo, duración y política de contraseñas; <code>net accounts /lockoutthreshold</code> lo hace por línea de comandos. El bloqueo en Windows es centralizado y visible en el dominio.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Deshabilitar vs eliminar.</b> Al irse un empleado, se deshabilita (queda la cuenta, no entra) en vez de borrar, para conservar la trazabilidad de sus archivos y permisos. Borrar crea huecos de UID.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Caducar la contraseña no es "caducar la cuenta".</b> La contraseña vence y se pide nueva; la cuenta sigue activa. Confundirlo bloquea a usuarios legítimos.</li>
+<li><b>Bloqueo por intentos no es "ataque parado para siempre".</b> Tras la duración (10 min), se desbloquea; si el atacante vuelve, reintenta. Es fricción, no muro infinito.</li>
+<li><b>passwd -l no borra la cuenta.</b> Solo la cierra (lock); <code>-u</code> la abre. Para eliminar hay que <code>userdel</code>.</li>
+<li><b>Cuenta de servicio con shell interactivo es un riesgo.</b> Si www-data pudiera iniciar sesión, un fallo web daría acceso. Por eso usan nologin.</li>
+<li><b>Deshabilitar ≠ eliminar.</b> Deshabilitar conserva traza; eliminar la borra y deja huecos. Para auditoría, lo primero es mejor.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) por qué proteger el acceso → (2) caducidad (chage -M/-W/-E) vs bloqueo → (3) faillock/pam_tally2 (intentos) → (4) cuentas de servicio sin login → (5) Windows secpol/net accounts → (6) deshabilitar vs eliminar.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra4_01.html">Usuarios y grupos</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra4_03.html">Seguridad de contraseñas</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra4_b.html">Criterio RA4-b: directivas cuenta/contraseña</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Cuenta_de_usuario" target="_blank" rel="noopener">Wikipedia — Cuenta de usuario</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://wiki.archlinux.org/title/Users_and_groups" target="_blank" rel="noopener">ArchWiki — Users and groups</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Autenticaci%C3%B3n" target="_blank" rel="noopener">Wikipedia — Autenticación</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Control_de_acceso" target="_blank" rel="noopener">Wikipedia — Control de acceso</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

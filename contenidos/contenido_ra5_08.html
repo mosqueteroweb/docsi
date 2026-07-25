@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de adaptadores de red | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra5.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA5 · Contenido 08</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Configuración de adaptadores de red | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA5</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Configuración de adaptadores de red</h2>
+<p class="text-slate-700 leading-relaxed mb-3">El adaptador de red (NIC) es el hardware que conecta el equipo a la red. Requiere driver y configuración. Puede ser Ethernet (cable) o Wi-Fi inalámbrico, en Linux o Windows.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. NIC y drivers</h3>
+<p class="text-slate-700 leading-relaxed mb-3">La tarjeta necesita un driver que el SO cargue. En Linux suele ser de código abierto; en Windows se instala vía el fabricante.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Ethernet (cable)</h3>
+<p class="text-slate-700 leading-relaxed mb-3">Conecta por RJ-45 a un switch. Configuración vía DHCP o estática; se verifica con 'ip link'.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Wi-Fi (inalámbrico)</h3>
+<p class="text-slate-700 leading-relaxed mb-3">Se asocia a un punto de acceso (AP) con SSID y contraseña; en Linux con nmcli/wpa_supplicant.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Verificación en SO</h3>
+<p class="text-slate-700 leading-relaxed mb-3">Linux: 'ip link', 'lspci'. Windows: Administrador de dispositivos (devmgmt.msc).</p>
+<table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Adaptador</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Medio</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Configuración</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Ethernet</td><td class="px-4 py-2 border border-slate-200 align-top">Cable RJ-45</td><td class="px-4 py-2 border border-slate-200 align-top">DHCP/estática</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Wi-Fi</td><td class="px-4 py-2 border border-slate-200 align-top">Radio 2.4/5 GHz</td><td class="px-4 py-2 border border-slate-200 align-top">SSID+clave</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">USB tether</td><td class="px-4 py-2 border border-slate-200 align-top">Móvil</td><td class="px-4 py-2 border border-slate-200 align-top">DHCP</td></tr></tbody></table>
+<pre class="code"># Linux: ver tarjetas y driver
+lspci | grep -i network
+ip link show
+# Windows: administrador de dispositivos
+devmgmt.msc</pre>
+<pre class="mermaid">
+flowchart LR
+  OS[SO] --> D[Driver NIC]
+  D --> NIC[Tarjeta]
+  NIC -->|Ethernet| SW[Switch]
+  NIC -->|Wi-Fi| AP[Punto de acceso]
+</pre>
+<pre class="mermaid">
+graph TD
+  C[Configurar adaptador] --> E{¿Cable o WiFi?}
+  E -->|Ethernet| CE[Conectar RJ-45]
+  E -->|Wi-Fi| CW[SSID + clave]
+  CE --> OK[IP asignada]
+  CW --> OK
+</pre>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Configurar un adaptador de red.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Abre 'Cambiar adaptador' y entra en Propiedades → IPv4.</li><li>Elige DHCP (automático) o estática; aquí ponemos estática 192.168.1.20.</li><li>En Linux: <code>ip link set eth0 up</code> y <code>ip addr add ...</code>.</li><li>Verifica que el adaptador aparece 'Conectado'.</li></ol>
+<pre class="mermaid">
+graph LR
+  ADAP[Adaptador] --> CFG[DHCP/Estática]
+  CFG --> UP[Conectado]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno configura un adaptador (DHCP y estática) y verifica conexión.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>El adaptador es "la boca y el oído del equipo".</b> Sin NIC (física o USB), el equipo no habla con nadie. El driver es el traductor que le dice al SO cómo usarla.</li>
+<li><b>Ethernet vs Wi-Fi = "cable fijo vs radio".</b> El cable es estable y rápido; el Wi-Fi da movilidad pero depende de cobertura y clave. Mismo resultado (IP), distinto medio.</li>
+<li><b>Sin driver, la tarjeta es "muda".</b> El SO la ve pero no sabe hablarle; de ahí que a veces "la tarjeta está pero no conecta".</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>NIC y drivers.</b> <code>lspci | grep -i network</code> (Linux) dice qué tarjeta hay; el driver correcto la hace funcionar. En Windows, <code>devmgmt.msc</code> muestra si el driver está bien (sin triángulo amarillo).</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ethernet.</b> Cable RJ-45 a un switch; el estándar suele ser Gigabit (1000 Mbps). <code>ip link</code> muestra si la interfaz está UP y si negoció velocidad. Un cable malo deja el enlace DOWN.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Wi-Fi.</b> Se asocia a un AP con SSID y clave (WPA2/WPA3). En Linux, <code>nmcli dev wifi connect SSID password clave</code> o wpa_supplicant. El 2.4 GHz llega más lejos; el 5 GHz es más rápido pero corto de alcance.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Verificación.</b> Antes de tocar IP, hay que ver que el adaptador tiene enlace (LED, <code>ip link</code> UP). Configurar TCP/IP sobre una NIC sin enlace es inútil.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>USB tether / móvil.</b> Comparte la 4G/5G del móvil como adaptador de red; el SO lo ve como una NIC más y le da IP por DHCP. Útil como respaldo de conectividad en el aula.</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"La IP está bien pero no hay red" suele ser enlace caído.</b> Si <code>ip link</code> dice DOWN, el cable o el driver fallan; la configuración IP da igual. Hay que subir la interfaz primero.</li>
+<li><b>Wi-Fi 5 GHz no es "mejor siempre".</b> Es más rápido pero su alcance es corto y se muere con paredes; a 20 m con obstáculos, 2.4 GHz aguanta mejor. Elegir según distancia.</li>
+<li><b>Driver mal = tarjeta invisible.</b> En Windows, triángulo amarillo en devmgmt; en Linux, la interfaz ni aparece. "No conecta" puede ser falta de driver, no de red.</li>
+<li><b>El SSID es "el nombre", no la clave.</b> Conectar al SSID correcto con clave mala falla; confundir uno con otro da "contraseña incorrecta" aunque la red esté ahí.</li>
+<li><b>USB tether no es "Wi-Fi".</b> Usa el móvil como módem por cable/USB; consume datos del móvil. No es un sustituto del router del aula, es un respaldo.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) NIC = boca/oido, driver = traductor → (2) Ethernet (RJ-45, ip link UP) → (3) Wi-Fi (SSID+clave, 2.4 vs 5 GHz) → (4) verificar enlace antes de IP → (5) USB tether → (6) errores (enlace DOWN, driver, SSID vs clave).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="../contenido_ra5_02.html">Ficheros de configuración</a></li><li><a class="text-blue-600 hover:underline" href="../contenido_ra5_11.html">Redes inalámbricas</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra5_a.html">Criterio RA5-a: TCP/IP</a></li></ul>
+  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Ethernet" target="_blank" rel="noopener">Wikipedia — Ethernet</a></li><li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Wi-Fi" target="_blank" rel="noopener">Wikipedia — Wi-Fi</a></li><li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/TCP/IP" target="_blank" rel="noopener">Wikipedia — TCP/IP</a></li>
+    </ul>
+  </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

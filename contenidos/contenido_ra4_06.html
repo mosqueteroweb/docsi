@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comandos de SO libres y propietarios | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra4.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA4 · Contenido 06</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Comandos de SO libres y propietarios | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA4</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Comandos de sistemas operativos libres y propietarios</h2><p class="text-slate-700 leading-relaxed mb-3">Administrar un sistema exige conocer la <b>línea de comandos</b>. Aunque GNU/Linux y Windows son entornos distintos, muchas tareas tienen comandos equivalentes. Dominar ambos facilita la interoperabilidad y el trabajo en entornos mixtos.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Gestión de archivos</h3><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Tarea</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Linux (bash)</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Windows (cmd/PowerShell)</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Listar archivos</td><td class="px-4 py-2 border border-slate-200 align-top">ls -l</td><td class="px-4 py-2 border border-slate-200 align-top">dir</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Copiar</td><td class="px-4 py-2 border border-slate-200 align-top">cp a b</td><td class="px-4 py-2 border border-slate-200 align-top">copy a b</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Mover/renombrar</td><td class="px-4 py-2 border border-slate-200 align-top">mv a b</td><td class="px-4 py-2 border border-slate-200 align-top">move a b</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Borrar</td><td class="px-4 py-2 border border-slate-200 align-top">rm f</td><td class="px-4 py-2 border border-slate-200 align-top">del f</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Crear usuario</td><td class="px-4 py-2 border border-slate-200 align-top">useradd</td><td class="px-4 py-2 border border-slate-200 align-top">net user /add</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Permisos</td><td class="px-4 py-2 border border-slate-200 align-top">chmod / chown</td><td class="px-4 py-2 border border-slate-200 align-top">icacls</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Servicio</td><td class="px-4 py-2 border border-slate-200 align-top">systemctl</td><td class="px-4 py-2 border border-slate-200 align-top">sc / net</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Buscar texto</td><td class="px-4 py-2 border border-slate-200 align-top">grep</td><td class="px-4 py-2 border border-slate-200 align-top">findstr</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Red (IP)</td><td class="px-4 py-2 border border-slate-200 align-top">ip a / ip addr</td><td class="px-4 py-2 border border-slate-200 align-top">ipconfig</td></tr></tbody></table><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Gestión de usuarios y permisos</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li>Linux: <code>useradd</code>, <code>usermod</code>, <code>chmod</code>, <code>chown</code>.</li><li>Windows: <code>net user</code>, <code>net localgroup</code>, <code>icacls</code>, o cmdlets de PowerShell <code>New-LocalUser</code>.</li><li>En PowerShell muchos comandos de Linux tienen alias (p.ej. <code>ls</code> → <code>Get-ChildItem</code>).</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Red y sistema</h3><pre class="code"><code># Linux
+ip addr show          # configuración de red
+systemctl status sshd  # estado de un servicio
+# Windows
+ipconfig /all         # configuración de red
+sc query sshd          # estado de un servicio</code></pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. PowerShell vs bash</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>bash</b> (Linux) es un intérprete clásico basado en texto con tuberías (pipes).</li><li><b>PowerShell</b> (Windows) maneja objetos, no solo texto, y usa verbos (Get-, Set-, New-).</li><li>Ambos permiten scripts de automatización y acceso remoto.</li></ul><pre class="mermaid">
+flowchart LR
+  L[Linux] --> L1[ls / cp / mv]
+  L --> L2[useradd / chmod]
+  L --> L3[systemctl]
+  W[Windows] --> W1[dir / copy / move]
+  W --> W2[net user / icacls]
+  W --> W3[sc / net start]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Comandos))
+    Linux
+      cp mv rm
+      grep
+    Windows
+      copy move
+      findstr
+    Comunes
+      red
+      disco
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Usar comandos de administración.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Linux: <code>sudo</code> para privilegios; <code>df -h</code> para disco; <code>ps aux</code> para procesos.</li><li>Windows: <code>ipconfig</code>, <code>net user</code>, <code>tasklist</code> en CMD/PowerShell.</li><li>Ejecuta <code>net user</code> y anota los usuarios del equipo.</li><li>Explica cuándo usar GUI vs línea de comandos (esta última, automatizable).</li></ol>
+<pre class="mermaid">
+graph LR
+  CMD[ipconfig/net user] --> INFO[Datos]
+  SH[df/ps/sudo] --> INFO
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno usa 5 comandos (3 Linux + 2 Windows) y anota su utilidad.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>La línea de comandos es "hablarle directo al sistema".</b> La GUI es el menú; la CLI es dictar la orden. Más rápida para repetir y para gestionar a distancia.</li>
+<li><b>Linux y Windows son "dos idiomas distintos".</b> Hacen lo mismo (copiar, mover) pero con palabras distintas (<code>cp</code> vs <code>copy</code>). Saber el par equivale a ser bilingüe.</li>
+<li><b>bash vs PowerShell: texto vs objetos.</b> bash pasa texto por tuberías; PowerShell pasa objetos. Por eso un pipe de PowerShell conserva propiedades, no solo líneas.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Equivalencias básicas.</b> <code>ls</code>↔<code>dir</code>, <code>cp</code>↔<code>copy</code>, <code>mv</code>↔<code>move</code>, <code>rm</code>↔<code>del</code>. Pero ojo: <code>rm -r</code> borra carpetas; en Windows <code>rmdir /s</code>. El peligro es igual de real en ambos.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Gestión de usuarios/permisos por CLI.</b> Linux: <code>useradd</code>/<code>chmod</code>; Windows: <code>net user</code>/<code>icacls</code>. Lo mismo que la GUI pero scripteable y repetible en 50 equipos.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Red y servicios.</b> <code>ip addr</code>↔<code>ipconfig /all</code>; <code>systemctl status</code>↔<code>sc query</code>. Diagnosticar conexión o servicio caído se hace por CLI en los dos sistemas.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Pipes y filtros.</b> En bash, <code>| grep</code> filtra salida; en PowerShell, <code>| Where-Object</code>. La idea (encadenar comandos) es igual; la sintaxis cambia.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Por qué importa en el aula.</b> Un técnico de FP se encontrará Windows y Linux; dominar ambos comandos lee errores, despliega y documenta sin depender de la GUI. Es la base de la automatización.</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"El comando es igual en los dos" es falso.</b> <code>cp</code> y <code>copy</code> parecen lo mismo pero su sintaxis y opciones difieren; usar una en el otro da error.</li>
+<li><b>rm y del no son inocentes.</b> <code>rm -rf</code> o <code>rmdir /s</code> borran sin papelera; un <code>/</code> mal puesto en Linux destruye el sistema. La CLI no pregunta.</li>
+<li><b>bash no es "PowerShell con otras palabras".</b> PowerShell maneja objetos; un pipe conserva tipo. Tratarlo como texto plano falla al filtrar.</li>
+<li><b>systemctl no es "sc".</b> systemctl es alto nivel (start/enable/status unificado); sc es más básico. Mezclarlos confunde el modelo de cada SO.</li>
+<li><b>La GUI hace lo mismo, pero no es repetible.</b> Hacerlo a mano en 50 equipos es lento y error; la CLI se scriptea. Por eso se enseña.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) CLI vs GUI (hablarle directo) → (2) equivalencias Linux↔Windows (cp/copy, ls/dir) → (3) usuarios/permisos por CLI → (4) red/servicios por CLI → (5) pipes (grep vs Where-Object) → (6) riesgos (rm -rf sin papelera).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra4_05.html">Servicios y procesos</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra4_04.html">Permisos y ACL</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra4_e.html">Criterio RA4-e: comandos administración</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://en.wikipedia.org/wiki/Linux" target="_blank" rel="noopener">Wikipedia (EN) — Linux</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Microsoft_Windows" target="_blank" rel="noopener">Wikipedia — Microsoft Windows</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://ss64.com/bash/" target="_blank" rel="noopener">SS64 — Bash commands reference</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://learn.microsoft.com/es-es/windows-server/administration/windows-commands/windows-commands" target="_blank" rel="noopener">Microsoft Learn — Windows commands</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

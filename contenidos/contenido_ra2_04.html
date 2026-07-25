@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de aplicaciones | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra2.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA2 · Contenido 04</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Tipos de aplicaciones | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA2</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Tipos de aplicaciones</h2><p class="text-slate-700 leading-relaxed mb-3">El software de aplicación es el que satisface necesidades del usuario final, frente al SO (software de base). Se classifica por su propósito, arquitectura y modelo de distribución.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Por propósito</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Ofimática:</b> procesadores de texto, hojas de cálculo, presentaciones.</li><li><b>Navegadores y comunicación:</b> correo, mensajería, videoconferencia.</li><li><b>Multimedia:</b> edición de imagen, audio, vídeo.</li><li><b>Técnico/científico:</b> CAD, bases de datos, simulación.</li><li><b>Juegos:</b> entretenimiento.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Por arquitectura y distribución</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Local/Escritorio:</b> se instala en el equipo (ej. LibreOffice).</li><li><b>Web:</b> se ejecuta en el navegador (SaaS, ej. Google Docs).</li><li><b>Móvil:</b> apps para Android/iOS.</li><li><b>Software libre vs propietario:</b> según licencia (véase contenido 05).</li></ul><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Tipo</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Ejemplo</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Ventaja</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Escritorio</td><td class="px-4 py-2 border border-slate-200 align-top">LibreOffice</td><td class="px-4 py-2 border border-slate-200 align-top">No requiere red</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Web/SaaS</td><td class="px-4 py-2 border border-slate-200 align-top">Google Docs</td><td class="px-4 py-2 border border-slate-200 align-top">Acceso desde cualquier sitio</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Móvil</td><td class="px-4 py-2 border border-slate-200 align-top">App bancaria</td><td class="px-4 py-2 border border-slate-200 align-top">Portabilidad</td></tr></tbody></table><pre class="mermaid">
+graph TD
+  SW[Software] --> BASE[De base: SO]
+  SW --> APP[Aplicación]
+  APP --> LOC[Local]
+  APP --> WEB[Web SaaS]
+  APP --> MOV[Móvil]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Aplicaciones))
+    Ofimática
+    Navegador
+    Multimedia
+    Técnico
+    Juegos
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Clasificar aplicaciones de uso diario.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Abre el menú de aplicaciones y separa <b>propietarias</b> (p. ej. Photoshop) de <b>libres</b> (GIMP).</li><li>Distingue <b>aplicación de red</b> (navegador) de <b>local</b> (Bloc de notas).</li><li>Identifica una <b>aplicación de propósito general</b> (suite ofimática) vs <b>específica</b> (un CRM).</li><li>Explica qué es <b>software como servicio (SaaS)</b> con un ejemplo (Google Docs).</li></ol>
+<pre class="mermaid">
+graph LR
+  APP[Aplicaciones] --> LIB[Libres]
+  APP --> PROP[Propietarias]
+  APP --> SAAS[SaaS]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno clasifica 10 aplicaciones que usa en libre/propietaria/local/de red/SaaS.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Software de base vs de aplicación: el suelo y lo que caminas.</b> El SO (base) es la plataforma; las aplicaciones son lo que el usuario usa encima. Sin base, la aplicación no corre.</li>
+<li><b>Una misma "necesidad" tiene varias formas.</b> Escribir un texto se hace con Word (local), Google Docs (web) o incluso Markdown; la arquitectura cambia pero el propósito es igual.</li>
+<li><b>Distribución = cómo llega y cómo se paga.</b> Local (instalas), web (accedes), móvil (descarga en tienda), libre/propietario (licencia). Elegir forma es elegir restricciones.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Local vs web (SaaS).</b> La app local vive en tu equipo y funciona sin red; la web (SaaS) corre en el servidor y accedes por navegador. La web facilita actualizaciones y movilidad, pero exige conexión y confía los datos al proveedor. La local da control y offline, pero tú actualizas.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Por propósito, no por tecnología.</b> Ofimática, navegador, multimedia, técnico/científico y juegos se definen por qué sirven, no por cómo están hechos. Un CAD puede ser local o web; sigue siendo técnico.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Móvil: un caso aparte.</b> Las apps de Android/iOS se distribuyen en tiendas y usan APIs específicas del sistema (sensores, notificaciones). No son "la versión pequeña del escritorio" sino un entorno propio.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Licencia atraviesa todo.</b> Libre (GPL) o propietario no es solo precio: define si puedes ver/modificar el código y redistribuir. Afecta a la elección en administración (véase contenido 05).</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Aplicación de propósito general vs a medida.</b> Las de propósito general (ofimática) sirven a muchos; las a medida (ERP de una fábrica) resuelven un caso concreto. En FP se enfatizan las primeras por versatilidad.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Aplicación ≠ sistema operativo.</b> La aplicación se apoya en el SO; sin él no arranca. Error típico confundir "software" con "aplicación".</li>
+<li><b>SaaS no es "gratis por ser web".</b> Muchas cobran suscripción; lo que ahorras en instalación lo pagas en cuota y dependencia del proveedor.</li>
+<li><b>App móvil ≠ app de escritorio.</b> Distinto entorno, tiendas y permisos; no asumir que es lo mismo empaquetado pequeño.</li>
+<li><b>Libre no es "peor que propietario".</b> Dependiendo del caso, lo libre es estándar en servidores (Linux) por estabilidad y coste.</li>
+<li><b>El propósito clasifica, no la tecnología.</b> Un editor de vídeo web y uno local son ambos multimedia.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) base vs aplicación → (2) clasificar por propósito → (3) local/web/móvil (distribución) → (4) licencia (libre/propietario) → (5) general vs a medida → (6) elegir app según necesidad.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra2_05.html">Licencias</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra2_11.html">Instalación de apps</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra2_h.html">Criterio RA2-h: instalar apps</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Aplicaci%C3%B3n_inform%C3%A1tica" target="_blank" rel="noopener">Wikipedia — Aplicación informática</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Software" target="_blank" rel="noopener">Wikipedia — Software</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=1RQ8OmZfk8s" target="_blank" rel="noopener">Placas Madre: todo lo que necesitas saber</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=5oAexbSPygE" target="_blank" rel="noopener">Errores al elegir periféricos / componentes</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

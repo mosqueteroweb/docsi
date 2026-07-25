@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguridad de comunicaciones | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra5.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA5 · Contenido 12</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Seguridad de comunicaciones | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA5</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Seguridad de comunicaciones</h2>
+<p class="text-slate-700 leading-relaxed mb-3">Proteger la comunicación en la red implica cifrado y autenticación. TLS protege el tráfico web (HTTPS); IPsec y las VPN cifran túneles entre sitios; la autenticación garantiza la identidad de los extremos.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Cifrado TLS</h3>
+<p class="text-slate-700 leading-relaxed mb-3">Transport Layer Security asegura HTTP (HTTPS), correo y otras aplicaciones con cifrado de extremo a extremo y certificados.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. IPsec</h3>
+<p class="text-slate-700 leading-relaxed mb-3">Conjunto de protocolos (AH/ESP) que cifra y autentica paquetes IP, base de muchas VPN sitio-a-sitio.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. VPN</h3>
+<p class="text-slate-700 leading-relaxed mb-3">Crean un túnel cifrado sobre Internet: acceso remoto (empleados) o sitio-a-sitio (sedes). Ej.: WireGuard, OpenVPN, IPsec.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Autenticación</h3>
+<p class="text-slate-700 leading-relaxed mb-3">Certificados, usuario/contraseña o clave pública para verificar la identidad y evitar suplantación (MITM).</p>
+<table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Mecanismo</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Capa</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Uso</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">TLS</td><td class="px-4 py-2 border border-slate-200 align-top">Aplicación</td><td class="px-4 py-2 border border-slate-200 align-top">HTTPS</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">IPsec</td><td class="px-4 py-2 border border-slate-200 align-top">Red</td><td class="px-4 py-2 border border-slate-200 align-top">VPN sitio-a-sitio</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">VPN</td><td class="px-4 py-2 border border-slate-200 align-top">Red/Túnel</td><td class="px-4 py-2 border border-slate-200 align-top">Acceso remoto</td></tr></tbody></table>
+<pre class="code"># Túnel VPN con WireGuard (Linux)
+wg-quick up wg0
+# Ver estado
+wg show</pre>
+<pre class="mermaid">
+flowchart LR
+  A[Cliente] -->|TLS cifrado| B[Servidor HTTPS]
+  S1[Sede 1] -->|IPsec/VPN| S2[Sede 2]
+  U[Usuario] -->|Túnel VPN| GW[Pasarela]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Seguridad))
+    Cifrado
+      TLS
+      IPsec
+    VPN
+      Sitio-a-sitio
+      Remoto
+    Auth
+      Certificado
+</pre>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Asegurar las comunicaciones.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Explica que HTTP va en claro; HTTPS usa TLS (candado).</li><li>Configura un túnel VPN para cifrar el tráfico saliente.</li><li>Usa <code>ssh</code> (cifrado) en vez de <code>telnet</code> (claro).</li><li>Explica por qué nunca enviar contraseñas por HTTP/telnet.</li></ol>
+<pre class="mermaid">
+graph LR
+  CLI[Cliente] -->|TLS| SRV[Servidor HTTPS]
+  CLI -->|SSH| REM[Remoto]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno explica 3 servicios cifrados vs claros y por qué importa.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Cifrar la comunicación es "hablar en clave".</b> Aunque alguien escuche el cable/onda, no entiende nada sin la llave. Es distinto a "conectarse", que solo es estar en la red.</li>
+<li><b>TLS vs VPN = "candado del sobre vs tubo blindado".</b> TLS protege un servicio (web); la VPN protege todo el túnel entre dos puntos. Distinto alcance.</li>
+<li><b>Autenticar = "comprobar el DNI".</b> El cifrado sin identidad permite que un impostor se haga pasar por el otro; por eso va la autenticación con él.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>TLS (capa aplicación).</b> HTTPS = HTTP + TLS; el navegador y el servidor negocian una clave y el certificado prueba la identidad del sitio. Sin certificado válido, el navegador avisa (y con razón).</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>IPsec (capa de red).</b> AH autentica, ESP cifra; protege paquetes IP entre dos puntos (sedes). Base de muchas VPN sitio-a-sitio. El equipo no nota el túnel, pero todo va cifrado.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>VPN de acceso remoto.</b> WireGuard/OpenVPN dan a un empleado una IP "dentro" de la empresa desde casa. El tráfico viaja por Internet pero dentro de un túnel cifrado.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Autenticación y MITM.</b> Certificados (PKI) y clave pública evitan que un atacante se ponga en medio (Man-In-The-Middle) y se haga pasar por el servidor. La identidad es tan importante como la confidencialidad.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Cifrado en reposo vs en tránsito.</b> Lo de este tema es "en tránsito" (mientras viaja); el de discos/carpetas (BitLocker) es "en reposo". Ambos importan, pero son distintos.</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"Estoy en la red" no es "voy cifrado".</b> Conectarse a Wi-Fi no protege el tráfico; sin TLS/VPN, lo que envías viaja en claro. Conectar no es cifrar.</li>
+<li><b>HTTP sin S es tráfico en claro.</b> Cualquiera en la misma red puede leerlo (sniffer). Solo HTTPS (TLS) lo protege. No meter credenciales en sitios sin candado.</li>
+<li><b>VPN no es "navegar anónimo".</b> Oculta el tráfico al ISP/local, pero el proveedor de la VPN te ve; y no cifra lo que envías a un sitio HTTP. Es confidencialidad, no invisibilidad.</li>
+<li><b>Certificado caducado no es "sitio falso seguro".</b> El navegador avisa por algo; ignorarlo expone al MITM. El certificado prueba identidad, no solo cifrado.</li>
+<li><b>IPsec y TLS no son intercambiables.</b> TLS va en la app (web); IPsec en la capa de red (túnel entre redes). Usar uno donde va el otro deja huecos.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) cifrar ≠ conectar → (2) TLS/HTTPS (certificado + clave) → (3) IPsec (túnel red-a-red) → (4) VPN (remoto/sitio) → (5) autenticación y MITM → (6) errores (HTTP claro, VPN≠anónimo).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="../contenido_ra5_11.html">Redes inalámbricas</a></li><li><a class="text-blue-600 hover:underline" href="../contenido_ra5_13.html">Tecnologías WAN</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra5_h.html">Criterio RA5-h: protocolos seguros</a></li></ul>
+  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Seguridad_de_la_capa_de_transporte" target="_blank" rel="noopener">Wikipedia — TLS</a></li><li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/IPsec" target="_blank" rel="noopener">Wikipedia — IPsec</a></li><li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/VPN" target="_blank" rel="noopener">Wikipedia — VPN</a></li>
+    </ul>
+  </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

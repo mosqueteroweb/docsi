@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración del protocolo TCP/IP | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra5.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA5 · Contenido 01</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Configuración del protocolo TCP/IP | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA5</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Configuración del protocolo TCP/IP</h2>
+<p class="text-slate-700 leading-relaxed mb-3">La configuración de red permite a un equipo comunicarse en una red IP. Incluye la asignación de una dirección IP, la máscara de subred, la puerta de enlace y los servidores DNS, ya sea de forma manual (estática) o automática (DHCP).</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Dirección IP, máscara y gateway</h3>
+<p class="text-slate-700 leading-relaxed mb-3">Una dirección IPv4 (p.ej. 192.168.1.20) identifica al equipo. La máscara (255.255.255.0) delimita la parte de red y la de host. La puerta de enlace (gateway) es la IP del router que sale hacia otras redes.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Servidores DNS</h3>
+<p class="text-slate-700 leading-relaxed mb-3">El DNS traduce nombres (www.example.com) a direcciones IP. Se configuran normalmente dos: primario y secundario, para redundancia.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. IPv4 frente a IPv6</h3>
+<p class="text-slate-700 leading-relaxed mb-3">IPv4 usa 32 bits y notación decimal punteada; IPv6 usa 128 bits y notación hexadecimal, para resolver la escasez de direcciones.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Configuración estática vs DHCP</h3>
+<p class="text-slate-700 leading-relaxed mb-3">La estática se introduce manualmente y es fija; DHCP la asigna dinámicamente el servidor con tiempo de concesión (lease).</p>
+<table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Parámetro</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Función</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Ejemplo</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Dirección IP</td><td class="px-4 py-2 border border-slate-200 align-top">Identifica el equipo</td><td class="px-4 py-2 border border-slate-200 align-top">192.168.1.20</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Máscara</td><td class="px-4 py-2 border border-slate-200 align-top">Red vs host</td><td class="px-4 py-2 border border-slate-200 align-top">255.255.255.0</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Gateway</td><td class="px-4 py-2 border border-slate-200 align-top">Salida a otras redes</td><td class="px-4 py-2 border border-slate-200 align-top">192.168.1.1</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">DNS</td><td class="px-4 py-2 border border-slate-200 align-top">Resolución de nombres</td><td class="px-4 py-2 border border-slate-200 align-top">8.8.8.8</td></tr></tbody></table>
+<pre class="code"># Linux (estática con netplan)
+network:
+  version: 2
+  ethernets:
+    enp0s3:
+      addresses: [192.168.1.20/24]
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses: [8.8.8.8, 1.1.1.1]</pre>
+<pre class="mermaid">
+graph TD
+  A[Equipo] -->|IP estática| B[Manual]
+  A -->|DHCP| C[Servidor DHCP]
+  C --> D[Ofrece IP+Máscara+Gateway+DNS]
+  B --> E[Configuración fija]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((TCP/IP))
+    IPv4
+      Clase A B C
+      Máscara
+    IPv6
+      128 bits
+    DHCP
+      Automático
+    Estática
+      Manual
+    DNS
+      Resolución
+</pre>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Configurar TCP/IP en un equipo.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Abre la configuración de red y elige 'IPv4'.</li><li>Introduce IP 192.168.1.10, máscara 255.255.255.0, gateway 192.168.1.1, DNS 8.8.8.8.</li><li>Explica que la <b>máscara</b> define la subred y el <b>gateway</b> sale fuera de ella.</li><li>Verifica con <code>ipconfig</code> / <code>ip a</code> que los datos se aplicaron.</li></ol>
+<pre class="mermaid">
+graph LR
+  PC[192.168.1.10] --> GW[.1 gateway]
+  GW --> DNS[8.8.8.8]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno configura IP estática y verifica con ipconfig/ip que hace ping al gateway.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>La IP es "el número de teléfono del equipo".</b> Sin ella, nadie sabe dónde enviar los datos. La máscara dice "qué parte es el prefijo (red) y cuál el número (host)".</li>
+<li><b>Gateway = "el operador de cabina".</b> Si quieres hablar con fuera de tu red, pasas por él. Sin gateway, solo hablas con los de tu misma red.</li>
+<li><b>DNS = "la agenda de la guía telefónica".</b> Traduce nombres (google.com) a IP; si falla, escribes la IP pero no el nombre. Por eso se ponen dos.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Máscara y red/host.</b> Con 255.255.255.0 (/24), los 3 primeros octetos son red y el último es host (256 direcciones, 254 utilizables). Cambiar la máscara cambia qué equipos se ven "en la misma red".</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Estática vs DHCP.</b> Estática: fija, para servidores/impresoras (siempre en la misma IP); DHCP: el router da IP temporal (lease) a portátiles/móviles. Un servidor con IP que cambia rompe los accesos.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>IPv4 vs IPv6.</b> IPv4 (32 bits, ~4.300M direcciones) se agotó; IPv6 (128 bits) da de sobra y usa hexadecimal (2001:db8::). Conviven hoy; el equipo suele tener las dos.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>DNS primario y secundario.</b> Si el primario cae, el secundario resuelve. Usar el del router (que a veces falla) o uno público (8.8.8.8, 1.1.1.1) da redundancia real.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>netplan en Linux.</b> El ejemplo usa YAML: <code>addresses: [192.168.1.20/24]</code> junta IP y máscara (/24 = 255.255.255.0). Un error de indentación deja la interfaz sin configurar.</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"Puse la IP pero no navego" suele ser gateway o DNS.</b> Si ves la red local pero no internet, falta gateway; si navegas por IP pero no por nombre, falta/ mal DNS. Hay que separar síntomas.</li>
+<li><b>Máscara mal = equipos que "no se ven".</b> Una /24 con IP 192.168.1.x no habla con 192.168.2.x sin router. La máscara define el alcance local; no es decoración.</li>
+<li><b>Servidor con DHCP es un error.</b> Si el servidor recibe IP que cambia, los clientes lo pierden. Lo estático es para lo que debe ser siempre alcanzable.</li>
+<li><b>/24 no es "255.255.255.0 escrito raro" a veces.</b> /16 = 255.255.0.0 (muchos más hosts). Confundir el prefijo deja la red mal dimensionada.</li>
+<li><b>IPv6 no es "IPv4 con más puntos".</b> Es otro protocolo (hex, 128 bits); configurarlo mal deja el equipo sin acceso aunque la IPv4 esté bien.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) IP = teléfono, máscara = prefijo → (2) gateway (salida) y DNS (nombres) → (3) máscara red/host y /24 → (4) estática vs DHCP (cuándo cada una) → (5) IPv4 vs IPv6 → (6) netplan y errores de sintaxis.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="../contenido_ra5_02.html">Ficheros de configuración de red</a></li><li><a class="text-blue-600 hover:underline" href="../contenido_ra5_07.html">Protocolos TCP/IP</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra5_a.html">Criterio RA5-a: TCP/IP</a></li></ul>
+  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/TCP/IP" target="_blank" rel="noopener">Wikipedia — TCP/IP</a></li><li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/M%C3%A1scara_de_subred" target="_blank" rel="noopener">Wikipedia — Máscara de subred</a></li><li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/IPv4" target="_blank" rel="noopener">Wikipedia — IPv4</a></li><li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/DHCP" target="_blank" rel="noopener">Wikipedia — DHCP</a></li>
+    </ul>
+  </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

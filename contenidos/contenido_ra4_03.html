@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguridad de contraseñas | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra4.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA4 · Contenido 03</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Seguridad de contraseñas | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA4</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Seguridad de las contraseñas</h2><p class="text-slate-700 leading-relaxed mb-3">La contraseña es el primer factor de autenticación. Su seguridad depende de dos pilares: la <b>política de complejidad</b> que obliga a crear claves robustas, y el <b>almacenamiento cifrado</b> que impide leerlas aunque alguien robe el archivo de contraseñas.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Requisitos de complejidad</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li>Longitud mínima (p.ej. 12 caracteres).</li><li>Mezcla de mayúsculas, minúsculas, dígitos y símbolos.</li><li>No reutilizar las últimas N contraseñas (historial).</li><li>No usar datos personales fácilmente deducibles.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Almacenamiento: hash y sal (salt)</h3><p class="text-slate-700 leading-relaxed mb-3">Las contraseñas NUNCA se guardan en texto plano. El sistema aplica una <b>función de resumen (hash)</b> unidireccional; al iniciar sesión se vuelve a calcular el hash y se compara. Para evitar ataques de tablas rainbow se añade una <b>sal</b> aleatoria por usuario que se concatena antes de hashear.</p><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Sistema</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Archivo</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Formato típico</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Linux</td><td class="px-4 py-2 border border-slate-200 align-top">/etc/shadow</td><td class="px-4 py-2 border border-slate-200 align-top">$algoritmo$sal$hash (p.ej. $6$ para SHA-512)</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Windows</td><td class="px-4 py-2 border border-slate-200 align-top">SAM + NTDS</td><td class="px-4 py-2 border border-slate-200 align-top">Hash NTLM (sin sal por cuenta)</td></tr></tbody></table><pre class="code"><code># Ejemplo de línea en /etc/shadow para el usuario ana
+ana:$6$R4nd0mSal$8xK...hashed...:19000:7:90:14:::</code></pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Caducidad y rotación</h3><p class="text-slate-700 leading-relaxed mb-3">Las directivas de <b>caducidad</b> obligan a cambiar la clave periódicamente (véase <code>chage</code> en el contenido 02). Las cuentas con contraseñas antiguas son un riesgo.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Gestores de contraseñas</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li>Un <b>gestor de contraseñas</b> genera y guarda claves únicas cifradas (p.ej. con una contraseña maestra).</li><li>Evitan la reutilización y facilitan claves largas y aleatorias.</li><li>Ejemplos: KeePassXC, Bitwarden, pass (Linux).</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">5. Buenas prácticas</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li>Usar autenticación multifactor (2FA) cuando sea posible.</li><li>No compartir credenciales entre servicios.</li><li>Aplicar política de bloqueo tras intentos fallidos.</li></ul><pre class="mermaid">
+flowchart LR
+  P[Contraseña] --> S[+ Sal aleatoria]
+  S --> H[Función hash SHA-512]
+  H --> ALM[/etc/shadow: solo sal+hash/]
+  V[Inicio] --> VH[Recalcula hash]
+  VH --> C{¿Coincide?}
+  C -->|Sí| OK[Acceso]
+  C -->|No| KO[Rechazo]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Contraseñas))
+    Complejidad
+      longitud
+      símbolos
+    Almacenamiento
+      hash
+      sal
+    Caducidad
+    Gestores
+    2FA
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Evaluar la robustez de una contraseña.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Toma '1234' y explica por qué es débil (corta, predecible).</li><li>Toma 'T3cl@_M4drid2026' y explica por qué es fuerte (longitud, símbolos, mayús).</li><li>Aplica una <b>política</b>: mínimo 12 caracteres, no usar nombre propio.</li><li>Explica el <b>hash</b>: el SO guarda el resumen, no la contraseña en claro.</li></ol>
+<pre class="mermaid">
+graph LR
+  DEBIL[1234] --> NO[Rechazar]
+  FUERTE[T3cl@_M4drid2026] --> SI[Aceptar]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno clasifica 5 contraseñas en débiles/fuertes y justifica cada caso.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>La contraseña es "la llave"; la política, "la norma de la cerradura".</b> Una llave débil (123456) se abre con un golpe; la norma obliga a llaves complejas.</li>
+<li><b>Guardar el hash no es "guardar la contraseña".</b> El sistema guarda el resultado de una función irreversible; ni sabe tu clave, solo si la que escribes da el mismo resultado.</li>
+<li><b>La sal es "sal que echa el cocinero a cada plato".</b> Un valor aleatorio por usuario para que dos contraseñas iguales den hashes distintos. Sin sal, las tablas rainbow las rompen.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hash unidireccional.</b> SHA-512 (en Linux <code>$6$</code>) convierte la clave en una huella fija; no se puede "deshashear". Al iniciar, se recalcula y compara. Por eso el administrador no ve tu contraseña, solo el hash.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Sal (salt) contra tablas rainbow.</b> Sin sal, el atacante precalcula hashes de palabras comunes ("password123") y los compara. Con sal aleatoria por usuario, esa tabla no sirve: cada hash es único aunque la clave se repita.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Complejidad vs longitud.</b> Una clave larga (14+ chars) de frases es más fuerte que una corta con símbolos. La política moderna prioriza longitud y evita reutilización antes que "poner un signo".</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Historial y caducidad.</b> El historial impide reusar las últimas N; la caducidad fuerza rotación. En equilibrio: demasiada rotación lleva a escribir la clave en un post-it.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>2FA y gestores.</b> El segundo factor (móvil, token) protege aunque filtren el hash; el gestor genera claves únicas por servicio, evitando la reutilización que un ataque de "relleno de credenciales" explota.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"El admin puede ver mi contraseña" es falso.</b> Solo guarda el hash; si la olvidas, la restablece, no la lee. El hash no se deshace.</li>
+<li><b>Hash no es "cifrado reversible".</b> Cifrar se puede descifrar; hashear no. Confundirlos es un error de seguridad grave.</li>
+<li><b>Sin sal, dos usuarios con la misma clave comparten hash.</b> Eso permite ataques de diccionario/precalculados. La sal lo evita.</li>
+<li><b>Símbolos obligatorios no es "contraseña fuerte".</b> "P@ssw0rd" cumple la norma y es débil. La longitud y la entropía mandan.</li>
+<li><b>2FA no sustituye una clave mala.</b> Ayuda mucho, pero si la clave es "123456" y el 2FA es SMS, un SIM-swap lo salta. Conviene clave decente + 2FA fuerte.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) la contraseña como primer factor → (2) complejidad (longitud &gt; símbolos) → (3) hash unidireccional y por qué no se "lee" → (4) sal contra rainbow → (5) caducidad/historial en equilibrio → (6) 2FA y gestores como capa extra.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra4_02.html">Seguridad de cuentas</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra4_04.html">Permisos y ACL</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra4_b.html">Criterio RA4-b: directivas cuenta/contraseña</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Contrase%C3%B1a" target="_blank" rel="noopener">Wikipedia — Contraseña</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Cifrado" target="_blank" rel="noopener">Wikipedia — Cifrado</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Sal_(criptograf%C3%ADa)" target="_blank" rel="noopener">Wikipedia — Sal (salt) criptográfica</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Funci%C3%B3n_hash" target="_blank" rel="noopener">Wikipedia — Función hash</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

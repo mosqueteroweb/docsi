@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identificación de software | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra3.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA3 · Contenido 04</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Identificación de software | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA3</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Conocer el software instalado</h2><p class="text-slate-700 leading-relaxed mb-3">Para mantener, auditar y solucionar incidencias es necesario conocer <b>qué software</b> hay instalado, su <b>versión</b> y su <b>origen</b>. Cada sistema ofrece gestores de paquetes y herramientas gráficas para esta tarea.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. GNU/Linux: dpkg, apt y rpm</h3><p class="text-slate-700 leading-relaxed mb-3">Las distribuciones basadas en Debian (Ubuntu, Mint) usan <code>dpkg</code> y <code>apt</code>; las de Red Hat usan <code>rpm</code> y <code>dnf</code>.</p><pre class="code"># Listar paquetes instalados (Debian/Ubuntu)
+dpkg -l
+# Buscar a qué paquete pertenece un archivo
+dpkg -S /usr/bin/python3
+# Información de un paquete concreto
+apt show firefox</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Windows: winget y Panel de control</h3><p class="text-slate-700 leading-relaxed mb-3">Windows 10/11 incluye el gestor de paquetes <code>winget</code>. El comando <code>winget list</code> muestra las aplicaciones instaladas con su versión.</p><pre class="code"># Listar aplicaciones instaladas
+winget list
+# Buscar una aplicación
+winget search notepad
+# Mostrar información de una instalación
+winget list --name "Google Chrome"</pre><pre class="mermaid">
+flowchart TD
+    A[Identificar software] --> B{SO}
+    B -->|Linux Debian| C[dpkg -l / apt]
+    B -->|Linux Red Hat| D[rpm -qa / dnf]
+    B -->|Windows| E[winget list]
+    C --> F[Versión y origen]
+    D --> F
+    E --> F
+    A --> G[Herramientas gráficas]
+    G --> G1[Software de Windows]
+    G --> G2[Synaptic]
+</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Herramientas gráficas</h3><p class="text-slate-700 leading-relaxed mb-3">Además de los comandos, existen utilidades visuales: el <b>Panel de control &gt; Programas</b> o la <b>Configuración &gt; Aplicaciones</b> en Windows, y gestores como <b>Synaptic</b> o la tienda de software en Linux. Estas herramientas permiten ver, desinstalar y actualizar de forma sencilla.</p><pre class="mermaid">
+mindmap
+  root((Identificar SW))
+    Gestores CLI
+      dpkg apt
+      rpm dnf
+      winget
+    Gráficos
+      Panel de control
+      Configuración Win
+      Synaptic
+    Datos clave
+      Nombre
+      Versión
+      Editor
+      Licencia
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Conocer el software instalado.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Windows: 'Agregar o quitar programas' lista lo instalado con su versión.</li><li>Linux: <code>dpkg -l</code> o <code>apt list --installed</code>.</li><li>Anota <b>nombre, versión y editor</b> de 5 programas.</li><li>Explica para qué sirve inventariar el software (licencias, actualizaciones).</li></ol>
+<pre class="mermaid">
+graph LR
+  WIN[Agregar/Quitar] --> LST[Lista SW]
+  LNX[dpkg -l] --> LST
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno entrega un inventario de 5 programas instalados (nombre, versión, editor).</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Saber qué hay instalado es "el inventario del coche".</b> Sin él, no sabes si una app falta, está desactualizada o es la causante de un fallo.</li>
+<li><b>Gestor de paquetes = "el registro oficial".</b> Lo que instalaste por ahí queda anotado (nombre, versión, origen). Lo que bajaste a mano (un .exe suelto) a veces no aparece en el registro del gestor.</li>
+<li><b>Nombre, versión y editor son los "tres datos clave".</b> Con ellos decides si actualizar, si hay conflito de licencia o si es software no deseado.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Debian/Ubuntu: dpkg y apt.</b> <code>dpkg -l</code> lista lo instalado a nivel de paquete; <code>apt show firefox</code> da versión y descripción; <code>dpkg -S /ruta</code> dice a qué paquete pertenece un archivo (clave para saber de dónde salió un binario).</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Red Hat: rpm y dnf.</b> <code>rpm -qa</code> lista; <code>dnf list installed</code> lo mismo vía el gestor. Mismo concepto, distinta herramienta según la familia de la distro.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Windows: winget y Panel de control.</b> <code>winget list</code> muestra apps (especialmente las instaladas por ahí); el Panel de control &gt; Programas lista casi todo. Ojo: winget solo ve lo que él gestiona; un programa instalado a mano puede no salir.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Por qué importa la versión.</b> Muchas incidencias son "bug de la versión X ya corregido en la Y". Identificar la versión es el primer paso de cualquier diagnóstico y de la gestión de parches.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Software no deseado (bloatware).</b> Equipos de fábrica traen apps preinstaladas innecesarias o incluso peligrosas. Identificarlas y quitarlas forma parte del mantenimiento de un aula.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"Tengo el .exe" no significa "está registrado".</b> Una app instalada a mano puede no aparecer en winget ni en el registro del gestor; para auditoría hay que mirar también las carpetas de programa.</li>
+<li><b>dpkg no es "lo mismo que apt".</b> dpkg gestiona paquetes individuales a bajo nivel; apt resuelve dependencias y baja del repositorio. Son capas distintas.</li>
+<li><b>La versión importa, no solo el nombre.</b> "Tengo Python" no basta; "Python 3.11" sí. El diagnóstico exige la versión concreta.</li>
+<li><b>winget list no ve todo.</b> Solo lo que winget instaló/gestiona; usarlo como única fuente da inventarios incompletos.</li>
+<li><b>"Desinstalar" desde el explorador no limpia.</b> Hay que usar el gestor (Panel de control o winget uninstall) para quitar registros y dependencias.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) por qué inventariar el software → (2) Debian/Ubuntu: dpkg/apt → (3) Red Hat: rpm/dnf → (4) Windows: winget y Panel de control → (5) datos clave (nombre/versión/editor/licencia) → (6) detectar versiones viejas y bloatware.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra3_03.html">Búsqueda de información</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra3_08.html">Utilidades de gestión de información</a></li><li><a class="text-blue-600 hover:underline" href="../actividades/criterio_ra3_e.html">Criterio RA3-e: particiones y unidades lógicas</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Dpkg" target="_blank" rel="noopener">Wikipedia — Dpkg</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Gestor_de_paquetes" target="_blank" rel="noopener">Wikipedia — Gestor de paquetes</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Sistema_operativo" target="_blank" rel="noopener">Wikipedia — Sistema operativo</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Consola" target="_blank" rel="noopener">Wikipedia — Consola</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

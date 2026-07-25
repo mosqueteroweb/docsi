@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructura y componentes | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra1.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA1 · Contenido 02</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Estructura y componentes | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA1</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Estructura y componentes del sistema</h2><p class="text-slate-700 leading-relaxed mb-3">Un sistema informático se compone de una jerarquía de componentes que trabajan en conjunto: la unidad central de proceso (CPU), la memoria interna, los dispositivos de entrada/salida y el almacenamiento. Entender cómo colaboran es la base de la arquitectura de computadores.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Microprocesador (CPU)</h3><p class="text-slate-700 leading-relaxed mb-3">El cerebro del sistema. Elementos clave:</p><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Set de instrucciones (ISA):</b> conjunto de operaciones que la CPU entiende (x86, ARM).</li><li><b>Registros:</b> memoria ultrarrápida interna de la CPU para datos y direcciones.</li><li><b>Contador de programa (PC):</b> registro que apunta a la siguiente instrucción a ejecutar.</li><li><b>Unidad Aritmético-Lógica (ALU):</b> realiza operaciones matemáticas y lógicas.</li><li><b>Interrupciones:</b> señales que detienen temporalmente la CPU para atender eventos prioritarios (E/S).</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Ciclo de instrucción</h3><p class="text-slate-700 leading-relaxed mb-3">La CPU ejecuta repetidamente: <b>fetch</b> (buscar), <b>decode</b> (decodificar), <b>execute</b> (ejecutar), <b>writeback</b> (escribir resultado). La segmentación (<b>pipeline</b>) solapa estas fases para mayor rendimiento; los núcleos e hilos (SMT/HyperThreading) permiten paralelismo.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Memoria interna</h3><p class="text-slate-700 leading-relaxed mb-3">Jerarquía por velocidad/capacidad: registros > caché (L1/L2/L3) > RAM. La <b>RAM</b> es volátil y rápida; almacena datos y programas en ejecución. Existen <b>ROM/xPROM</b> (Bellas de solo lectura, firmware) y tipos como DDR4/DDR5.</p><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Tipo</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Volatilidad</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Velocidad</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Uso</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Registros</td><td class="px-4 py-2 border border-slate-200 align-top">Sí</td><td class="px-4 py-2 border border-slate-200 align-top">Máxima</td><td class="px-4 py-2 border border-slate-200 align-top">CPU interna</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Caché</td><td class="px-4 py-2 border border-slate-200 align-top">Sí</td><td class="px-4 py-2 border border-slate-200 align-top">Muy alta</td><td class="px-4 py-2 border border-slate-200 align-top">CPU</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">RAM (DDR5)</td><td class="px-4 py-2 border border-slate-200 align-top">Sí</td><td class="px-4 py-2 border border-slate-200 align-top">Alta</td><td class="px-4 py-2 border border-slate-200 align-top">Programas en ejecución</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">ROM/xPROM</td><td class="px-4 py-2 border border-slate-200 align-top">No</td><td class="px-4 py-2 border border-slate-200 align-top">Baja</td><td class="px-4 py-2 border border-slate-200 align-top">Firmware/BIOS</td></tr></tbody></table><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Interfaces de entrada/salida y discos</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>E/S:</b> puertos y controladores que conectan periféricos (USB, PCIe, SATA).</li><li><b>Discos:</b> HDD (magnético), SSD SATA, SSD NVMe (PCIe, mucho más rápido). Los periféricos y adaptadores se tratan en el contenido 03.</li></ul><pre class="mermaid">
+flowchart LR
+  MEM[RAM] --> CPU[CPU]
+  CPU --> ALU[ALU]
+  CPU --> REG[Registros]
+  CPU -->|Fetch| MEM
+  ESO[E/S] --> CPU
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Sistema))
+    CPU
+      ALU
+      Registros
+      PC
+    Memoria
+      RAM
+      Caché
+      ROM
+    E/S
+      USB
+      PCIe
+</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">5. Componentes de un sistema informático</h3><p class="text-slate-700 leading-relaxed mb-3">En conjunto: CPU + memoria + placa base + almacenamiento + fuente + periféricos forman el equipo completo. Su correcta interconexión es el criterio RA1-a.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Describir la estructura de un equipo dado.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Enumera las <b>unidades funcionales</b>: entrada (teclado/ratón), salida (pantalla/impresora), proceso (CPU), almacenamiento (disco).</li><li>Abre el administrador de dispositivos y confirma que no hay controladores con fallo (sin signo de admiración amarillo).</li><li>Identifica la <b>memoria</b> (RAM) y la <b>memoria de masa</b> (SSD/HDD) como componentes separados.</li><li>Explica la <b>jerarquía de memoria</b>: registros → caché → RAM → disco (de más rápida/menor a más lenta/mayor).</li></ol>
+<pre class="mermaid">
+graph TD
+  E[Entrada] --> CPU[CPU]
+  CPU --> S[Salida]
+  CPU --> RAM[RAM]
+  RAM --> DISCO[Disco]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno entrega un listado del equipo clasificado en unidades funcionales y su jerarquía de memoria.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>El ordenador es una "fábrica de instrucciones".</b> Todo lo que hace la máquina se reduce a ejecutar millones de instrucciones simples (sumar, comparar, mover datos). La CPU es esa fábrica; el resto son almacenes (memoria) y transportes (bus).</li><li><b>Velocidad vs capacidad: la gran compensación.</b> Cuanto más rápida es una memoria, menos capacidad tiene y más cara es. Por eso existe la jerarquía: registros (rápidísimos, poquísimos) → caché → RAM → disco. Entender esto explica por qué no ponemos todo en registros.</li><li><b>"Interna" significa "dentro del chip o de la placa".</b> Memoria interna = la que la CPU ve directamente (RAM/caché); la externa es el disco duro, al que se accede por controladores, más lento.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>ISA y compatibilidad de software.</b> El set de instrucciones (x86-64, ARMv8/AArch64) es el "idioma" de la CPU. Un programa compilado para x86 no corre nativo en ARM sin recompilación o emulación. Por eso mismo sistema operativo puede requerir versiones distintas según la CPU.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ciclo fetch–decode–execute y el pipeline.</b> La segmentación divide la CPU en etapas; mientras una instrucción se ejecuta, la siguiente se decodifica y la siguiente se busca. Eso eleva el rendimiento, pero introduce riesgos (<i>hazards</i>): si una instrucción depende del resultado de la anterior, el pipeline se vacía (<b>burbuja</b>) y hay penalización. Los núcleos (cores) y los hilos (SMT/HyperThreading) permiten ejecutar varias instrucciones a la vez compartiendo la unidad.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Jerarquía de memoria y localidad.</b> La caché (L1/L2/L3) funciona porque los programas tienden a reusar datos recientes (localidad temporal) y vecinos (localidad espacial). Al acertar (<b>cache hit</b>) se ahorra ir a RAM; al fallar (<b>cache miss</b>) se paga la latencia. Por eso L1 es pequeña y rapidísima, y L3 más grande y algo más lenta.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Volatilidad y persistencia.</b> La RAM se borra al cortar la corriente; la ROM/xPROM guarda el firmware (BIOS/UEFI) de forma permanente. DDR4/DDR5 son estándares de la RAM: "DDR" = doble tasa de transferencia (transmite en ambos flancos del reloj); DDR5 duplica canales y ancho de banda frente a DDR4.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>E/S y el papel de las interrupciones.</b> La CPU no "pregunta" cada milisegundo si el teclado fue pulsado; el dispositivo <b>interrumpe</b> a la CPU, que guarda su estado y atiende el controlador. Este mecanismo es la base de la multitarea y de que el equipo responda sin bloquearse.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>CPU ≠ equipo.</b> La CPU procesa, pero sin RAM, placa y alimentación no es un sistema. Error frecuente igualar "ordenador" a "procesador".</li><li><b>Registros, caché y RAM son memoria, pero no lo mismo.</b> Los registros están dentro del núcleo (los más rápidos); la caché está en el chip pero fuera del núcleo; la RAM está en la placa. Cada uno con distinto acceso.</li><li><b>ROM no es "memoria interna de usuario".</b> Es firmware de solo lectura/reescritura controlada, no donde guardas tus archivos.</li><li><b>Pipeline no es "más CPUs".</b> Es solapar fases en la misma CPU; mejora el flujo, no añade núcleos (esos son los cores).</li><li><b>Interrupción ≠ virus.</b> Es un aviso hardware normal para atender E/S; no confundir con un fallo.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) ¿qué es un sistema? → (2) la CPU y sus registros → (3) el ciclo de instrucción → (4) jerarquía de memoria (registros/caché/RAM/ROM) → (5) E/S e interrupciones → (6) ensamblaje del equipo completo. De lo más interno (registro) a lo más externo (periférico).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra1_01.html">Placas base</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra1_03.html">Periféricos</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra1_b.html">Criterio RA1-b: memorias</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Microprocesador" target="_blank" rel="noopener">Wikipedia — Microprocesador</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Memoria_de_acceso_aleatorio" target="_blank" rel="noopener">Wikipedia — Memoria RAM</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=SQRw3GwktxA" target="_blank" rel="noopener">Cómo funciona un PC y qué hace cada componente</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=n2iodl7eASs" target="_blank" rel="noopener">Evolución de placas base de PC</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

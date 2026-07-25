@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de cableado y conectores | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra1.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA1 · Contenido 09</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Tipos de cableado y conectores | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA1</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Tipos de cableado. Conectores.</h2><p class="text-slate-700 leading-relaxed mb-3">El cableado es la infraestructura física que sostiene la red. Elegir el medio y los conectores adecuados determina el rendimiento, la distancia máxima y la inmunidad a interferencias.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Par trenzado (cobre)</h3><p class="text-slate-700 leading-relaxed mb-3">Cable de pares de hilos trenzados para reducir interferencias. Se clasifica por categoría:</p><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Cat</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Velocidad</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Uso</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Cat 5e</td><td class="px-4 py-2 border border-slate-200 align-top">1 Gbps</td><td class="px-4 py-2 border border-slate-200 align-top">LAN básica</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Cat 6/6A</td><td class="px-4 py-2 border border-slate-200 align-top">10 Gbps</td><td class="px-4 py-2 border border-slate-200 align-top">LAN de rendimiento</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Cat 7/8</td><td class="px-4 py-2 border border-slate-200 align-top">25-40 Gbps</td><td class="px-4 py-2 border border-slate-200 align-top">Centros de datos</td></tr></tbody></table><p class="text-slate-700 leading-relaxed mb-3">Existen versiones <b>UTP</b> (sin blindaje) y <b>STP</b> (blindado, para entornos ruidosos). Las normas <b>T568A/B</b> definen el orden de los hilos en el conector <b>RJ45</b>.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Fibra óptica</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Monomodo:</b> largas distancias, un haz de luz.</li><li><b>Multimodo:</b> distancias cortas/medias, varios haces.</li><li>Ventajas: inmune a interferencias electromagnéticas, gran ancho de banda y distancia.</li><li>Conectores: LC, SC.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Coaxial y otros</h3><p class="text-slate-700 leading-relaxed mb-3">El coaxial (BNC) fue común en redes antiguas (Thin Ethernet) y hoy pervive en TV e instalaciones específicas.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Pérdida y calidad</h3><p class="text-slate-700 leading-relaxed mb-3">Toda instalación introduce <b>pérdida por inserción</b>; por ello se certifica el cableado (norma ISO/IEC 11801) y se evitan doblados pronunciados y cruces con cables de corriente.</p><pre class="mermaid">
+graph TD
+  NODO1[PC] -->|UTP Cat6 RJ45| SW[Switch]
+  SW -->|Fibra LC| NODO2[Edificio B]
+  SW -->|Coaxial BNC| ANTIGUO[Red legada]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Cableado))
+    Cobre
+      UTP
+      STP
+      Cat5e-8
+    Fibra
+      Mono
+      Multi
+    Conectores
+      RJ45
+      LC
+      SC
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Elegir cable y conector para un tramo.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Mide el tramo: si < 100 m y interior, elige <b>UTP Cat 6</b> con conector <b>RJ-45</b>.</li><li>Si va por exterior o hay ruido eléctrico, elige <b>STP</b> (apantallado) o fibra.</li><li>Crimpa un RJ-45 siguiendo la norma <b>T568B</b> (blanco-naranja, naranja, blanco-verde, azul, blanco-azul, verde, blanco-marrón, marrón).</li><li>Verifica con comprobador de cable que los 8 hilos pasan.</li></ol>
+<pre class="mermaid">
+graph LR
+  CABLE[UTP Cat6] --> CON[RJ-45 T568B]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno crimpa un latiguillo y lo verifica con comprobador, entregando el esquema de colores.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>El cable es el "camino" de los datos.</b> Igual que una autopista ancha deja pasar más coches, un cable de mayor categoría soporta más velocidad; pero la velocidad real también depende de los equipos en los extremos.</li><li><b>Cobre vs fibra: coste vs distancia.</b> El cobre es barato y familiar pero sufre interferencias y distancias cortas; la fibra es cara y delicada pero viaja kilómetros sin perder señal ni verse afectada por electricidad.</li><li><b>Conector y cable van de la mano.</b> No basta elegir fibra: hay que elegir el conector (LC, SC) y la terminación. Un RJ45 no entra en fibra; el conector es parte de la decisión.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Par trenzado y categorías.</b> El trenzado de pares cancela la interferencia electromagnética. Cat 5e (1 Gb), Cat 6/6A (10 Gb), Cat 7/8 (25-40 Gb) marcan el ancho de banda; UTP (sin blindar) basta en oficinas, STP (blindado) en entornos industriales con ruido.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Norma T568A/B.</b> Define el orden de los 8 hilos en el RJ45. A y B son cruces distintos del mismo estándar; lo importante es ser coherente en ambos extremos (o usar cable directo si los equipos lo negocian con Auto-MDIX). Un orden incorrecto da cable "muerto" o a media velocidad.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Fibra: monomodo vs multimodo.</b> Monomodo (una sola luz, láser) para largas distancias (km); multimodo (varios caminos de luz, LED) para corto/medio alcance (edificio). Los conectores LC (pequeño) y SC (empujar y click) son los comunes.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Distancia máxima de cobre (100 m).</b> Ethernet sobre par trenzado tiene ~100 m de alcance antes de perder señal; más allá se usa fibra o repetidores. Por eso en campus se combina cobre en aula y fibra entre edificios.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Coaxial y legado.</b> El coaxial (BNC) fue de las primeras redes (Thin Ethernet) y televisión; hoy queda en instalaciones antiguas. Entenderlo ayuda a reconocer redes legadas.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Categoría alta no da velocidad sola.</b> Cat 6 soporta 10 Gb, pero solo si switch, tarjeta y longitud lo permiten. El cable es necesario, no suficiente.</li><li><b>T568A y T568B son ambos válidos.</b> Lo clave es la coherencia en los extremos; no es que uno sea "mejor".</li><li><b>Fibra no sufre interferencias eléctricas.</b> Al usar luz, no le afecta el ruido electromagnético; por eso es ideal en industrias.</li><li><b>RJ45 es de cobre, no de fibra.</b> Confundirlos es error típico; la fibra usa LC/SC.</li><li><b>Los 100 m de cobre son límite real.</b> Pasado eso, la señal cae; usar fibra o repetidor.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) el cable como camino → (2) par trenzado y categorías (Cat 5e-8, UTP/STP) → (3) norma T568A/B y RJ45 → (4) fibra (mono/multimodo, LC/SC) → (5) distancia y cuándo usar cada medio → (6) coaxial legado.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra1_07.html">Componentes</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra1_08.html">Topologías</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra1_f.html">Criterio RA1-f: componentes de red</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Cable_de_par_trenzado" target="_blank" rel="noopener">Wikipedia — Cable de par trenzado</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Fibra_%C3%B3ptica" target="_blank" rel="noopener">Wikipedia — Fibra óptica</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=Gky8-OVYmT4" target="_blank" rel="noopener">Diferencias entre HUB, SWITCH y ROUTER</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=_JNPvSxG6oM" target="_blank" rel="noopener">Conceptos básicos de redes en 15 minutos</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

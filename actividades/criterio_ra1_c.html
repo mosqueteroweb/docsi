@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Se ha verificado el proceso de puesta en marcha de un equipo.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra1.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">Criterio RA1-C</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Se ha verificado el proceso de puesta en marcha de un equipo.</h1>
+            <p class="text-slate-500 text-lg">Actividades de evaluación · RA1</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <section class="space-y-6 scroll-mt-6 print-break">
+        <div class="border-b border-slate-200 pb-4">
+            <h2 class="text-2xl font-black text-slate-800 tracking-tight flex items-center gap-2">
+                <span class="text-indigo-600">1.</span> Test de Autoevaluación
+            </h2>
+            <p class="text-slate-500 text-sm">Responde las 5 preguntas. La solución correcta y su justificación aparecen al final de la sección.</p>
+        </div>
+        <div class="space-y-4">
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 print-card">
+            <div class="flex items-start gap-3 mb-3">
+                <span class="bg-indigo-100 text-indigo-800 font-black text-sm px-2 py-1 rounded shrink-0">1</span>
+                <h4 class="font-bold text-slate-800 text-base leading-snug">El POST (Power-On Self Test) se ejecuta:</h4>
+            </div>
+            <ul class="space-y-1 text-sm text-slate-700 ml-1"><li class="flex gap-2"><span class="font-bold text-slate-500">a)</span><span>Dentro del sistema operativo</span></li><li class="flex gap-2"><span class="font-bold text-slate-500">b)</span><span>En la memoria virtual</span></li><li class="flex gap-2"><span class="font-bold text-slate-500">c)</span><span>Por la BIOS/UEFI al encender, antes del SO</span></li><li class="flex gap-2"><span class="font-bold text-slate-500">d)</span><span>Solo al apagar el equipo</span></li></ul>
+        </div>
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 print-card">
+            <div class="flex items-start gap-3 mb-3">
+                <span class="bg-indigo-100 text-indigo-800 font-black text-sm px-2 py-1 rounded shrink-0">2</span>
+                <h4 class="font-bold text-slate-800 text-base leading-snug">Si al arrancar suena un pitido largo y continuo, normalmente indica:</h4>
+            </div>
+            <ul class="space-y-1 text-sm text-slate-700 ml-1"><li class="flex gap-2"><span class="font-bold text-slate-500">a)</span><span>Arranque correcto</span></li><li class="flex gap-2"><span class="font-bold text-slate-500">b)</span><span>Fallo de memoria RAM o tarjeta de vídeo</span></li><li class="flex gap-2"><span class="font-bold text-slate-500">c)</span><span>Conexión de red activa</span></li><li class="flex gap-2"><span class="font-bold text-slate-500">d)</span><span>Actualización de BIOS exitosa</span></li></ul>
+        </div>
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 print-card">
+            <div class="flex items-start gap-3 mb-3">
+                <span class="bg-indigo-100 text-indigo-800 font-black text-sm px-2 py-1 rounded shrink-0">3</span>
+                <h4 class="font-bold text-slate-800 text-base leading-snug">El gestor de arranque (bootloader) se encarga de:</h4>
+            </div>
+            <ul class="space-y-1 text-sm text-slate-700 ml-1"><li class="flex gap-2"><span class="font-bold text-slate-500">a)</span><span>Apagar la fuente</span></li><li class="flex gap-2"><span class="font-bold text-slate-500">b)</span><span>Cargar el núcleo del sistema operativo en memoria</span></li><li class="flex gap-2"><span class="font-bold text-slate-500">c)</span><span>Formatear el disco</span></li><li class="flex gap-2"><span class="font-bold text-slate-500">d)</span><span>Detectar la RAM</span></li></ul>
+        </div>
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 print-card">
+            <div class="flex items-start gap-3 mb-3">
+                <span class="bg-indigo-100 text-indigo-800 font-black text-sm px-2 py-1 rounded shrink-0">4</span>
+                <h4 class="font-bold text-slate-800 text-base leading-snug">¿Qué orden de arranque (boot order) es lógico para instalar un SO desde USB?</h4>
+            </div>
+            <ul class="space-y-1 text-sm text-slate-700 ml-1"><li class="flex gap-2"><span class="font-bold text-slate-500">a)</span><span>Disco duro → Red → USB</span></li><li class="flex gap-2"><span class="font-bold text-slate-500">b)</span><span>USB → Disco duro → Red</span></li><li class="flex gap-2"><span class="font-bold text-slate-500">c)</span><span>Red → USB → Disco</span></li><li class="flex gap-2"><span class="font-bold text-slate-500">d)</span><span>Solo disco duro</span></li></ul>
+        </div>
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 print-card">
+            <div class="flex items-start gap-3 mb-3">
+                <span class="bg-indigo-100 text-indigo-800 font-black text-sm px-2 py-1 rounded shrink-0">5</span>
+                <h4 class="font-bold text-slate-800 text-base leading-snug">El Secure Boot impide:</h4>
+            </div>
+            <ul class="space-y-1 text-sm text-slate-700 ml-1"><li class="flex gap-2"><span class="font-bold text-slate-500">a)</span><span>El acceso a Internet</span></li><li class="flex gap-2"><span class="font-bold text-slate-500">b)</span><span>El arranque de sistemas no firmados digitalmente</span></li><li class="flex gap-2"><span class="font-bold text-slate-500">c)</span><span>El uso de la RAM</span></li><li class="flex gap-2"><span class="font-bold text-slate-500">d)</span><span>La instalación de la CPU</span></li></ul>
+        </div>
+</div>
+        <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-6 print-card">
+            <h3 class="font-bold text-indigo-800 mb-3 flex items-center gap-2">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Soluciones del test
+            </h3>
+            <ol class="list-decimal pl-5 space-y-2 text-sm text-slate-700">
+<li><strong class='text-indigo-700'>C)</strong> &mdash; El POST es la autocomprobación inicial de hardware antes de cargar el SO.</li>
+<li><strong class='text-indigo-700'>B)</strong> &mdash; Los códigos de pitidos señalan fallos de hardware como la RAM.</li>
+<li><strong class='text-indigo-700'>B)</strong> &mdash; Tras el POST, el bootloader carga el kernel del SO.</li>
+<li><strong class='text-indigo-700'>B)</strong> &mdash; El USB debe tener prioridad para iniciar el medio de instalación.</li>
+<li><strong class='text-indigo-700'>B)</strong> &mdash; Secure Boot solo permite arrancar cargadores firmados.</li>
+</ol>
+        </div>
+    </section>
+<section class="space-y-6 scroll-mt-6 print-break">
+        <div class="border-b border-slate-200 pb-4">
+            <h2 class="text-2xl font-black text-slate-800 tracking-tight flex items-center gap-2">
+                <span class="text-emerald-600">2.</span> Ejemplo Resuelto <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full ml-1">NO EVALUABLE</span>
+            </h2>
+            <p class="text-slate-500 text-sm">Caso práctico resuelto paso a paso para autoaprendizaje.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 print-card">
+            <h4 class="font-bold text-slate-800 text-base mb-3">Verificación de la puesta en marcha de un equipo</h4>
+            <div class="text-slate-600 text-sm mb-4"><p>Un técnico enciende un PC recién montado. Describe paso a paso cómo verificar que la puesta en marcha es correcta.</p></div>
+            <h5 class="font-bold text-slate-700 text-sm mb-3">Resolución paso a paso</h5>
+            <div class="space-y-3 mb-4"><div class="flex gap-3"><span class="bg-emerald-100 text-emerald-800 font-black text-xs px-2 py-1 rounded-full shrink-0 mt-0.5">1</span><div class="text-slate-700 text-sm"><strong>1. Alimentación:</strong> pulsar el botón de encendido y comprobar que la fuente arranca (ventiladores girando, LED de encendido).</div></div><div class="flex gap-3"><span class="bg-emerald-100 text-emerald-800 font-black text-xs px-2 py-1 rounded-full shrink-0 mt-0.5">2</span><div class="text-slate-700 text-sm"><strong>2. POST:</strong> la BIOS/UEFI realiza la autocomprobación; deben verse los mensajes en pantalla sin pitidos de error.</div></div><div class="flex gap-3"><span class="bg-emerald-100 text-emerald-800 font-black text-xs px-2 py-1 rounded-full shrink-0 mt-0.5">3</span><div class="text-slate-700 text-sm"><strong>3. Detección de hardware:</strong> entrar en la BIOS (Supr/F2) y verificar que CPU, RAM y disco aparecen con sus capacidades.</div></div><div class="flex gap-3"><span class="bg-emerald-100 text-emerald-800 font-black text-xs px-2 py-1 rounded-full shrink-0 mt-0.5">4</span><div class="text-slate-700 text-sm"><strong>4. Orden de arranque:</strong> confirmar que el dispositivo deseado (disco/USB) está en primer lugar.</div></div><div class="flex gap-3"><span class="bg-emerald-100 text-emerald-800 font-black text-xs px-2 py-1 rounded-full shrink-0 mt-0.5">5</span><div class="text-slate-700 text-sm"><strong>5. Carga del SO:</strong> el bootloader carga el núcleo y el sistema operativo inicia sesión correctamente.</div></div></div>
+            <div class="p-4 bg-emerald-50 border border-emerald-100 rounded-xl text-slate-700 text-sm">
+                <strong class="text-emerald-800 block mb-1">Conclusión:</strong> Si no hay pitidos de error, el hardware se detecta en la BIOS y el SO carga, la puesta en marcha es correcta. Cualquier fallo (pitido, pantalla negra, disco no detectado) se aisla en la fase correspondiente.
+            </div>
+        </div>
+    </section>
+<div class="mermaid">graph TD
+    A[Encendido] --> B[POST: autocomprobación HW]
+    B -->|OK| C[BIOS/UEFI: detección]
+    B -->|Error| X[Pitidos / pantalla negra]
+    C --> D[Orden de arranque]
+    D --> E[Bootloader]
+    E --> F[Carga del SO]
+    F --> G[Inicio de sesión]</div>
+    <p class="text-center text-xs text-slate-400 -mt-2 mb-4">Figura: secuencia de puesta en marcha de un equipo.</p>
+<section class="space-y-6 scroll-mt-6 print-break">
+        <div class="border-b border-slate-200 pb-4">
+            <h2 class="text-2xl font-black text-slate-800 tracking-tight flex items-center gap-2">
+                <span class="text-amber-600">3.</span> Actividad Evaluable
+            </h2>
+            <p class="text-slate-500 text-sm">Ejercicio para entregar y ser calificado.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 print-card">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="criterio-tag">Criterio RA1-C</span>
+                <span class="text-xs font-semibold text-amber-700 bg-amber-50 px-2 py-1 rounded-full">Actividad a entregar</span>
+            </div>
+            <h4 class="font-bold text-slate-800 text-base mb-3">Enunciado</h4>
+            <div class="text-slate-700 text-sm space-y-2 mb-4"><p>Redacta el procedimiento de verificación de puesta en marcha de un equipo recién ensamblado. Incluye un diagrama de flujo del proceso (encendido → POST → BIOS → bootloader → SO) y una tabla de síntomas/ causas posibles (por ejemplo: pantalla negra, pitidos, disco no detectado).</p></div>
+            <h5 class="font-bold text-slate-700 text-sm mb-2">Entregables</h5>
+            <ul class="list-disc pl-5 space-y-1 mb-5"><li class="text-sm text-slate-700">Diagrama de flujo de la secuencia de arranque.</li><li class="text-sm text-slate-700">Tabla de 4+ incidencias con su causa probable.</li><li class="text-sm text-slate-700">Lista de comprobaciones en la BIOS.</li></ul>
+            <h5 class="font-bold text-slate-700 text-sm mb-2">Rúbrica de evaluación (total 10 puntos)</h5>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border border-slate-200 rounded-xl overflow-hidden">
+                    <thead class="bg-slate-50 text-slate-600 text-xs uppercase">
+                        <tr>
+                            <th class="py-2 px-3">Criterio de corrección</th>
+                            <th class="py-2 px-3 text-center">Puntos</th>
+                            <th class="py-2 px-3">Niveles esperados</th>
+                        </tr>
+                    </thead>
+                    <tbody><tr class="border-t border-slate-100">
+            <td class="py-2 pr-3 text-sm text-slate-700 align-top">Describe correctamente las fases del arranque (POST, BIOS, bootloader, SO).</td>
+            <td class="py-2 px-3 text-sm font-bold text-slate-800 text-center align-top">4</td>
+            <td class="py-2 pl-3 text-sm text-slate-600 align-top"><div class="text-xs text-slate-500">4: completo y ordenado</div><div class="text-xs text-slate-500">2-3: parcial</div><div class="text-xs text-slate-500">1: desordenado</div></td>
+        </tr><tr class="border-t border-slate-100">
+            <td class="py-2 pr-3 text-sm text-slate-700 align-top">El diagrama de flujo es coherente y legible.</td>
+            <td class="py-2 px-3 text-sm font-bold text-slate-800 text-center align-top">3</td>
+            <td class="py-2 pl-3 text-sm text-slate-600 align-top"><div class="text-xs text-slate-500">3: claro</div><div class="text-xs text-slate-500">2: aceptable</div><div class="text-xs text-slate-500">1: erróneo</div></td>
+        </tr><tr class="border-t border-slate-100">
+            <td class="py-2 pr-3 text-sm text-slate-700 align-top">Relaciona síntomas con causas plausibles (tabla de incidencias).</td>
+            <td class="py-2 px-3 text-sm font-bold text-slate-800 text-center align-top">3</td>
+            <td class="py-2 pl-3 text-sm text-slate-600 align-top"><div class="text-xs text-slate-500">3: 4+ correctas</div><div class="text-xs text-slate-500">2: 2-3</div><div class="text-xs text-slate-500">1: <2</div></td>
+        </tr></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+<section class="space-y-4 scroll-mt-6 print-break">
+    <div class="border-b border-slate-200 pb-4">
+        <h2 class="text-xl font-black text-slate-800 tracking-tight">Rúbrica de valoración (3 estados)</h2>
+        <p class="text-slate-500 text-sm">Instrumento cualitativo para el profesor: Se ha verificado el proceso de puesta en marcha de un equipo.</p>
+    </div>
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 print-card">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border border-slate-200 rounded-xl overflow-hidden">
+                <thead class="bg-slate-50 text-slate-600 text-xs uppercase">
+                    <tr><th class="py-2 px-3">Estado</th><th class="py-2 px-3">Descripción</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="border-t border-slate-100">
+                        <td class="py-2 px-3 text-sm font-bold text-red-700 align-top">A mejorar</td>
+                        <td class="py-2 pl-3 text-sm text-slate-600 align-top">El alumno no alcanza el criterio: errores conceptuales, omisiones graves o trabajo incomplete. Requiere refuerzo antes de certificar.</td>
+                    </tr>
+                    <tr class="border-t border-slate-100">
+                        <td class="py-2 px-3 text-sm font-bold text-amber-700 align-top">Aceptable</td>
+                        <td class="py-2 pl-3 text-sm text-slate-600 align-top">El alumno cumple el criterio con corrección: resuelve lo esencial, aunque con alguna imprecisión o apoyo parcial del profesor.</td>
+                    </tr>
+                    <tr class="border-t border-slate-100">
+                        <td class="py-2 px-3 text-sm font-bold text-emerald-700 align-top">Excelente</td>
+                        <td class="py-2 pl-3 text-sm text-slate-600 align-top">El alumno supera el criterio: preciso, autónomo y con profundidad; explica el porqué y aplica el conocimiento a casos nuevos.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<section class="space-y-4 scroll-mt-6">
+        <div class="border-b border-slate-200 pb-4">
+            <h2 class="text-xl font-black text-slate-800 tracking-tight">Enlaces relacionados a contenidos</h2>
+            <p class="text-slate-500 text-sm">Material teórico de apoyo para este criterio.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 print-card">
+            <ul class="space-y-2 list-disc pl-5 text-sm"><li><a href="../contenido_ra1_03.html" class="text-blue-600 hover:underline font-medium">Contenido RA1-C · Puesta en marcha del equipo</a></li></ul>
+        </div>
+    </section>
+      <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=pl3CKSiCMb4" target="_blank" rel="noopener">Armar PC Gamer barata en 1 min #pcbuild #pc</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=aebCj0kpWrI" target="_blank" rel="noopener">Armando una PC GAMER de GAMA MEDIA</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=GRRLOB0Yyog" target="_blank" rel="noopener">Me enseñaron armar PC en la Universidad!</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=nliLSnqEfrw" target="_blank" rel="noopener">Aprende a ensamblar computadoras desde cero! 🖥️🔥. #emprende #computador #pcbuilder #pc</a></li>
+    </ul>
+  </section>
+
+</main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

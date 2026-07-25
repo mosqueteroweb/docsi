@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servidores de aplicaciones | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra6.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA6 · Contenido 06</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Servidores de aplicaciones | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA6</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Servidores de aplicaciones</h2><p class="text-slate-700 leading-relaxed mb-3">Un servidor de aplicaciones ejecuta programas a las que acceden los clientes por red (web, correo, base de datos, RDS). Centraliza la lógica de negocio y los datos.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Tipos</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Web:</b> Apache, Nginx, IIS sirven HTTP/HTTPS.</li><li><b>Base de datos:</b> MySQL, Postgres, SQL Server.</li><li><b>RDS (Remote Desktop Services):</b> publica aplicaciones de Windows a escritorios remotos.</li><li><b>ERP/CRM:</b> aplicaciones de gestión accesibles por navegador.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Despliegue</h3><p class="text-slate-700 leading-relaxed mb-3">Se instala el servidor, se configura el puerto y los permisos, y se publica tras el cortafuegos. La alta disponibilidad usa balanceo de carga.</p><pre class="mermaid">
+graph TD
+  C[Cliente] -->|HTTP| W[Servidor Web]
+  W --> APP[Aplicación]
+  APP --> DB[(Base de datos)]
+  C -->|RDP 3389| RDS[RDS]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((ServApps))
+    Web
+    Apache
+    IIS
+    RDS
+    BD
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Publicar una aplicación en red.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Instala la app en el servidor de aplicaciones ( Terminal Server / RDS ).</li><li>Publica un programa para que los clientes lo ejecuten remotamente.</li><li>El cliente se conecta y usa la app sin instalarla localmente.</li><li>Explica la diferencia con instalar la app en cada equipo.</li></ol>
+<pre class="mermaid">
+graph LR
+  CLI[Cliente] --> RDS[Servidor app]
+  RDS --> APP[Aplicación]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno publica una app vía RDS y la usa desde un cliente.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>El servidor de aplicaciones es "la cocina, no el comedor".</b> El cliente (navegador) pide; el servidor prepara y devuelve el resultado. El cliente no hace el trabajo pesado.</li>
+<li><b>Web / BD / RDS = "distintos mostradores".</b> Cada servicio atiende por su protocolo (HTTP, SQL, RDP). El mismo equipo puede tener varios.</li>
+<li><b>Publicar tras el cortafuegos = "atender por la ventanilla".</b> Solo lo que se abre al exterior es accesible; el resto queda protegido dentro.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Tipos de servidor.</b> Web (Apache/Nginx/IIS) sirve páginas por HTTP/HTTPS; BD (MySQL/Postgres/SQL Server) guarda y consulta datos; RDS publica apps de Windows a escritorios remotos por RDP (3389).</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Separación web-app-BD.</b> El navegador habla con el servidor web, este con la aplicación, y la app con la base de datos. Cada capa puede ir en su máquina; mejora escalabilidad y seguridad.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Despliegue.</b> Se instala, se elige puerto (80/443 web, 3389 RDP, 3306 MySQL) y se publica tras el firewall abriendo solo lo necesario. Abrir de más expone el servicio.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Alta disponibilidad.</b> Un balanceador reparte la carga entre varios servidores idénticos; si uno cae, los otros siguen. Para servicios críticos, no hay "un solo servidor".</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>RDS vs escritorio remoto simple.</b> RDS publica aplicaciones (no todo el escritorio) a muchos usuarios desde un servidor; es distinto de conectarse al escritorio de un PC concreto.</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"No carga la web" no siempre es fallo de la app.</b> Puede ser el firewall (puerto 443 cerrado), DNS mal resuelto o certificado caducado. Antes de tocar código, comprueba red y puertos.</li>
+<li><b>Abrir todos los puertos "por si acaso" es un error.</b> Se publica solo lo necesario (80/443, 3389...); abrir de más expone servicios al exterior. Menos puertos abiertos, menos superficie de ataque.</li>
+<li><b>Servidor de apps ≠ servidor de ficheros.</b> Uno ejecuta lógica (cocina); otro guarda archivos (armario). Confundirlos lleva a montar la app en el sitio equivocado.</li>
+<li><b>RDS no es "conectarme a mi PC".</b> RDS publica apps a muchos usuarios desde un servidor Windows; el escritorio remoto a un PC concreto es otra cosa (y suele ser para uno solo).</li>
+<li><b>La BD no tiene por qué estar en el mismo equipo.</b> Separar web, app y BD mejora rendimiento y seguridad; meterlo todo en uno es simple pero frágil. No es "lo normal obligatorio".</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) servidor = cocina → (2) tipos (web/BD/RDS) → (3) separación de capas → (4) despliegue y puertos → (5) alta disponibilidad → (6) errores (puertos abiertos, RDS vs remoto).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra6_04.html">Servidores ficheros</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra6_08.html">Cortafuegos</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra6_c.html">Criterio RA6-c: servidores</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Servidor_de_archivos" target="_blank" rel="noopener">Wikipedia — Servidor de archivos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Cortafuegos_(inform%C3%A1tica)" target="_blank" rel="noopener">Wikipedia — Cortafuegos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=Gky8-OVYmT4" target="_blank" rel="noopener">Diferencias entre HUB, SWITCH y ROUTER</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=_JNPvSxG6oM" target="_blank" rel="noopener">Conceptos básicos de redes en 15 minutos</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

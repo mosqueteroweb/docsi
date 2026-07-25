@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normas de seguridad y PRL | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra1.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA1 · Contenido 04</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Normas de seguridad y PRL | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA1</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Normas de seguridad y prevención de riesgos laborales.</h2><p class="text-slate-700 leading-relaxed mb-3">La seguridad en el uso de sistemas informáticos protege la integridad física de las personas y la disponibilidad de los equipos. En España se rige por la <b>Ley 31/1995 de Prevención de Riesgos Laborales</b> y el <b>RD 488/1997</b> sobre equipos con pantallas de visualización.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Riesgos eléctricos y ESD</h3><p class="text-slate-700 leading-relaxed mb-3">La <b>descarga electrostática (ESD)</b> puede dañar componentes sensibles. Medidas: pulsera antiestática, superficies conductoras y manipular por los bordes. El riesgo eléctrico exige equipos con puesta a tierra y no abrir fuentes de alimentación.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Ergonomía</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li>Altura de monitor a la altura de los ojos.</li><li>Silla con soporte lumbar y reposapiés si hace falta.</li><li>Descansos cada 20 min (regla 20-20-20 para la vista).</li><li>Iluminación adecuada y ausencia de reflejos.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Manipulación y residuos (RAEE)</h3><p class="text-slate-700 leading-relaxed mb-3">Los equipos son <b>RAEE</b> (Residuos de Aparatos Eléctricos y Electrónicos) y deben reciclarse en puntos limpios. Nunca tirar a la basura general. El <b>LOTO</b> (Lock Out Tag Out) asegura equipos apagados antes de intervenirlos.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Primeros auxilios básicos</h3><p class="text-slate-700 leading-relaxed mb-3">Conocer la ubicación de extintores, botiquín y salidas, y actuar ante pequeños incendios eléctricos (nunca agua) o golpes eléctricos (corte de corriente primero).</p><pre class="mermaid">
+flowchart TD
+  A[Antes de manipular] --> B[Pulsera antiestática]
+  B --> C[Equipo apagado y desenchufado]
+  C --> D[Reciclar RAEE en punto limpio]
+  D --> E[Ergonomía y descansos]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((PRL))
+    ESD
+    Ergonomía
+    RAEE
+    LOTO
+    Primeros auxilios
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Checklist de PRL antes de manipular equipos.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li><b>Desconecta la alimentación</b> y pulsa el botón de encendido 2-3 s para descargar condensadores.</li><li>Usa <b>pulsera antiestática</b> (o toca la carcasa metálica) para evacuar carga ESD.</li><li>Levanta cargas pesadas (torres) con piernas, no con la espalda; evita posturas forzadas.</li><li>Ordena el cableado para evitar <b>tripping</b> (tropezones) y mantén ventilación libre.</li></ol>
+<pre class="mermaid">
+graph TD
+  A[Apagar y desconectar] --> B[Pulsera antiestática]
+  B --> C[Manipular con postura correcta]
+  C --> D[Ordenar cableado]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno rellena una checklist de riesgos antes de abrir un equipo y la entrega firmada.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Prevenir cuesta menos que reparar.</b> La PRL no es burocracia: un componente quemado por ESD o una lesión de espalda por mala postura son pérdidas reales. Por eso la norma exige actuar antes del daño.</li><li><b>"Riesgo" no es "accidente".</b> El riesgo es la posibilidad de daño (p. ej. recibir una descarga); el accidente es que ocurra. La prevención reduce el riesgo para que el accidente no llegue.</li><li><b>El hardware también sufre.</b> La seguridad no es solo para personas: un equipo mal apagado o sin tierra puede morir. Cuidar el equipo y cuidar a la persona suelen ir juntos (p. ej. la pulsera antiestática protege la placa y, desenchufando, también al técnico).</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Marco legal español.</b> La <b>Ley 31/1995</b> de Prevención de Riesgos Laborales es la norma base; el <b>RD 488/1997</b> (rectificado en el RD 110/2018 de RAEE) desarrolla lo específico de equipos con pantallas. En el aula, el centro debe tener un Plan de Prevención y evaluar los puestos con pantallas.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>ESD: el enemigo invisible.</b> Una descarga de pocos kV (imperceptible para ti) basta para degradar o romper un chip. La pulsera antielectrostática iguala el potencial de tu cuerpo al de la placa; trabajar sobre alfombrilla conductora y guardar los componentes en bolsas ESD evita daños silenciosos que luego se manifiestan como fallos intermitentes.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ergonomía y salud a largo plazo.</b> La regla 20-20-20 (cada 20 min, mirar a 20 pies / 6 m durante 20 s) reduce la fatiga visual. La altura del monitor a la línea de los ojos y el ángulo de muñeca neutro evitan lesiones por esfuerzo repetitivo (LER/RSI). No es comodidad: es prevención de baja laboral.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>RAEE y medio ambiente.</b> Un equipo contiene plomo, mercurio y otros materiales peligrosos; tirarlo a la basura general contamina. Los puntos limpios y los sistemas de recogida del fabricante (Logística Inversa) lo gestionan. El RD 110/2018 clasifica y exige trazabilidad de estos residuos.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>LOTO (Lock Out Tag Out).</b> Consiste en bloquear físicamente la fuente de energía (candado) y etiquetarla antes de intervenir, para que nadie la reactive por error. En el aula se aplica de forma simplificada: apagar, desenchufar y verificar que no hay tensión antes de abrir.</p>
+
+<h2 class="text-2xl font-bold text-slate-700 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>RD 488/1997, no 1995.</b> La Ley 31/1995 es la de PRL general; el RD 488/1997 es el de pantallas. Confundirlos es error frecuente en exámenes.</li><li><b>ESD puede no verse.</b> El componente no "chisporrotea" pero queda dañado. Por eso la pulsera es obligatoria aunque no notes nada.</li><li><b>Nunca agua en fuego eléctrico.</b> El agua conduce y propaga el arco; usa extintor de CO₂ o polvo específico. Cortar corriente antes de tocar a una persona electrocutada.</li><li><b>RAEE ≠ basura electrónica cualquiera.</b> Tiene normativa propia de reciclaje; no va al contenedor ordinario.</li><li><b>Ergonomía es contenido evaluable, no consejo.</b> Saber la regla 20-20-20 y la altura del monitor forma parte del tema.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) ¿por qué existe la PRL? (Ley 31/1995) → (2) riesgos eléctricos y ESD → (3) manipulación segura (LOTO) → (4) ergonomía → (5) residuos RAEE → (6) primeros auxilios y extinción.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra1_03.html">Periféricos</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra1_h.html">Criterio RA1-h: seguridad/PRL</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://www.insst.es/" target="_blank" rel="noopener">INSST — Seguridad y Salud en el Trabajo</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Prevenci%C3%B3n_de_riesgos_laborales" target="_blank" rel="noopener">Wikipedia — Prevención de riesgos laborales</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=5oAexbSPygE" target="_blank" rel="noopener">Buenas prácticas y seguridad en el PC</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=_JNPvSxG6oM" target="_blank" rel="noopener">Conceptos básicos de redes en 15 minutos</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

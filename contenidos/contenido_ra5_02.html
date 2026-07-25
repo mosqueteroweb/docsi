@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficheros de configuración de red | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra5.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA5 · Contenido 02</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Ficheros de configuración de red | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA5</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Ficheros de configuración de red</h2>
+<p class="text-slate-700 leading-relaxed mb-3">En sistemas operativos existen ficheros y utilidades para definir la red de forma persistente. En Linux destacan /etc/network/interfaces, Netplan y NetworkManager (nmcli); en Windows, netsh permite configuración por línea de comandos.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. /etc/network (Debian)</h3>
+<p class="text-slate-700 leading-relaxed mb-3">El fichero /etc/network/interfaces define interfaces con 'iface eth0 inet static' o 'dhcp'. Se aplica con ifup/ifdown.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Netplan (Ubuntu)</h3>
+<p class="text-slate-700 leading-relaxed mb-3">Netplan usa ficheros YAML en /etc/netplan/*.yaml y aplica la configuración con 'netplan apply', generando configuración para NetworkManager o systemd-networkd.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. nmcli (NetworkManager)</h3>
+<p class="text-slate-700 leading-relaxed mb-3">nmcli permite gestionar conexiones sin editar ficheros: 'nmcli con add type ethernet ...'. Es la vía recomendada en muchas distros.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. netsh en Windows</h3>
+<p class="text-slate-700 leading-relaxed mb-3">netsh interface ip set address permite fijar IP, máscara y gateway; netsh interface ip set dns ajusta los servidores DNS.</p>
+<table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Herramienta</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">SO</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Formato</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">/etc/network</td><td class="px-4 py-2 border border-slate-200 align-top">Linux</td><td class="px-4 py-2 border border-slate-200 align-top">Texto plano</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Netplan</td><td class="px-4 py-2 border border-slate-200 align-top">Linux (Ubuntu)</td><td class="px-4 py-2 border border-slate-200 align-top">YAML</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">nmcli</td><td class="px-4 py-2 border border-slate-200 align-top">Linux</td><td class="px-4 py-2 border border-slate-200 align-top">Comandos</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">netsh</td><td class="px-4 py-2 border border-slate-200 align-top">Windows</td><td class="px-4 py-2 border border-slate-200 align-top">Comandos</td></tr></tbody></table>
+<pre class="code"># Windows: IP estática
+netsh interface ip set address "Ethernet" static 192.168.1.20 255.255.255.0 192.168.1.1
+netsh interface ip set dns "Ethernet" static 8.8.8.8</pre>
+<pre class="mermaid">
+flowchart LR
+  A[/etc/netplan/*.yaml/] --> B[netplan apply]
+  B --> C{backend}
+  C -->|NetworkManager| D[nmcli]
+  C -->|systemd-networkd| E[systemd]
+</pre>
+<pre class="mermaid">
+graph TD
+  W[Windows] --> N[netsh]
+  N --> I[set address static]
+  N --> D[set dns static]
+  L[Linux] --> F[/etc/network/interfaces/]
+  L --> M[nmcli con mod]
+</pre>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Leer ficheros de configuración de red.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Linux: <code>cat /etc/network/interfaces</code> o <code>/etc/netplan/*.yaml</code>.</li><li>Windows: el registro y la salida de <code>netsh interface ip show config</code>.</li><li>Localiza la IP, máscara y gateway en el fichero.</li><li>Explica la ventaja de configurar por <b>fichero</b> (reproducible, scripteable).</li></ol>
+<pre class="mermaid">
+graph LR
+  FILE[/etc/netplan] --> CFG[IP/Mask/GW]
+  NETSH[netsh] --> CFG
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno muestra la configuración de red desde el fichero/cmd y la interpreta.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>El fichero de config es "la libreta de direcciones del equipo".</b> Dice cómo conectarse al arrancar; sin él, cada reinicio olvida la red. Por eso es persistente.</li>
+<li><b>Editar el fichero vs usar el comando = "escribir la receta vs decírsela al cocinero".</b> nmcli/netsh aplican y guardan; tocar el YAML a mano da control fino pero exige sintaxis.</li>
+<li><b>Linux tiene varias "libretas" según distro.</b> interfaces (Debian viejo), netplan (Ubuntu), nmcli (muchas). La misma idea, distinta carpeta.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>/etc/network/interfaces.</b> Con <code>iface eth0 inet static</code> fijas IP/máscara/gateway; con <code>dhcp</code> las pide. <code>ifup/ifdown</code> aplican. Simple pero solo una config por interfaz.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Netplan (YAML).</b> En <code>/etc/netplan/*.yaml</code>, la indentación es la sintaxis; <code>netplan apply</code> genera la config real para NetworkManager o systemd-networkd. Un espacio mal puesto rompe todo.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>nmcli.</b> <code>nmcli con add type ethernet ...</code> crea una conexión sin tocar ficheros; útil para cambiar entre WiFi/ethernet por script. Es la vía recomendada en portátiles.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>netsh en Windows.</b> <code>netsh interface ip set address "Ethernet" static ...</code> fija IP; <code>set dns</code> los DNS. Equivale a la GUI pero repetible y scripteable.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Backend importa.</b> Netplan puede delegar en NetworkManager o systemd-networkd; si editas interfaces a mano pero el backend es otro, el cambio no surte efecto. Hay que saber quién manda.</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"Edité interfaces pero no cambia nada" = backend distinto.</b> Si la distro usa Netplan/NetworkManager, tocar interfaces a mano no aplica. Hay que usar la herramienta que manda.</li>
+<li><b>YAML no perdona la indentación.</b> Un espacio de más en netplan deja la interfaz sin red. No es "bonito", es sintaxis estricta.</li>
+<li><b>nmcli add no es "modificar lo existente".</b> Crea una conexión nueva; si ya había una, pueden solaparse. Hay que <code>con mod</code> o borrar la vieja.</li>
+<li><b>netsh pide el nombre exacto de la interfaz.</b> "Ethernet" debe coincidir con el del sistema; si se llama "Ethernet 2", el comando falla. <code>netsh int show int</code> lo confirma.</li>
+<li><b>Configurar sin probar es "conducir a ciegas".</b> Tras <code>netplan apply</code> o netsh, hay que <code>ip a</code>/<code>ipconfig</code> para ver la IP real. No dar por hecho.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) fichero = config persistente → (2) interfaces (Debian) → (3) netplan YAML y su backend → (4) nmcli (con add/mod) → (5) netsh en Windows → (6) errores típicos (indentación, nombre de interfaz, backend).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="../contenido_ra5_01.html">Configuración del protocolo TCP/IP</a></li><li><a class="text-blue-600 hover:underline" href="../contenido_ra5_08.html">Configuración de adaptadores</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra5_a.html">Criterio RA5-a: TCP/IP</a></li></ul>
+  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/NetworkManager" target="_blank" rel="noopener">Wikipedia — NetworkManager</a></li><li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/TCP/IP" target="_blank" rel="noopener">Wikipedia — TCP/IP</a></li><li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/DHCP" target="_blank" rel="noopener">Wikipedia — DHCP</a></li>
+    </ul>
+  </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

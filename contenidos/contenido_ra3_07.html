@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas automáticas | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra3.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA3 · Contenido 07</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Tareas automáticas | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA3</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Planificación de tareas automáticas</h2><p class="text-slate-700 leading-relaxed mb-3">La <b>automatización</b> permite ejecutar comandos o scripts en momentos concretos (copias de seguridad nocturnas, limpieza, informes). Cada sistema dispone de un programador de tareas.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. cron en GNU/Linux</h3><p class="text-slate-700 leading-relaxed mb-3"><code>cron</code> ejecuta tareas según una expresión de 5 campos (minuto, hora, día-mes, mes, día-semana). El comando <code>crontab -e</code> edita la tabla del usuario.</p><pre class="code"># Todos los días a las 02:30 ejecuta la copia
+30 2 * * * /home/usuario/backup.sh
+# Cada lunes a las 18:00 limpia temporales
+0 18 * * 1 rm -rf /tmp/cache/*
+# Ver tareas programadas
+crontab -l</pre><pre class="mermaid">
+flowchart TD
+    A[crontab -e] --> B{Expresión 5 campos}
+    B --> C[Minuto 0-59]
+    B --> D[Hora 0-23]
+    B --> E[Día mes 1-31]
+    B --> F[Mes 1-12]
+    B --> G[Día sem 0-7]
+    C --> H[Comando a ejecutar]
+    D --> H
+    E --> H
+    F --> H
+    G --> H
+    H --> I[Ejecución automática]
+</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. systemd timers</h3><p class="text-slate-700 leading-relaxed mb-3">En distros modernas, <code>systemd</code> sustituye a cron con unidades <code>.timer</code> y <code>.service</code>, más precisas y con registro de estado.</p><pre class="code"># /etc/systemd/system/backup.timer
+[Timer]
+OnCalendar=*-*-* 02:30:00
+Persistent=true
+[Install]
+WantedBy=timers.target
+# Activar
+sudo systemctl enable --now backup.timer</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Programador de tareas de Windows</h3><p class="text-slate-700 leading-relaxed mb-3">El <b>Programador de tareas (Task Scheduler)</b> de Windows permite crear tareas gráficas o mediante <code>schtasks</code>.</p><pre class="code"># Crear tarea que ejecuta un script cada día a las 3:00
+schtasks /create /sc daily /st 03:00 /tn "Backup" /tr "C:\backup.bat"</pre><pre class="mermaid">
+mindmap
+  root((Tareas auto))
+    Linux
+      cron
+      systemd timers
+      crontab -e
+    Windows
+      Programador tareas
+      schtasks
+      GUI
+    Usos
+      Backups
+      Limpieza
+      Informes
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Planificar una tarea automática.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Windows: 'Programador de tareas' → nueva tarea que ejecute un script a las 22:00.</li><li>Linux: <code>crontab -e</code> con <code>0 22 * * * /ruta/backup.sh</code>.</li><li>Explica la <b>sintaxis cron</b>: minuto hora día mes día-semana.</li><li>Verifica que la tarea se ejecuta (revisa el log o la salida).</li></ol>
+<pre class="mermaid">
+graph TD
+  CRON[crontab 0 22] --> RUN[Ejecuta script]
+  WIN[Tareas Win] --> RUN
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno programa una copia automática diaria y verifica su ejecución.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Una tarea automática es "un despertador para el ordenador".</b> Le dices "a tal hora, haz esto" y él lo hace sin que estés delante. Clave para tareas repetitivas (copias, limpieza).</li>
+<li><b>cron y systemd son "dos relojeros distintos".</b> cron es el viejo y simple (5 campos); systemd timers es el moderno (más control, registro de fallos). Mismo objetivo, distinta herramienta.</li>
+<li><b>La tarea necesita "el qué" y "el cuándo".</b> Sin un comando concreto o sin permisos, el programador no hace nada. Por eso se prueba a mano antes de automatizarla.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>cron: la expresión de 5 campos.</b> minuto(0-59) hora(0-23) día-mes(1-31) mes(1-12) día-semana(0-7). <code>30 2 * * *</code> = a las 02:30 cualquier día. El <code>*</code> significa "cualquiera". Un error de orden deja la tarea sin disparar.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>systemd timers vs cron.</b> El timer apunta a un <code>.service</code> (el qué) y define cuándo (<code>OnCalendar</code>). Ventaja: si el equipo estaba apagado, con <code>Persistent=true</code> la ejecuta al encender; y ves si falló con <code>journalctl</code>. cron no lleva ese registro tan claro.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Windows: Task Scheduler y schtasks.</b> La GUI programa tareas (copias, scripts) por disparador (hora, al iniciar, al evento). <code>schtasks /create</code> hace lo mismo por línea de comandos; ideal para desplegar en varios equipos.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Permisos y entorno.</b> Una tarea automática corre con el usuario que la definió; si ese usuario no tiene permiso sobre la carpeta destino, falla. También el PATH puede diferir del tuyo interactivo: conviene usar rutas absolutas en los scripts.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Prueba antes de programar.</b> El error típico es programar un script que nunca se probó a mano; falla en silencio a las 3:00. Regla: ejecútalo tú primero y mira la salida.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>cron no es "ejecutar ahora".</b> Solo dispara en el momento programado; para probar, ejecuta el comando a mano antes de confiar en él.</li>
+<li><b>El orden de los 5 campos importa.</b> minuto, hora, día-mes, mes, día-semana. Un desplazamiento los baraja todos. No es "lo que me salga".</li>
+<li><b>systemd timer no es "cron con otra cara".</b> Aporta registro de estado, Persistent y dependencias; es distinto modelo, no mera sintaxis.</li>
+<li><b>Un script con rutas relativas falla en cron.</b> El entorno de cron tiene PATH mínimo; usa rutas absolutas o define PATH en el script.</li>
+<li><b>Task Scheduler no ve "lo que tú ves".</b> Corre con su propio usuario/permisos; si tu script necesita acceso a una unidad de red, hay que darle credenciales.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) por qué automatizar (copias, limpieza) → (2) cron: 5 campos y su orden → (3) systemd timers (service+timer, Persistent) → (4) Windows Task Scheduler/schtasks → (5) permisos y PATH en tareas → (6) probar a mano antes de programar.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra3_05.html">Copias de seguridad</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra3_08.html">Utilidades de gestión de información</a></li><li><a class="text-blue-600 hover:underline" href="../actividades/criterio_ra3_g.html">Criterio RA3-g: tareas automáticas</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Cron" target="_blank" rel="noopener">Wikipedia — Cron</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Systemd" target="_blank" rel="noopener">Wikipedia — Systemd</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Programador_de_tareas_de_Windows" target="_blank" rel="noopener">Wikipedia — Programador de tareas de Windows</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/L%C3%ADnea_de_comandos" target="_blank" rel="noopener">Wikipedia — Línea de comandos</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

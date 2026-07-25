@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permisos y derechos | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra6.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA6 · Contenido 01</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Permisos y derechos | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA6</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Permisos y derechos. Permisos de red, permisos locales, herencia, listas de control de acceso</h2><p class="text-slate-700 leading-relaxed mb-3">En una red, el control de acceso decide qué usuarios pueden ver o modificar recursos. Combina permisos locales del SO y permisos de red compartida, con mecanismos de herencia y ACL.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Permisos de red vs locales</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Locales:</b> los del SO sobre archivos del equipo (rwx en Linux, DAC en Windows).</li><li><b>De red:</b> los que se aplican al compartir por SMB/NFS sobre la carpeta compartida.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Herencia</h3><p class="text-slate-700 leading-relaxed mb-3">Los archivos nuevos dentro de una carpeta toman por defecto los permisos del directorio (herencia). Cambiar la carpeta no siempre cambia los existentes salvo que se fuerce.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. ACL</h3><p class="text-slate-700 leading-relaxed mb-3">Las Listas de Control de Acceso permiten dar permiso a usuarios concretos sin modificar el grupo, útiles en entornos con muchos usuarios.</p><pre class="mermaid">
+graph TD
+  R[Carpeta compartida] -->|herencia| A[Archivo nuevo]
+  R -->|ACL| U[Usuario concreto]
+  R -->|grupo| G[Miembros]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Permisos))
+    Locales
+    Red
+    Herencia
+    ACL
+</pre><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Ámbito</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Ejemplo</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Local</td><td class="px-4 py-2 border border-slate-200 align-top">chmod 750 en Linux</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Red</td><td class="px-4 py-2 border border-slate-200 align-top">Permiso de compartición SMB</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">ACL</td><td class="px-4 py-2 border border-slate-200 align-top">setfacl a usuario</td></tr></tbody></table>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Aplicar permisos de red y herencia.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Crea carpeta 'comun' y comparte en red con permiso de lectura al grupo 'profes'.</li><li>Explica la <b>herencia</b>: los archivos nuevos dentro heredan los permisos de la carpeta.</li><li>En Windows: pestaña 'Compartir' + 'Seguridad' (ACL).</li><li>Verifica que un miembro de 'profes' accede y otro no.</li></ol>
+<pre class="mermaid">
+graph TD
+  CARP[comun] --> HER[Herencia]
+  CARP --> ACL[ACL grupo]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno comparte una carpeta en red y verifica acceso por grupo.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Permiso = "una llave para una puerta".</b> Cada archivo/carpeta tiene su cerradura; el usuario solo hace lo que su llave permite. Sin llave, no entra.</li>
+<li><b>Local vs red = "la cerradura de casa y la del portal".</b> La local es del SO sobre el archivo; la de red se añade al compartir por SMB/NFS. Ambas deben decir "sí" para entrar.</li>
+<li><b>Herencia = "los hijos copian al padre".</b> Lo que creas dentro de una carpeta suele heredar sus permisos; cambiar la carpeta no reescribe lo ya hecho salvo que lo fuerces.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Permisos locales.</b> En Linux, <code>chmod 750</code> da rwx al dueño, rx al grupo, nada a otros; en Windows, DACL sobre el objeto. Es lo que manda sobre el archivo en el disco.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Permisos de red.</b> Al compartir por SMB, se suma un permiso de "compartición"; el acceso real es el MÁS RESTRICTIVO entre local y de red. Dos cerraduras en serie.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Herencia.</b> En Windows, los hijos heredan de la carpeta salvo "rotura de herencia"; en Linux, la máscara <code>umask</code> decide los permisos de lo nuevo. Para cambiar lo existente hay que aplicar recursivamente.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>ACL.</b> <code>setfacl -m u:ana:rwx</code> da permiso a un usuario concreto sin tocar el grupo. Ideal cuando un solo usuario necesita algo distinto; evita crear grupos para un caso.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Combinación real.</b> Para que Ana lea en red una carpeta, deben coincidir: permiso local (lectura en el archivo) + permiso de compartición (lectura en SMB) + (si aplica) ACL. Cualquiera en "denegar" bloquea.</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"Le di permiso en la carpeta pero no entra" = falta el de compartición.</b> En SMB, local y red son cerraduras en serie; si uno dice no, no entra. Revisa ambos.</li>
+<li><b>"Cambié la carpeta y lo viejo no cambia".</b> La herencia solo afecta a lo nuevo; lo existente mantiene sus permisos salvo que apliques recursivamente o rompas/heredes.</li>
+<li><b>El acceso es el MÁS RESTRICTIVO.</b> Dar rw en local y solo lectura en red = solo lectura. Sumar permisos no los suma, los restringe al mínimo.</li>
+<li><b>ACL no es "otro grupo".</b> Es una regla a un usuario concreto; útil para excepciones. Confundirla con el grupo deja fuera a quien no está en él.</li>
+<li><b>umask no es "permiso", es "máscara".</b> Resta bits a 666/777; un umask 022 da 644. Pensar que umask 022 "da permisos" es al revés.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) permiso = llave → (2) local (chmod/DACL) vs red (SMB) → (3) acceso = el más restrictivo → (4) herencia (Windows y umask en Linux) → (5) ACL (setfacl) → (6) errores (cerraduras en serie, herencia solo a lo nuevo).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra6_02.html">Recursos compartidos</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra6_04.html">Servidores de ficheros</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra6_a.html">Criterio RA6-a: permisos/derechos</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Servidor_de_archivos" target="_blank" rel="noopener">Wikipedia — Servidor de archivos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Cortafuegos_(inform%C3%A1tica)" target="_blank" rel="noopener">Wikipedia — Cortafuegos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=Gky8-OVYmT4" target="_blank" rel="noopener">Diferencias entre HUB, SWITCH y ROUTER</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=_JNPvSxG6oM" target="_blank" rel="noopener">Conceptos básicos de redes en 15 minutos</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

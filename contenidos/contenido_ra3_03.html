@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda de información | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra3.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA3 · Contenido 03</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Búsqueda de información | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA3</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Localizar información en el sistema</h2><p class="text-slate-700 leading-relaxed mb-3">La administración de un sistema requiere encontrar archivos, textos dentro de archivos, procesos y configuraciones. Se puede hacer con herramientas gráficas (buscador del explorador, panel de configuración) o, de forma mucho más potente, con comandos de línea de comandos.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. El comando find</h3><p class="text-slate-700 leading-relaxed mb-3"><code>find</code> busca archivos y directorios por nombre, tipo, tamaño, fecha o permisos, recorriendo el árbol desde un punto dado.</p><pre class="code"># Buscar todos los .log en /var
+find /var -name "*.log"
+# Buscar archivos mayores de 100 MB
+find /home -type f -size +100M
+# Buscar y eliminar temporales .tmp
+find /tmp -name "*.tmp" -delete</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. El comando grep</h3><p class="text-slate-700 leading-relaxed mb-3"><code>grep</code> busca patrones de texto dentro del contenido de los archivos. Combinado con <code>find</code> o con tuberías (<code>|</code>) es la herramienta de diagnóstico más usada.</p><pre class="code"># Buscar "error" en todos los logs
+grep -r "error" /var/log
+# Contar líneas que contienen "TODO" en .py
+grep -c "TODO" *.py
+# Buscar sin distinguir mayúsculas
+grep -i "warning" /var/log/syslog</pre><pre class="mermaid">
+flowchart TD
+    A[Necesidad de buscar] --> B{¿Qué buscas?}
+    B -->|Archivos| C[find]
+    B -->|Texto dentro| D[grep]
+    C --> C1[por nombre -name]
+    C --> C2[por tamaño -size]
+    C --> C3[por tipo -type]
+    D --> D1[recursivo -r]
+    D --> D2[insensible -i]
+    D --> D3[contar -c]
+    C --> E[Resultado: rutas]
+    D --> E
+</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Herramientas gráficas</h3><p class="text-slate-700 leading-relaxed mb-3">En Windows, el <b>Explorador</b> y la búsqueda de <b>Configuración</b> permiten localizar archivos por nombre y contenido indexado. En Linux, gestores como <b>Nautilus</b> o <b>Catfish</b> ofrecen búsqueda visual. También existen herramientas de monitoreo (Monitor de recursos, htop) que localizan procesos y su información.</p><pre class="mermaid">
+mindmap
+  root((Búsqueda))
+    CLI
+      find archivos
+      grep texto
+      ls combinado
+    Gráfico
+      Explorador Windows
+      Catfish Linux
+      htop procesos
+    Criterios
+      Nombre
+      Tamaño
+      Fecha
+      Contenido
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Localizar un archivo por nombre.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>En Windows: barra de búsqueda del explorador escribe el nombre.</li><li>En Linux: <code>find / -name 'informe*'</code> busca desde la raíz.</li><li>Para buscar por <b>contenido</b>: <code>grep -r 'texto' /ruta</code>.</li><li>Explica cuándo usar búsqueda por nombre vs por contenido.</li></ol>
+<pre class="mermaid">
+graph LR
+  NOM[find -name] --> RES[Archivo]
+  CON[grep -r] --> RES2[Coincidencia]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno localiza un archivo por nombre y otro por contenido usando find/grep.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Buscar en un SO es "encontrar la aguja en el pajar" sin mirar uno a uno.</b> El buscador recorre por ti y filtra; sin él, localizar un archivo en miles sería inhumano.</li>
+<li><b>find busca "cosas"; grep busca "texto".</b> find localiza archivos por sus propiedades (nombre, tamaño); grep busca palabras dentro del contenido. Son complementarios.</li>
+<li><b>La línea de comandos es más potente que el buscador visual.</b> El explorador busca por nombre; find/grep filtran por tamaño, fecha, permisos y texto, combinables. Por eso el administrador los usa.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>find: recorrer y filtrar.</b> <code>find /var -name "*.log"</code> busca por nombre; <code>-type f</code> solo archivos, <code>-size +100M</code> los grandes, <code>-mtime -7</code> los de la última semana. Con <code>-delete</code> o <code>-exec</code> actúa sobre lo encontrado.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>grep: patrones de texto.</b> Busca cadenas dentro de archivos. <code>-r</code> recorre carpetas, <code>-i</code> ignora mayúsculas, <code>-c</code> cuenta coincidencias, <code>-n</code> da la línea. Con expresiones regulares, busca patrones complejos (ej. IPs, errores).</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Tuberías (pipes).</b> <code>comando1 | comando2</code> pasa la salida del primero al segundo. Ej. <code>ls -l | grep log</code> o <code>ps aux | grep apache</code>. Es el principio "pequeño y combinable" de Unix.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Herramientas gráficas.</b> El Explorador de Windows y Nautilus indexan y buscan por nombre/contenido; <code>htop</code> o el Monitor de recursos localizan procesos. Cómodas para uso diario, pero no filtran tanto como la CLI.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Índices y rendimiento.</b> Buscar en todo el disco es lento; por eso SO y buscadores mantienen un índice. Una búsqueda "en vivo" en millones de archivos puede colgar el equipo; conviene acotar el punto de partida.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>find no es "grep para archivos".</b> find filtra por propiedades del archivo (nombre, tamaño); grep busca dentro del texto. Para buscar texto en archivos hay que combinarlos: <code>find . -name "*.py" | xargs grep "TODO"</code>.</li>
+<li><b>grep no edita, solo busca.</b> Para cambiar lo encontrado hace falta <code>sed</code> o un editor; grep es de lectura.</li>
+<li><b>"-i" no hace "búsqueda aproximada".</b> Solo ignora mayúsculas/minúsculas; no corrige faltas de ortografía en tu patrón.</li>
+<li><b>El buscador gráfico depende del índice.</b> Si el índice está desactualizado, no encuentra archivos recién creados; la CLI (find) siempre mira el disco real.</li>
+<li><b>find recorre todo lo que le des.</b> Un <code>find /</code> sin acotar puede tardar minutos y cargar el sistema; mejor empezar en <code>/var/log</code> que en <code>/</code>.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) por qué buscar eficientemente → (2) find: por nombre/tamaño/tipo/fecha → (3) grep: patrones de texto y opciones (-r, -i, -c) → (4) tuberías para combinar → (5) herramientas gráficas e índices → (6) cuándo usar CLI vs explorador.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra3_02.html">Estructura de directorios</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra3_04.html">Identificación de software</a></li><li><a class="text-blue-600 hover:underline" href="../actividades/criterio_ra3_d.html">Criterio RA3-d: localizar información</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Find" target="_blank" rel="noopener">Wikipedia — Find</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Grep" target="_blank" rel="noopener">Wikipedia — Grep</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/L%C3%ADnea_de_comandos" target="_blank" rel="noopener">Wikipedia — Línea de comandos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Consola" target="_blank" rel="noopener">Wikipedia — Consola</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de redes | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra1.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA1 · Contenido 06</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Tipos de redes | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA1</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Tipos de redes</h2><p class="text-slate-700 leading-relaxed mb-3">Una red de computadoras es un conjunto de equipos, dispositivos y enlaces de comunicación interconectados que comparten recursos (archivos, impresoras, conexión a Internet) e intercambian información. El estudio de los tipos de red es la puerta de entrada a toda la asignatura: condiciona qué tecnologías, protocolos, equipos y costes intervienen. No existe una única red universal; en la práctica conviven redes de muy distinta naturaleza y se interconectan entre sí.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Clasificación por alcance geográfico (la más usada en FP)</h3><p class="text-slate-700 leading-relaxed mb-3">El criterio predominante en los currículos de Sistemas Informáticos es el alcance físico, porque determina directamente las tecnologías empleadas:</p><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>PAN — Personal Area Network:</b> redes de muy corto alcance (habitualmente menos de 10 metros) para interconectar dispositivos personales del usuario: teléfono móvil, auriculares Bluetooth, smartwatch, teclado y ratón inalámbricos, altavoces. Tecnologías típicas: <b>Bluetooth</b> (clásico y BLE), <b>Zigbee</b>, <b>Z-Wave</b>, <b>NFC</b> y conexión por <b>USB</b>. Su objetivo es la comodidad y la sincronización de dispositivos, no el rendimiento.</li><li><b>LAN — Local Area Network:</b> red de área local, típicamente un edificio, una planta o un aula. Ofrece alta velocidad (100 Mbps a 10 Gbps) y baja latencia. Se apoya en <b>Ethernet (IEEE 802.3)</b> sobre par trenzado o fibra, y en <b>Wi-Fi (IEEE 802.11)</b> para la parte inalámbrica. Suele ser administrada: hay un switch que conmuta el tráfico y un servidor o router que da servicios (DHCP, DNS, archivos).</li><li><b>WLAN — Wireless LAN:</b> es simplemente la variante inalámbrica de una LAN, basada en Wi-Fi. Misma lógica de red local, pero sin cableado estructurado hasta el equipo final; el último tramo es radioeléctrico.</li><li><b>MAN — Metropolitan Area Network:</b> cubre una ciudad o un campus universitario/industrial extenso. Ejemplos: la red de fibra de un ayuntamiento, la red de un metro, o la interconexión de los centros de una universidad. Combina enlaces contratados a operadores y, a menudo, tecnologías de fibra propia.</li><li><b>WAN — Wide Area Network:</b> redes de gran alcance, que pueden abarcar un país o el planeta. <b>Internet es la WAN mayor del mundo</b>. Conecta LANs geográficamente separadas mediante enlaces de operadores (MPLS, fibra oscura, satélite, enlaces 4G/5G) y protocolos de enrutamiento como BGP.</li></ul><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Tipo</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Alcance aproximado</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Velocidad típica</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Tecnología dominante</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Ejemplo real</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">PAN</td><td class="px-4 py-2 border border-slate-200 align-top"><10 m</td><td class="px-4 py-2 border border-slate-200 align-top">1–50 Mbps</td><td class="px-4 py-2 border border-slate-200 align-top">Bluetooth/NFC/USB</td><td class="px-4 py-2 border border-slate-200 align-top">Móvil + auriculares</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">LAN</td><td class="px-4 py-2 border border-slate-200 align-top">1 edificio / aula</td><td class="px-4 py-2 border border-slate-200 align-top">100 Mbps–10 Gbps</td><td class="px-4 py-2 border border-slate-200 align-top">Ethernet + Wi-Fi</td><td class="px-4 py-2 border border-slate-200 align-top">Aula de informática</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">WLAN</td><td class="px-4 py-2 border border-slate-200 align-top">Edificio</td><td class="px-4 py-2 border border-slate-200 align-top">100 Mbps–1 Gbps</td><td class="px-4 py-2 border border-slate-200 align-top">Wi-Fi 5/6</td><td class="px-4 py-2 border border-slate-200 align-top">Oficina sin cables</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">MAN</td><td class="px-4 py-2 border border-slate-200 align-top">Ciudad / campus</td><td class="px-4 py-2 border border-slate-200 align-top">1–10 Gbps</td><td class="px-4 py-2 border border-slate-200 align-top">Fibra de operador</td><td class="px-4 py-2 border border-slate-200 align-top">Red de campus universitario</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">WAN</td><td class="px-4 py-2 border border-slate-200 align-top">País / mundo</td><td class="px-4 py-2 border border-slate-200 align-top">10 Mbps–100 Gbps</td><td class="px-4 py-2 border border-slate-200 align-top">MPLS / satélite / Internet</td><td class="px-4 py-2 border border-slate-200 align-top">VPN entre sedes de una empresa</td></tr></tbody></table><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Clasificación por arquitectura: cliente-servidor frente a P2P</h3><p class="text-slate-700 leading-relaxed mb-3">Más allá del alcance, la forma en que se relacionan los equipos define dos modelos:</p><h4 class="text-lg font-bold text-slate-700 mb-1 mt-4">Cliente-servidor</h4><p class="text-slate-700 leading-relaxed mb-3">Existen equipos <b>dedicados a servir</b> recursos (servidor de archivos, de impresión, web, DNS, correo) y <b>clientes</b> que los consumen. Ventajas: centraliza la administración, la seguridad, las copias de seguridad y el control de acceso. Inconvenientes: requiere al menos un servidor con capacidad y es un punto crítico (si cae el servidor, caen los servicios).</p><h4 class="text-lg font-bold text-slate-700 mb-1 mt-4">P2P (peer-to-peer)</h4><p class="text-slate-700 leading-relaxed mb-3">Todos los equipos actúan a la vez como clientes y servidores y comparten recursos directamente (compartición de archivos, redes Blockchain, algunas aplicaciones de mensajería). Ventajas: muy económico de montar y resiliente (no hay SPOF). Inconvenientes: difícil de administrar y asegurar de forma centralizada, y el rendimiento depende de los pares.</p><pre class="mermaid">
+graph LR
+  subgraph CS[Cliente-Servidor]
+    S[(Servidor)] --> C1[Cliente]
+    S --> C2[Cliente]
+    S --> C3[Cliente]
+  end
+  subgraph P2P[Peer-to-Peer]
+    N1<-->N2
+    N2<-->N3
+    N3<-->N1
+  end
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Tipos de red))
+    Por alcance
+      PAN
+      LAN
+      MAN
+      WAN
+    Por arquitectura
+      Cliente-Servidor
+      P2P
+    Por medio
+      Cableada
+      Inalámbrica
+</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Clasificación por medio de transmisión</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Cableada:</b> par trenzado (RJ45) y fibra óptica. Máxima estabilidad, velocidad y seguridad; requiere instalación de cableado estructurado.</li><li><b>Inalámbrica:</b> Wi-Fi, Bluetooth, 4G/5G, satélite, microondas. Aporta movilidad pero es más vulnerable a interferencias y seguridad.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Clasificación por ámbito de acceso</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Intranet:</b> red privada interna de una organización (web corporativa, aplicaciones internas).</li><li><b>Extranet:</b> extiende acceso controlado de la intranet a socios, proveedores o clientes externos (ej. portal de pedidos).</li><li><b>Internet:</b> la red global pública que interconecta casi todas las redes anteriores.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">5. Red conmutada frente a red de difusión</h3><p class="text-slate-700 leading-relaxed mb-3">Según el mecanismo de entrega: una <b>red conmutada</b> establece un camino (switch, circuito) para cada comunicación; una <b>red de difusión</b> envía a todos los nodos (hub, medio compartido). El switch moderno convierte la LAN en conmutada, eliminando los dominios de colisión.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Caso práctico: elegir el tipo de red</h3><p class="text-slate-700 leading-relaxed mb-3">Un centro educativo quiere conectar 300 equipos en 10 aulas, una biblioteca y administración. Solución típica: una <b>LAN cableada</b> por aula (switch por aula) conectada a un <b>router central</b> que da salida WAN a Internet; una <b>WLAN</b> para dispositivos móviles del profesorado; y, si hay varios edificios, una <b>MAN</b> de fibra entre ellos. Los equipos del alumno usan el modelo cliente-servidor (servidor de archivos y directorio).</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Clasificar una red por alcance.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Cuenta los equipos en el aula: todos en el mismo edificio → es una <b>LAN</b>.</li><li>Si la conexión llega a otro centro del instituto → <b>MAN</b> (área metropolitana).</li><li>Si llega a otra ciudad/país vía proveedor → <b>WAN</b>.</li><li>Anota el <b>medio</b>: ¿cable de cobre, fibra u ondas?» para justificar la clasificación.</li></ol>
+<pre class="mermaid">
+graph LR
+  LAN[Aula] --> MAN[Instituto]
+  MAN --> WAN[Internet]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno clasifica la red del centro y justifica LAN/MAN/WAN con el alcance real.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"Tipo de red" responde a "¿para qué y dónde?".</b> No es una etiqueta decorativa: PAN, LAN, MAN, WAN existen porque cambian el medio, el coste y los protocolos. Elegir el tipo es elegir la tecnología.</li><li><b>Alcance, medio y arquitectura son ejes distintos.</b> Una LAN puede ser cableada o Wi-Fi (medio); puede ser cliente-servidor o P2P (arquitectura). Por eso un mismo edificio se puede describir de varias formas según el eje que miremos.</li><li><b>Conmutada vs difusión explica el rendimiento.</b> El hub (difusión) hace que todos oigan todo y colisionen; el switch (conmutada) entrega solo al destinatario. Por eso el switch mató al hub.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>PAN, LAN, MAN, WAN como escala.</b> PAN (personal, &lt;10 m), LAN (edificio), MAN (ciudad, p. ej. la red de un ayuntamiento o campus), WAN (país/continente, Internet). Cada salto de escala cambia el medio: de Bluetooth/USB (PAN) a Ethernet/fibra (LAN) a enlaces de operador (WAN).</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Intranet/Extranet/Internet según quién entra.</b> Intranet es la red interna privada; extranet abre una porción a externos concretos (proveedores); Internet es la red de redes pública. La frontera es el control de acceso, no la tecnología.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Cliente-servidor domina en organizaciones.</b> Centraliza datos y seguridad (el servidor manda); P2P brilla para resiliencia y redes pequeñas sin infraestructura, pero complica la gestión y el cumplimiento.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Conmutada elimina dominios de colisión.</b> Con hub (medio compartido) dos equipos que hablaban a la vez colisionaban y perdían el paquete. El switch aprende las MAC de cada puerto y entrega en unicast, así cada enlace es un dominio de colisión propio y se aprovecha mejor el ancho de banda.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso de diseño real.</b> El ejemplo del centro (LAN por aula + router WAN + WLAN + MAN de fibra) muestra cómo se combinan los tipos: la red "es" LAN localmente y WAN para salir a Internet; la arquitectura es cliente-servidor con servidor de archivos/directorio.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>WLAN no es "otro tipo" opuesto a LAN.</b> Es la LAN inalámbrica; ambas pueden coexistir en el mismo edificio.</li><li><b>MAN no es obligatoria siempre.</b> Solo cuando hay distancia de ciudad o varios edificios; un aula suele ser solo LAN+WAN.</li><li><b>Intranet ≠ Internet.</b> Intranet es privada; con acceso a Internet se navega fuera. No son lo mismo.</li><li><b>Switch (conmutada) ≠ Hub (difusión).</b> El hub es obsoleto por colisiones; el switch entrega en destino.</li><li><b>PAN suele ser Bluetooth/Zigbee, no Wi-Fi.</b> Wi-Fi es LAN; PAN es corto alcance personal.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) ¿qué es una red? → (2) tipos por alcance (PAN/LAN/MAN/WAN) → (3) por medio (cableada/inalámbrica) → (4) por arquitectura (cliente-servidor/P2P) → (5) por acceso (intranet/extranet/Internet) → (6) conmutada vs difusión.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra1_05.html">Características de las redes</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra1_07.html">Componentes de una red informática</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra1_08.html">Topologías de red</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra1_e.html">Criterio RA1-e: tipos de redes</a></li></ul>
+      <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Red_de_computadoras" target="_blank" rel="noopener">Wikipedia — Red de computadoras</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Red_de_%C3%A1rea_local" target="_blank" rel="noopener">Wikipedia — Red de área local (LAN)</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=_JNPvSxG6oM" target="_blank" rel="noopener">Conceptos básicos de redes en 15 minutos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=Gky8-OVYmT4" target="_blank" rel="noopener">Diferencias entre HUB, SWITCH y ROUTER</a></li>
+    </ul>
+  </section>
+
+</main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

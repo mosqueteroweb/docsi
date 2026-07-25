@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requisitos de seguridad | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra6.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA6 · Contenido 03</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Requisitos de seguridad | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA6</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Requisitos de seguridad del sistema y de los datos</h2><p class="text-slate-700 leading-relaxed mb-3">Proteger el sistema y los datos se apoya en la tríada <b>CID</b>: Confidencialidad, Integridad y Disponibilidad.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Confidencialidad</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li>Cifrado de datos en reposo (BitLocker, LUKS) y en tránsito (TLS, VPN).</li><li>Control de acceso y autenticación fuerte (MFA).</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Integridad</h3><p class="text-slate-700 leading-relaxed mb-3">Los datos no deben alterarse sin autorización: hashes, firmas digitales y permisos de escritura controlados.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Disponibilidad</h3><p class="text-slate-700 leading-relaxed mb-3">El servicio debe estar accesible: redundancia, copias de seguridad y planes de continuidad ante desastres.</p><pre class="mermaid">
+graph TD
+  C[Confidencialidad] --> CID[CID]
+  I[Integridad] --> CID
+  D[Disponibilidad] --> CID
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Seguridad))
+    CID
+      Confidencialidad
+      Integridad
+      Disponibilidad
+</pre><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Principio</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Medida</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Confidencialidad</td><td class="px-4 py-2 border border-slate-200 align-top">Cifrado, MFA</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Integridad</td><td class="px-4 py-2 border border-slate-200 align-top">Hash, firmas</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Disponibilidad</td><td class="px-4 py-2 border border-slate-200 align-top">Copias, redundancia</td></tr></tbody></table>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Definir requisitos de seguridad.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Identifica datos sensibles (notas) que requieren cifrado.</li><li>Define política: copias diarias + acceso solo a personal autorizado.</li><li>Aplica <b>principio de mínimo privilegio</b>: cada usuario solo lo que necesita.</li><li>Explica por qué la seguridad es un proceso, no un producto.</li></ol>
+<pre class="mermaid">
+graph TD
+  DAT[Datos] --> POL[Política mínimo priv.]
+  POL --> CIF[Cifrado+Copia]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno redacta 3 requisitos de seguridad para una carpeta de notas.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>CID = "las tres patas de la silla".</b> Si falta una (confidencialidad, integridad o disponibilidad), la seguridad se cae. No basta con cifrar si el servicio no está disponible.</li>
+<li><b>Confidencialidad = "que nadie lea lo que no debe".</b> Cifrado y acceso restringido. Si cualquiera puede leerlo, falla esta pata.</li>
+<li><b>Integridad = "que nadie lo cambie a escondidas".</b> El dato llega igual a como salió. El hash lo demuestra.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Confidencialidad.</b> BitLocker (Windows) o LUKS (Linux) cifran el disco "en reposo"; TLS/VPN lo hacen "en tránsito". La MFA añade que no basta la contraseña robada.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Integridad.</b> Un hash (SHA-256) es la "huella" del archivo; si cambia un bit, el hash cambia. La firma digital prueba además quién lo firmó. Sin integridad, no sabes si el dato es genuino.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Disponibilidad.</b> Redundancia (discos en RAID, dos ISP), copias de seguridad y un plan de continuidad. Lo mejor es no tener que restaurar nunca porque el servicio siguió vivo.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>El compromiso CID.</b> Cifrar mucho puede costar rendimiento (disponibilidad); dar acceso fácil puede dañar la confidencialidad. La seguridad equilibra las tres según el caso.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Cumplimiento.</b> RGPD y normativas obligan a tratar datos personales con CID; un fallo de integridad o confidencialidad es una brecha que hay que notificar.</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"Cifrarlo todo" no da disponibilidad.</b> Si pierdes la clave de BitLocker/LUKS, los datos se vuelven irrecuperables. CID es equilibrio, no solo confidencialidad.</li>
+<li><b>Hash no es cifrado.</b> El hash demuestra que el archivo no cambió, pero no lo oculta; cualquiera puede leerlo, solo verifica integridad. Confundirlos es frecuente.</li>
+<li><b>MFA no es "otra contraseña".</b> Es un factor distinto (algo que tienes, como el móvil); si es solo otro texto, no aporta lo mismo. El segundo factor debe ser independiente.</li>
+<li><b>Copias de seguridad sin probar = ilusión.</b> Tener el backup no sirve si al restaurar falla. La disponibilidad real se ensaya, no se asume.</li>
+<li><b>Disponibilidad no es "que esté encendido".</b> Un servicio accesible solo desde dentro de la oficina, cuando todos trabajan remoto, no está disponible para quien lo necesita.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) CID = tres patas → (2) confidencialidad (cifrado en reposo/tránsito, MFA) → (3) integridad (hash, firma) → (4) disponibilidad (RAID, copias, continuidad) → (5) compromiso CID y RGPD → (6) errores (hash≠cifrado, MFA mal entendida).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra6_08.html">Cortafuegos</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra6_e.html">Criterio RA6-e: proteger</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Servidor_de_archivos" target="_blank" rel="noopener">Wikipedia — Servidor de archivos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Cortafuegos_(inform%C3%A1tica)" target="_blank" rel="noopener">Wikipedia — Cortafuegos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=Gky8-OVYmT4" target="_blank" rel="noopener">Diferencias entre HUB, SWITCH y ROUTER</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=_JNPvSxG6oM" target="_blank" rel="noopener">Conceptos básicos de redes en 15 minutos</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

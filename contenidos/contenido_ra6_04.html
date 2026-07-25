@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servidores de ficheros | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra6.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA6 · Contenido 04</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Servidores de ficheros | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA6</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Servidores de ficheros</h2><p class="text-slate-700 leading-relaxed mb-3">Un servidor de ficheros centraliza el almacenamiento y lo ofrece a la red mediante protocolos de compartición.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Protocolos</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>SMB/CIFS:</b> nativo de Windows, también en Linux (Samba).</li><li><b>NFS:</b> para entornos Unix/Linux.</li><li><b>FTP/SFTP:</b> transferencia (SFTP añade cifrado SSH).</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Configuración</h3><p class="text-slate-700 leading-relaxed mb-3">Se crean carpetas compartidas, se definen permisos y cuotas, y se publican en el directorio de red (ej. Active Directory).</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Cuotas y auditoría</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li>Limitar espacio por usuario (cuotas).</li><li>Registrar accesos para detectar usos indebidos.</li></ul><pre class="mermaid">
+graph TD
+  C[Cliente] -->|SMB/NFS| S[Servidor ficheros]
+  S --> DIS[Disco central]
+  S --> CUOT[Cuotas]
+  S --> AUD[Auditoría]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Servidor fich))
+    SMB
+    NFS
+    SFTP
+    Cuotas
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Configurar un servidor de ficheros.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Instala Samba/Windows File Server y crea un recurso compartido.</li><li>Mapea la unidad en clientes (letra Z: → &#92;&#92;servidor&#92;datos).</li><li>Aplica cuotas para limitar el espacio por usuario.</li><li>Verifica acceso concurrente desde 2 clientes.</li></ol>
+<pre class="mermaid">
+graph LR
+  SRV[Servidor ficheros] --> SHARE[Recurso]
+  CLI1[Cliente] --> SHARE
+  CLI2[Cliente] --> SHARE
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno monta un servidor de ficheros y mapea la unidad en 2 clientes.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>El servidor de ficheros es "el armario común del colegio".</b> En vez de que cada uno guarde en su cajón, hay uno central al que todos llegan por la red.</li>
+<li><b>SMB/NFS/SFTP = "distintas formas de pedir el archivo".</b> El mismo disco se ofrece por varios protocolos; el cliente usa el que entiende.</li>
+<li><b>Cuota = "tu parte del armario".</b> Un límite de espacio para que nadie llene el disco de todos con su música.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Protocolos de acceso.</b> SMB (Windows, y Linux vía Samba) para compartición de carpetas; NFS entre Linux/Unix; SFTP para subir/bajar con cifrado SSH. Elegir según el cliente.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Carpetas compartidas.</b> Se definen sobre el almacenamiento central y se publican (en AD, como recurso de red); los clientes las montan o las ven en "Red".</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Permisos y cuotas.</b> Se combina la ACL/cuota por usuario con los permisos de la carpeta. La cuota evita que un usuario consuma todo el volumen; se avisa antes de llenar.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Auditoría.</b> Registrar quién abrió/modificó qué sirve para detectar usos indebidos y para recuperar tras un borrado. Sin log, no hay traza.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Respaldo del propio servidor.</b> El servidor central es un punto crítico: sus discos se copian a parte (y las cuotas no sustituyen la copia). Si falla el disco, la "nube local" desaparece.</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"El servidor está lleno" por una sola cuenta.</b> Sin cuotas, un usuario puede ocupar todo el volumen y dejar a los demás sin espacio. La cuota es prevención, no castigo.</li>
+<li><b>SFTP no es "FTP con S".</b> SFTP va sobre SSH (cifrado y mismo puerto 22); FTPS es FTP con TLS. Confundirlos cambia la configuración del servidor.</li>
+<li><b>El servidor central es un punto único de fallo.</b> Si su disco muere y no hay copia, "todos" pierden sus archivos. La centralización exige respaldo propio.</li>
+<li><b>Publicar en AD no es "dar permisos".</b> Publicar solo hace visible el recurso; los permisos se siguen configurando aparte. Ver el recurso no es acceder.</li>
+<li><b>Auditoría sin revisar no sirve.</b> Generar logs que nadie mira no detecta nada; la auditoría es útil si se consulta ante un incidente.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) servidor = armario común → (2) protocolos (SMB/NFS/SFTP) → (3) carpetas compartidas y publicación → (4) permisos + cuotas → (5) auditoría y respaldo del servidor → (6) errores (cuota, SFTP vs FTPS, punto único de fallo).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra6_01.html">Permisos</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra6_02.html">Compartición</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra6_c.html">Criterio RA6-c: servidores</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Servidor_de_archivos" target="_blank" rel="noopener">Wikipedia — Servidor de archivos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Cortafuegos_(inform%C3%A1tica)" target="_blank" rel="noopener">Wikipedia — Cortafuegos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=Gky8-OVYmT4" target="_blank" rel="noopener">Diferencias entre HUB, SWITCH y ROUTER</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=_JNPvSxG6oM" target="_blank" rel="noopener">Conceptos básicos de redes en 15 minutos</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

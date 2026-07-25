@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utilidades de gestión de información | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra3.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA3 · Contenido 08</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Utilidades de gestión de información | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA3</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Compresión, sincronización e inventario</h2><p class="text-slate-700 leading-relaxed mb-3">Además de crear y mover archivos, un técnico debe <b>comprimir</b> para ahorrar espacio, <b>sincronizar</b> para mantener copias coherentes y realizar <b>inventario</b> del hardware y software del equipo.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Compresión de archivos</h3><p class="text-slate-700 leading-relaxed mb-3">Las utilidades más usadas son <code>tar</code> (empaquetado) combinado con <code>gzip</code>/<code>xz</code>, y <code>zip</code>/<code>unzip</code> para formato universal.</p><pre class="code"># Empaquetar y comprimir un directorio
+tar -czvf docs.tar.gz /home/usuario/docs
+# Extraer
+tar -xzvf docs.tar.gz
+# Comprimir en zip
+zip -r backup.zip carpeta/</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Sincronización</h3><p class="text-slate-700 leading-relaxed mb-3">Además de <code>rsync</code> (visto en copias de seguridad), herramientas como <code>unison</code> o clientes de nube sincronizan bidireccionalmente. La sincronización mantiene varios equipos con los mismos datos.</p><pre class="code"># Sincronización con rsync hacia un servidor
+rsync -avh --delete /local/ usuario@servidor:/remoto/
+# Sincronización de hora del sistema
+sudo ntpdate pool.ntp.org</pre><pre class="mermaid">
+flowchart TD
+    A[Datos] --> B{Operación}
+    B -->|Ahorrar espacio| C[Compresión: tar/gzip/zip]
+    B -->|Coherencia| D[Sincronización: rsync]
+    B -->|Inventario| E[Software: dpkg/winget]
+    C --> F[Archivo .tar.gz/.zip]
+    D --> G[Copia espejo actualizada]
+    E --> H[Listado de activos]
+</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Inventario del sistema</h3><p class="text-slate-700 leading-relaxed mb-3">El <b>inventario</b> registra el hardware (CPU, RAM, discos) y el software instalado. En Linux, <code>lshw</code>, <code>lscpu</code> o <code>inxi</code> aportan esta información; en Windows, <code>msinfo32</code> o <code>systeminfo</code>.</p><pre class="code"># Resumen de hardware en Linux
+sudo lshw -short
+# Información de sistema en Windows
+systeminfo | findstr /C:"Nombre del sistema"</pre><pre class="mermaid">
+mindmap
+  root((Gestión info))
+    Compresión
+      tar gzip
+      zip unzip
+      Ahorro espacio
+    Sincronización
+      rsync
+      Clientes nube
+      Coherencia
+    Inventario
+      lshw lscpu
+      msinfo32
+      dpkg winget
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Comprimir y sincronizar archivos.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Comprime una carpeta: Windows ZIP; Linux <code>tar -czf backup.tar.gz /ruta</code>.</li><li>Verifica que el archivo comprimido ocupa menos.</li><li>Sincroniza dos carpetas con <code>rsync</code> (solo copia lo que cambió).</li><li>Explica para qué sirve la <b>compresión</b> (ahorro de espacio) y la <b>sincronización</b> (respaldos).</li></ol>
+<pre class="mermaid">
+graph LR
+  CARP[Carpeta] --> ZIP[Comprimir]
+  CARP --> RSYNC[Sincronizar]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno comprime y sincroniza una carpeta, comparando tamaños antes/después.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Comprimir = "meter la ropa en la maleta".</b> Ocupa menos; ideal para enviar o guardar. Pero hay que descomprimir para usar, así que no es el formato de trabajo.</li>
+<li><b>Sincronizar ≠ hacer una copia única.</b> La sincro mantione dos lados iguales y actualizados; la copia es un "foto" en un momento. Distinto propósito.</li>
+<li><b>Inventario = "el carnet del equipo".</b> Saber qué hardware y software hay sin abrir la tapa ni instalar nada. Imprescindible para soporte y auditoría.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>tar + gzip/xz = empaquetado + compresión.</b> <code>tar</code> solo junta varios archivos en uno; <code>gzip</code>/<code>xz</code> lo comprimen. Por eso se usan juntos (<code>tar -czvf</code>). <code>zip</code> hace ambas cosas en un paso y es universal (Windows lo abre sin más).</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>rsync para sincronizar.</b> Con <code>--delete</code> hace el destino espejo del origen (borra lo que sobra). Útil para mantener copias espejo o varios equipos coherentes. Ojo: <code>--delete</code> borra en destino lo que no esté en origen.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hora del sistema (ntpdate).</b> Si los relojes de los equipos no coinciden, los logs no cuadran y las copias pueden fallar. <code>ntpdate</code> o <code>timedatectl</code> sincronizan con servidores de hora. Parece menor y es clave en red.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Inventario en Linux y Windows.</b> <code>lshw</code>/<code>lscpu</code>/<code>inxi</code> dan hardware; <code>systeminfo</code>/<code>msinfo32</code> en Windows. Combinado con la identificación de software (dpkg/winget) tienes el panorama completo.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Compresión y cifrado van aparte.</b> Comprimir ahorra espacio; para que nadie lea el archivo hay que cifrarlo (gpg, o dentro de un contenedor BitLocker). No confundir "más pequeño" con "más seguro".</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>tar solo no comprime.</b> <code>tar -cvf</code> junta pero no reduce; hace falta <code>-z</code> (gzip) o <code>-J</code> (xz). Error típico creer que .tar ya está comprimido.</li>
+<li><b>rsync --delete borra en destino.</b> Es espejo: lo que no esté en origen se elimina en destino. Peligroso si te equivocas de ruta.</li>
+<li><b>Sincronizar no es "hacer copia de seguridad".</b> Si borras en origen, la sincro lo borra en destino también. Para backup hace falta una copia que no siga los borrados.</li>
+<li><b>La hora desincronizada rompe logs.</b> Si los equipos no tienen la misma hora, depurar incidencias es un caos. ntpd/timedatectl importa.</li>
+<li><b>Comprimido ≠ cifrado.</b> Menos pesao no es más privado; para confidencialidad hay que cifrar aparte.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) compresión: tar vs zip, y por qué tar+gzip → (2) sincronización con rsync (y el peligro de --delete) → (3) hora del sistema (ntp) → (4) inventario hardware (lshw/systeminfo) + software → (5) compresión vs cifrado no son lo mismo → (6) cuándo usar cada utilidad.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra3_04.html">Identificación de software</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra3_07.html">Tareas automáticas</a></li><li><a class="text-blue-600 hover:underline" href="../actividades/criterio_ra3_h.html">Criterio RA3-h: utilidades de gestión de información</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Compresi%C3%B3n_de_datos" target="_blank" rel="noopener">Wikipedia — Compresión de datos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Rsync" target="_blank" rel="noopener">Wikipedia — Rsync</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Almacenamiento_en_la_nube" target="_blank" rel="noopener">Wikipedia — Almacenamiento en la nube</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Sistema_operativo" target="_blank" rel="noopener">Wikipedia — Sistema operativo</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

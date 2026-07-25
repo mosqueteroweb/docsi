@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación de la instalación | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra2.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA2 · Contenido 13</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Documentación de la instalación | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA2</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Documentación de la instalación y de las incidencias detectadas</h2><p class="text-slate-700 leading-relaxed mb-3">Documentar es parte del trabajo profesional: permite reproducir instalaciones, auditar y resolver incidencias más rápido.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Qué documentar</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Inventario:</b> hardware, SO, versiones, licencias.</li><li><b>Procedimiento:</b> pasos de instalación y configuración.</li><li><b>Incidencias:</b> descripción, causa, solución y tiempo.</li><li><b>Esquema de red/cuentas:</b> topología y permisos.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Formato y herramientas</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li>Wikis técnicas (DokuWiki, Confluence).</li><li>Markdown / HTML (este material).</li><li>Capturas y logs anexos.</li><li>Gestión de incidencias (ticketing).</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Ejemplo de acta de instalación</h3><p class="text-slate-700 leading-relaxed mb-3">Equipo: PC-Aula-07. SO: Ubuntu 22.04 LTS. RAM 8 GB. Disco 256 GB SSD. Particionado GPT/UEFI. Usuario 'alumno' con contraseña temporal. Incidente: Wi-Fi no conectaba → solución: instalar firmware de la tarjeta (apt install linux-firmware). Duración: 25 min.</p><pre class="mermaid">
+flowchart TD
+  A[Instalación] --> B[Registro: HW/SO/licencia]
+  B --> C[Incidencias + solución]
+  C --> D[Acta en wiki/markdown]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Documentación))
+    Inventario
+    Procedimiento
+    Incidencias
+    Acta
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Documentar una instalación.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Anota <b>fecha, equipo y SO</b> instalado con su versión.</li><li>Registra <b>incidencias</b> (p. ej. 'falta controlador de red') y su solución.</li><li>Incluye <b>capturas</b> de los pasos clave.</li><li>Entrega un <b>informe</b> repetible para el siguiente equipo.</li></ol>
+<pre class="mermaid">
+graph TD
+  DOC[Documentar: fecha/SO] --> INC[Incidencias]
+  INC --> CAP[Capturas]
+  CAP --> INF[Informe]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno entrega un informe de instalación con incidencias y capturas.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Documentar = "dejar el mapa para el siguiente".</b> Lo que no se escribe, se olvida; la memoria del técnico no escala a un aula entera.</li>
+<li><b>El acta no es "papeleo", es reproducibilidad.</b> Si anotas qué hiciste, otro (o tú en 3 meses) repite lo mismo sin adivinar. Ahorra horas.</li>
+<li><b>Incidencia bien contada = problema medio resuelto.</b> Descripción + causa + solución + tiempo permite ver patrones y no tropezar dos veces en la misma piedra.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Qué documentar sí o sí.</b> Inventario (HW, SO, versiones, licencias), procedimiento (pasos y configuración), incidencias (qué falló, por qué, cómo se arregló, cuánto tardó) y esquema de red/cuentas. Sin eso, auditar o reproducir es imposible.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Formato y herramientas.</b> Wikis técnicas (DokuWiki, Confluence) centralizan; Markdown/HTML son portables y versionables. Las capturas y logs anexos son prueba. El ticketing (incidencias) da seguimiento y estadísticas.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Acta de instalación como plantilla.</b> Equipo, SO, RAM, disco, esquema de particiones, usuario creado, incidentes y solución. Llenarla en cada puesto da visibilidad de todo el parque.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Documentar en tiempo real, no al final.</b> Anotar mientras se hace es más fiable que reconstruirlo de memoria. Un error típico es dejarlo para el final y omitir detalles clave.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>La documentación alimenta la mejora.</b> Al revisar incidencias repetidas (ej. wifi que falla en varios equipos), se detecta un fallo de drivers y se corrige en la imagen maestra, evitando repetir el trabajo.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Documentar no es "perder el tiempo".</b> Ahorra mucho más al repetir o auditar. Lo contrario (no documentar) es el error caro.</li>
+<li><b>El acta no es "el informe final".</b> Se va llenando durante el trabajo; si esperas al final, olvidas detalles.</li>
+<li><b>Markdown no es "menos profesional" que un Word.</b> Es portátil, versionable y base de wikis; en IT se prefiere por eso.</li>
+<li><b>"Solucionado" sin causa no sirve.</b> Si no anotas el por qué, la incidencia volverá. La causa es la parte útil.</li>
+<li><b>Los logs/capturas no son "opcionales".</b> Son la prueba de lo ocurrido; sin ellos, el acta es testimonio débil.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) por qué documentar (reproducibilidad) → (2) qué anotar (inventario, procedimiento, incidencias, red) → (3) formatos (wiki, Markdown, ticketing) → (4) acta como plantilla rellenable → (5) documentar en tiempo real → (6) usar la doc para mejora continua.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra2_06.html">Procedimiento de instalación</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra2_12.html">Actualización/recuperación</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra2_i.html">Criterio RA2-i: documentar procesos</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Sistema_operativo" target="_blank" rel="noopener">Wikipedia — Sistema operativo</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Markdown" target="_blank" rel="noopener">Wikipedia — Markdown</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=5oAexbSPygE" target="_blank" rel="noopener">Buenas prácticas y seguridad en el PC</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=n2iodl7eASs" target="_blank" rel="noopener">Evolución de placas base de PC</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

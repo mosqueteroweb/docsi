@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servidores de impresión | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra6.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA6 · Contenido 05</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Servidores de impresión | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA6</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Servidores de impresión</h2><p class="text-slate-700 leading-relaxed mb-3">La impresión en red se gestiona mediante un servidor de impresión que cola los trabajos y los distribuye a las impresoras.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Cola de impresión</h3><p class="text-slate-700 leading-relaxed mb-3">El cliente envía el trabajo al servidor, que lo encola y lo envía a la impresora física según disponibilidad.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. CUPS (Linux) y Print Server (Windows)</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>CUPS:</b> sistema de impresión común en Linux, accesible vía web (localhost:631).</li><li><b>Windows Print Server:</b> comparte impresoras a clientes del dominio.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Permisos de impresión</h3><p class="text-slate-700 leading-relaxed mb-3">Se pueden restringir usuarios, establecer cuotas de páginas e imprimir con marca de agua para auditoría.</p><pre class="mermaid">
+graph TD
+  C[Cliente] -->|trabajo| S[Servidor impresión]
+  S --> COLA[Cola]
+  COLA --> I[Impresora física]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Impresión))
+    Cola
+    CUPS
+    Print Server
+    Cuotas
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Configurar un servidor de impresión.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Instala la impresora en el servidor y compártela en red.</li><li>En clientes, añade la impresora de red por su cola.</li><li>Define <b>colas</b> y prioridad (trabajos del profe antes).</li><li>Envía un trabajo desde un cliente y verifica que imprime.</li></ol>
+<pre class="mermaid">
+graph LR
+  CLI[Cliente] --> COLA[Cola servidor]
+  COLA --> IMP[Impresora]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno comparte una impresora y manda un trabajo desde un cliente.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>El servidor de impresión es "el conserje de la fotocopiadora".</b> Recibe los trabajos de todos, los pone en fila y los manda a la impresora cuando está libre.</li>
+<li><b>Cola = "la fila del supermercado".</b> Los trabajos esperan su turno; si la impresora está ocupada, el siguiente se queda en espera.</li>
+<li><b>CUPS / Print Server = "el software que entiende la impresora".</b> Traduce el documento al lenguaje de la máquina (PCL/PostScript).</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Cola de impresión.</b> El cliente manda el trabajo al servidor (no directo a la impresora); el servidor lo encola y lo envía según disponibilidad. Permite compartir una impresora entre muchos.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>CUPS en Linux.</b> Es el sistema estándar; se gestiona por web en <code>localhost:631</code> y comparte impresoras por IPP. Los drivers se instalan en el servidor, no en cada cliente.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Print Server en Windows.</b> El servidor tiene el driver y publica la cola; los clientes del dominio la usan sin instalar nada. Centraliza la gestión de las impresoras.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Permisos y cuotas.</b> Se limita qué usuarios imprimen, cuántas páginas (cuota) y se puede marcar agua para saber de quién es cada folio. Útil para controlar costes.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Sin servidor, impresión local.</b> Si cada PC habla directo a su impresora por USB, no hay cola ni control; el servidor aporta orden y auditoría.</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"No imprime" suele ser trabajo atascado en cola.</b> Un documento con error bloquea los siguientes; hay que vaciar la cola o reiniciar el spooler. No siempre es fallo de la impresora.</li>
+<li><b>El driver va en el servidor, no en cada PC.</b> En un Print Server bien hecho, el cliente usa el driver del servidor; instalarlo en cada máquina es redundante y fuente de fallos.</li>
+<li><b>CUPS no es "una impresora".</b> Es el sistema que gestiona colas y drivers; confundirlo con el hardware lleva a buscar el fallo en la máquina cuando está en el software.</li>
+<li><b>Cuota de páginas no limita tamaño.</b> Cuenta hojas, no MB; un PDF de 200 páginas cuenta 200 aunque pese poco. Ajustar la política según lo que se quiera controlar.</li>
+<li><b>Imprimir directo por USB = sin control.</b> Útil para un PC suelto, pero se pierde la cola compartida y la auditoría. No es "lo mismo" que el servidor de impresión.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) servidor = conserje → (2) cola (fila de trabajos) → (3) CUPS (Linux, localhost:631) y Print Server (Windows) → (4) permisos y cuotas → (5) local vs servidor → (6) errores (cola atascada, driver en cliente).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra6_04.html">Servidores ficheros</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra6_c.html">Criterio RA6-c: servidores</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Servidor_de_archivos" target="_blank" rel="noopener">Wikipedia — Servidor de archivos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Cortafuegos_(inform%C3%A1tica)" target="_blank" rel="noopener">Wikipedia — Cortafuegos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=Gky8-OVYmT4" target="_blank" rel="noopener">Diferencias entre HUB, SWITCH y ROUTER</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=_JNPvSxG6oM" target="_blank" rel="noopener">Conceptos básicos de redes en 15 minutos</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

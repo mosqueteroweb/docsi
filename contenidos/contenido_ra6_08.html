@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cortafuegos | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra6.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA6 · Contenido 08</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Cortafuegos | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA6</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Cortafuegos</h2><p class="text-slate-700 leading-relaxed mb-3">El cortafuegos filtra el tráfico entre redes según reglas, protegiendo los recursos internos del exterior.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Tipos</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>De red (perímetro):</b> appliance o software en el router (p.ej. pfSense, firewall de operador).</li><li><b>De host:</b> firewall del propio SO (ufw, Windows Defender Firewall).</li><li><b>De aplicación (WAF):</b> protege servicios web.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Reglas y zonas</h3><p class="text-slate-700 leading-relaxed mb-3">Se definen reglas<b>permit/DENY</b> por origen/destino/puerto. La <b>DMZ</b> aísla servicios públicos del resto de la red interna.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Ejemplo UFW (Linux)</h3><p class="text-slate-700 leading-relaxed mb-3"><code>sudo ufw allow 22</code> (SSH), <code>sudo ufw allow 80,443</code> (web), <code>sudo ufw enable</code>.</p><pre class="mermaid">
+graph TD
+  EXT[Internet] --> FW[Cortafuegos]
+  FW -->|allow 80/443| DMZ[Servidor web]
+  FW -->|deny| INT[Red interna]
+  FW -->|allow SSH admin| ADMIN[Admin]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Firewall))
+    Perímetro
+    Host
+    DMZ
+    Reglas
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Configurar un cortafuegos.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Abre el firewall y crea una regla que permita el puerto 443 (HTTPS) entrante.</li><li>Bloquea por defecto el resto (política deny).</li><li>En Linux: <code>ufw allow 443/tcp</code>.</li><li>Verifica que la web es accesible pero los puertos cerrados no.</li></ol>
+<pre class="mermaid">
+graph TD
+  EXT[Externo] --> FW[Cortafuegos]
+  FW -->|443 allow| WEB[Web]
+  FW -->|deny| OTR[Otros]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno crea una regla de firewall que permite 443 y bloquea el resto.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>El cortafuegos es "el portero del edificio".</b> Mira cada paquete que entra/sale y decide si pasa según la lista de reglas. Sin portero, cualquiera entra.</li>
+<li><b>Regla = "una instrucción del portero".</b> "Deja pasar al puerto 443, bloquea el 3389". Se leen en orden; la primera que encaja decide.</li>
+<li><b>DMZ = "la sala de visitas acristalada".</b> El servidor público (web) se pone donde los clientes entran, pero aislado del resto de la casa.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Tipos de firewall.</b> De red (perímetro, en el router o appliance como pfSense) filtra todo el edificio; de host (ufw, Windows Defender) protege una máquina; WAF protege la app web concreta.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Reglas permit/deny.</b> Se definen por origen, destino y puerto; suelen aplicarse en orden y la primera coincidente gana. Una regla mal ordenada abre o cierra lo que no debiera.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>DMZ.</b> Zona desmilitarizada donde vive el servidor público; si lo comprometen, el atacante no tiene acceso directo a la red interna. Aísla el riesgo.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>UFW (Linux).</b> <code>sudo ufw allow 22</code> abre SSH, <code>allow 80,443</code> la web; <code>enable</code> activa. Por defecto suele denegar lo no permitido (política restrictiva).</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Estado de la conexión.</b> Los firewall estado-conexión recuerdan quién empezó; el retorno de una petición tuya entra, pero una entrada "fría" no. Eso distingue respuesta de ataque.</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"No entra la web" suele ser regla que bloquea el 443.</b> Antes de tocar el servidor, mira el firewall; un puerto no abierto deja el servicio invisible desde fuera.</li>
+<li><b>Orden de reglas importa.</b> Una "allow" general antes que una "deny" específica deja pasar lo que querías bloquear. La primera coincidente gana.</li>
+<li><b>DMZ no es "poner el servidor en la red interna".</b> Es una zona aparte; meter el servidor público dentro de la LAN expone todo si lo hackean. El aislamiento es la clave.</li>
+<li><b>Firewall de host no sustituye al de red.</b> ufw protege esa máquina, pero el perímetro sigue necesitando el suyo. Son capas, no una sola.</li>
+<li><b>"Lo permití pero no va" puede ser el firewall del otro lado.</b> El tráfico cruza varios; el de destino también puede bloquear. Revisar ambos extremos.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) firewall = portero → (2) tipos (red/host/WAF) → (3) reglas (orden, primera gana) → (4) DMZ (aislar público) → (5) UFW y estado de conexión → (6) errores (orden, DMZ dentro de LAN, ambos extremos).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra6_07.html">Conexión remota</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra5_03.html">Gestión de puertos</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra6_f.html">Criterio RA6-f: utilidades seguridad</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Servidor_de_archivos" target="_blank" rel="noopener">Wikipedia — Servidor de archivos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Cortafuegos_(inform%C3%A1tica)" target="_blank" rel="noopener">Wikipedia — Cortafuegos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=Gky8-OVYmT4" target="_blank" rel="noopener">Diferencias entre HUB, SWITCH y ROUTER</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=_JNPvSxG6oM" target="_blank" rel="noopener">Conceptos básicos de redes en 15 minutos</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

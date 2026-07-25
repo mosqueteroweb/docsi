@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalación de aplicaciones | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra2.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA2 · Contenido 11</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Instalación de aplicaciones | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA2</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Instalación/desinstalación de aplicaciones. Requisitos, versiones y licencias.</h2><p class="text-slate-700 leading-relaxed mb-3">Además del SO, hay que instalar el software de usuario. Cada SO tiene su método y gestor de paquetes.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. En Linux</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Gestor de paquetes:</b> apt (Debian/Ubuntu), dnf (Fedora), pacman (Arch).</li><li>Comando: <code>sudo apt install nombre</code>. Desinstalar: <code>apt remove</code>.</li><li><b>Flatpak/Snap:</b> paquetes universales entre distros.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. En Windows</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Instalador (MSI/EXE):</b> asistente gráfico; o <b>Winget</b> por línea de comandos.</li><li>Desinstalar vía Configuración o <code>winget uninstall</code>.</li><li>Cuidado con barras/software no deseado en instaladores de terceros.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Requisitos y licencias de apps</h3><p class="text-slate-700 leading-relaxed mb-3">Toda app tiene requisitos (SO, RAM, dependencias) y licencia (libre GPL, propietaria de pago, freemium). Verificar compatibilidad antes de instalar.</p><pre class="mermaid">
+graph TD
+  U[Usuario] -->|apt install| L[Linux: paquetes]
+  U -->|winget| W[Windows: winget]
+  U -->|EXE| WI[Windows: asistente]
+  L --> R[Repositorio]
+  WI --> WU[Web del fabricante]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Apps))
+    Linux
+      apt/dnf
+    Windows
+      winget/EXE
+    Licencia
+      GPL
+      Pago
+</pre><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">SO</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Instalador</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Desinstalador</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Linux</td><td class="px-4 py-2 border border-slate-200 align-top">apt install</td><td class="px-4 py-2 border border-slate-200 align-top">apt remove</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Windows</td><td class="px-4 py-2 border border-slate-200 align-top">EXE/MSI o winget</td><td class="px-4 py-2 border border-slate-200 align-top">Configuración/winget</td></tr></tbody></table>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Instalar y desinstalar una app.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Abre el gestor de paquetes (Linux: <code>apt install gimp</code>; Windows: asistente).</li><li>Acepta la <b>licencia</b> y elige ruta de instalación.</li><li>Verifica que el acceso directo aparece en el menú.</li><li>Desinstala desde 'Agregar o quitar programas' y confirma que libera espacio.</li></ol>
+<pre class="mermaid">
+graph LR
+  INS[Instalar] --> VER[Verificar acceso]
+  VER --> DES[Desinstalar]
+  DES --> LIB[Libera espacio]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno instala y desinstala una app y entrega captura de ambos estados.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Instalar una app es "añadir una herramienta al cajón".</b> El SO ya está; la app es software de usuario que se suma. El método depende del SO.</li>
+<li><b>Repositorio vs web del fabricante.</b> Linux baja apps de un repositorio central (verificado, con dependencias); Windows suele bajar un .exe de la web. Distinto grado de control y seguridad.</li>
+<li><b>Desinstalar no es "borrar el icono".</b> Hay que quitar los archivos y registros; si no, quedan rastros y archivos sueltos.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Gestor de paquetes en Linux.</b> <code>apt</code> (Debian/Ubuntu), <code>dnf</code> (Fedora), <code>pacman</code> (Arch) resuelven dependencias solos: si LibreOffice necesita una librería, la bajan. Eso evita el "infierno de DLL" de Windows.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Flatpak y Snap.</b> Son formatos universales que empaquetan la app y sus dependencias, funcionando en cualquier distro. Útiles cuando la app no está en el repositorio oficial. A cambio, ocupan más.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Windows: EXE/MSI y Winget.</b> El instalador gráfico (siguiente-siguiente) es cómodo pero propenso a barras (bloatware). Winget es la alternativa por línea de comandos, ideal para automatizar en aulas.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Licencia de la app.</b> Igual que el SO: GPL (libre), pago (clave), freemium. Verificar compatibilidad (¿la app corre en mi SO/versión?) antes de instalar evita desperdicio.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Dependencias y entornos.</b> Una app puede requerir runtime (Java, .NET, Python). Si falta, no arranca. Por eso el gestor de paquetes, al instalar, se encarga de traerlo; en Windows a veces toca instalarlo aparte.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Borrar el acceso directo ≠ desinstalar.</b> El programa sigue en disco. Hay que usar el gestor (apt remove) o "Agregar/Quitar programas" de Windows.</li>
+<li><b>apt no es "la única forma en Linux".</b> También Flatpak/Snap y, en casos, compilar desde código fuente. No reducir a un solo método.</li>
+<li><b>Winget no es "igual que hacer doble clic en el .exe".</b> Es gestor por línea de comandos que ayuda a automatizar; el .exe es el instalador manual.</li>
+<li><b>"Siguiente-siguiente" puede instalar barras.</b> Los instaladores de terceros meten software no deseado si no se desmarca. Ojo en el aula.</li>
+<li><b>Dependencia no resuelta = app no arranca.</b> Si falta el runtime, el error es críptico; hay que identificar qué falta.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) app = software de usuario sobre el SO → (2) Linux: gestor de paquetes (apt/dnf) y dependencias automáticas → (3) Flatpak/Snap universales → (4) Windows: EXE/MSI vs Winget → (5) licencia y compatibilidad → (6) desinstalación correcta y por qué importa.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra2_04.html">Tipos de aplicaciones</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra2_05.html">Licencias</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra2_h.html">Criterio RA2-h: instalar apps</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Aplicaci%C3%B3n_inform%C3%A1tica" target="_blank" rel="noopener">Wikipedia — Aplicación informática</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Software_libre" target="_blank" rel="noopener">Wikipedia — Software libre</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=5oAexbSPygE" target="_blank" rel="noopener">Buenas prácticas y seguridad en el PC</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=1RQ8OmZfk8s" target="_blank" rel="noopener">Placas Madre: todo lo que necesitas saber</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

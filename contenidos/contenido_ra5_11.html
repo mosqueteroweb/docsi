@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redes inalámbricas | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra5.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA5 · Contenido 11</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Redes inalámbricas | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA5</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Redes inalámbricas</h2>
+<p class="text-slate-700 leading-relaxed mb-3">Las redes inalámbricas (WLAN) usan el estándar Wi-Fi (IEEE 802.11). Un punto de acceso (AP) da cobertura; los equipos se asocian por SSID. La seguridad emplea WPA2/WPA3 y cifrado AES.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Estándar 802.11</h3>
+<p class="text-slate-700 leading-relaxed mb-3">Variantes: 802.11a/b/g/n/ac/ax (Wi-Fi 6). Bandas 2.4 GHz (mayor alcance) y 5 GHz (mayor velocidad).</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Adaptadores y AP</h3>
+<p class="text-slate-700 leading-relaxed mb-3">La tarjeta Wi-Fi del equipo se asocia al punto de acceso, que a su vez enlaza con la red cableada.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Seguridad WPA2/WPA3</h3>
+<p class="text-slate-700 leading-relaxed mb-3">WPA2 usa AES-CCMP; WPA3 añade SAE (difícil ataque por diccionario) y mejor confidencialidad.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Buenas prácticas</h3>
+<p class="text-slate-700 leading-relaxed mb-3">SSID oculto opcional, cambio de clave, filtrado MAC y actualización del firmware del AP.</p>
+<table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Estándar</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Banda</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Velocidad</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">802.11n</td><td class="px-4 py-2 border border-slate-200 align-top">2.4/5 GHz</td><td class="px-4 py-2 border border-slate-200 align-top">600 Mbps</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">802.11ac</td><td class="px-4 py-2 border border-slate-200 align-top">5 GHz</td><td class="px-4 py-2 border border-slate-200 align-top">1+ Gbps</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">802.11ax</td><td class="px-4 py-2 border border-slate-200 align-top">2.4/5 GHz</td><td class="px-4 py-2 border border-slate-200 align-top">~10 Gbps</td></tr></tbody></table>
+<pre class="code"># Linux: conectar a Wi-Fi
+nmcli dev wifi list
+nmcli dev wifi connect "MiRed" password "clave123"</pre>
+<pre class="mermaid">
+graph TD
+  EQ[Equipo Wi-Fi] -->|802.11| AP[Punto de acceso]
+  AP -->|Ethernet| SW[Switch]
+  SW --> R[Router]
+  R --> INT[Internet]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Wi-Fi))
+    802.11
+      n ac ax
+    Seguridad
+      WPA2
+      WPA3
+    AP
+      Cobertura
+</pre>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Configurar una red inalámbrica.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Crea un SSID 'Aula-DAM' con seguridad WPA2 y contraseña.</li><li>Los equipos se asocian al SSID e introducen la clave.</li><li>Verifica que obtienen IP por DHCP del router Wi-Fi.</li><li>Explica la diferencia de Seguridad: WEP (débil) vs WPA2/WPA3 (fuerte).</li></ol>
+<pre class="mermaid">
+graph LR
+  AP[AP SSID] --> WPA[WPA2]
+  CLI[Cliente] --> AP
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno crea un Wi-Fi WPA2 y conecta 2 dispositivos, verificando IP.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>El AP es "la antena del edificio".</b> Recibe por radio lo de los equipos y lo pasa por cable a la red. Sin AP, el Wi-Fi no tiene dónde conectarse.</li>
+<li><b>2.4 vs 5 GHz = "más lejos vs más rápido".</b> 2.4 llega más lejos y atraviesa paredes; 5 es veloz pero se muere pronto. Elegir según lo que importa en cada sitio.</li>
+<li><b>WPA2/3 = "la cerradura de la onda".</b> Sin cifrado, cualquiera escucha tu tráfico por el aire. La clave y el estándar deciden qué tan difícil es entrar.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Estándares 802.11.</b> n (Wi-Fi 4), ac (Wi-Fi 5), ax (Wi-Fi 6); cada uno sube velocidad y eficiencia. El número tras 802.11 es la generación; el equipo y el AP deben coincidir en la que usan.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Asociación al AP.</b> El equipo ve SSID (nombre) y se asocia con la clave; el AP lo puentea a la red cableada. En Linux, <code>nmcli dev wifi connect</code> lo hace por CLI.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>WPA2 vs WPA3.</b> WPA2 (AES-CCMP) es el común; WPA3 añade SAE, que resiste ataques de diccionario incluso con contraseña débil, y mejor privacidad. Donde haya WPA3, usarlo.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Buenas prácticas.</b> Cambiar clave por defecto, actualizar firmware del AP (cierra fallos), y considerar filtrado MAC (no es seguridad fuerte, pero añade fricción). El SSID oculto da poca privacidad real.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Cobertura y canales.</b> En 2.4 GHz solo hay 3 canales no solapados (1, 6, 11); pisar el del vecino da interferencia. Ubicar el AP central y alto mejora la señal.</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"Wi-Fi lento" no siempre es el AP.</b> Puede ser interferencia de canal (pisar al vecino), paredes o que el equipo solo soporta 802.11n. Mirar banda y estándar antes de cambiar el router.</li>
+<li><b>WPA (sin 2/3) está roto.</b> El WPA original es inseguro; usar WPA2 como mínimo, WPA3 si se puede. Dejar "WEP" o "WPA" abierto es un agujero.</li>
+<li><b>SSID oculto no es seguridad.</b> El nombre sigue yendo por el aire; ocultarlo molesta al usuario pero no detiene a quien escanea. La clave sí importa.</li>
+<li><b>Filtrado MAC se salta fácil.</b> La MAC se puede suplantar (spoofing); es fricción, no una cerradura. No confiar la red solo a eso.</li>
+<li><b>El AP necesita cable de vuelta.</b> Alguien cree que el Wi-Fi "no usa cables"; el AP sí cuelga del switch por Ethernet. Sin ese enlace, los equipos se conectan al aire pero no a la red.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) AP = antena que puentea a la red cableada → (2) estándares 802.11 (n/ac/ax) y bandas 2.4/5 → (3) asociación (SSID+clave) → (4) WPA2/WPA3 y AES/SAE → (5) canales y cobertura → (6) errores (WEP roto, SSID oculto, filtrado MAC).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="../contenido_ra5_08.html">Adaptadores de red</a></li><li><a class="text-blue-600 hover:underline" href="../contenido_ra5_12.html">Seguridad de comunicaciones</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra5_c.html">Criterio RA5-c: LAN inalámbricas</a></li></ul>
+  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Wi-Fi" target="_blank" rel="noopener">Wikipedia — Wi-Fi</a></li><li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/802.11" target="_blank" rel="noopener">Wikipedia — 802.11</a></li><li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/WPA3" target="_blank" rel="noopener">Wikipedia — WPA3</a></li>
+    </ul>
+  </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

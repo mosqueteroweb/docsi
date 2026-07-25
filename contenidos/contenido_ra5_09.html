@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interconexión de redes | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra5.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA5 · Contenido 09</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Interconexión de redes | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA5</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Interconexión de redes</h2>
+<p class="text-slate-700 leading-relaxed mb-3">Para unir redes se usan dispositivos de interconexión: adaptadores, conmutadores (switch) y enrutadores (router). El enrutamiento decide por dónde enviar cada paquete, de forma estática o dinámica.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Switch (capa 2)</h3>
+<p class="text-slate-700 leading-relaxed mb-3">Conecta equipos de una misma LAN y conmuta tramas según direcciones MAC.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Router (capa 3)</h3>
+<p class="text-slate-700 leading-relaxed mb-3">Encamina paquetes entre redes diferentes usando tablas de enrutamiento.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Enrutamiento estático</h3>
+<p class="text-slate-700 leading-relaxed mb-3">El administrador define las rutas manualmente; simples pero no se adaptan a cambios.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Enrutamiento dinámico</h3>
+<p class="text-slate-700 leading-relaxed mb-3">Protocolos como OSPF o RIP intercambian rutas automáticamente y recalculan ante caídas.</p>
+<table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Dispositivo</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Capa</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Función</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Switch</td><td class="px-4 py-2 border border-slate-200 align-top">2 (Enlace)</td><td class="px-4 py-2 border border-slate-200 align-top">Conmuta tramas</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Router</td><td class="px-4 py-2 border border-slate-200 align-top">3 (Red)</td><td class="px-4 py-2 border border-slate-200 align-top">Enruta paquetes</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Hub</td><td class="px-4 py-2 border border-slate-200 align-top">1</td><td class="px-4 py-2 border border-slate-200 align-top">Repite señal</td></tr></tbody></table>
+<pre class="code"># Ruta estática (Linux)
+ip route add 10.0.0.0/24 via 192.168.1.254
+# Windows
+route add 10.0.0.0 mask 255.255.255.0 192.168.1.254</pre>
+<pre class="mermaid">
+graph TD
+  A[PC1] --> SW[Switch]
+  B[PC2] --> SW
+  SW --> R[Router]
+  R -->|enrutamiento| NET[Otra red]
+  R -->|OSPF/RIP| R2[Router vecino]
+</pre>
+<pre class="mermaid">
+flowchart LR
+  E[Enrutamiento] --> S[Estático: manual]
+  E --> D[Dinámico: OSPF/RIP]
+  S --> T[Tabla fija]
+  D --> T2[Tabla aprendida]
+</pre>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Interconectar dos redes con un router.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Conecta la LAN1 (192.168.1.0/24) y la LAN2 (192.168.2.0/24) a un router.</li><li>Configura las rutas: el router sabe llegar a ambas subredes.</li><li>Haz ping de un PC de LAN1 a uno de LAN2: debe responder vía router.</li><li>Explica que el <b>router</b> enruta paquetes entre subredes distintas.</li></ol>
+<pre class="mermaid">
+graph LR
+  LAN1[192.168.1.0] --> RT[Router]
+  LAN2[192.168.2.0] --> RT
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno interconecta dos subredes y verifica ping cruzado vía router.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Switch vs router = "repartidor interno vs aduana".</b> El switch conecta lo de tu casa (misma red, por MAC); el router decide qué sale fuera (entre redes, por IP). Distinta capa, distinto trabajo.</li>
+<li><b>Enrutamiento = "el GPS de los paquetes".</b> Decide por qué puerta sale cada paquete para llegar a su red destino. Sin ruta, el paquete no sabe por dónde ir.</li>
+<li><b>Estático vs dinámico = "mapa fijo vs mapa que se actualiza".</b> El estático lo pintas a mano (no cambia solo); el dinámico aprende y recalcula si una ruta cae.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Switch (capa 2).</b> Conmuta tramas por MAC dentro de la LAN; los equipos se ven entre sí sin router. Un switch no separa redes, solo las une dentro de una.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Router (capa 3).</b> Mira la IP destino y consulta su tabla de rutas para elegir el siguiente salto. Conecta tu LAN con Internet o con otra subred. Es también tu gateway.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ruta estática.</b> <code>ip route add 10.0.0.0/24 via 192.168.1.254</code> dice "para llegar a 10.0.0.0/24, pasa por 192.168.1.254". Simple y previsible, pero si ese router cae, la ruta se queda rota hasta que la cambies.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ruta dinámica (OSPF/RIP).</b> Los routers vecinos se cuentan sus rutas; si una falla, recalculan por otra. En redes grandes ahorra mantenimiento; en una casa, es sobrekill.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hub (capa 1).</b> Repite la señal a todos los puertos (no filtra); obsoleto frente al switch, que solo manda a quien toca. El hub crea dominios de colisión; el switch los reduce.</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"El switch conecta a Internet" es falso.</b> El switch une tu LAN; para salir fuera hace falta un router. El switch solo no enruta entre redes.</li>
+<li><b>Switch (capa 2) no mira IP.</b> Conmuta por MAC; si quieres separar redes lógicas, hace falta VLAN o un router. Confundir capas deja todo en la misma broadcast.</li>
+<li><b>Ruta estática rota = sin aviso.</b> Si el router de la ruta cae, el paquete se pierde; hay que cambiarla a mano. En dinámica, se recalcula solo.</li>
+<li><b>Hub no es "un switch barato".</b> Repite a todos los puertos y colisiona; usarlo hoy es un error de rendimiento y seguridad.</li>
+<li><b>El gateway del equipo suele ser el router.</b> Si la ruta por defecto apunta a otra IP, nada sale. La puerta de enlace y el router de la ruta deben coincidir.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) switch (capa 2, MAC) vs router (capa 3, IP) → (2) router = GPS de paquetes → (3) ruta estática (ip route add) → (4) ruta dinámica (OSPF/RIP) → (5) hub obsoleto → (6) errores (switch no enruta, ruta rota).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="../contenido_ra5_10.html">Redes cableadas</a></li><li><a class="text-blue-600 hover:underline" href="../contenido_ra5_03.html">Gestión de puertos</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra5_d.html">Criterio RA5-d: dispositivos interconexión</a></li></ul>
+  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Conmutador_de_red" target="_blank" rel="noopener">Wikipedia — Conmutador (switch)</a></li><li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Enrutador" target="_blank" rel="noopener">Wikipedia — Enrutador (router)</a></li><li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/TCP/IP" target="_blank" rel="noopener">Wikipedia — TCP/IP</a></li>
+    </ul>
+  </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

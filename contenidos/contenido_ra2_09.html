@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consideraciones previas a la instalación | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra2.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA2 · Contenido 09</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Consideraciones previas a la instalación | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA2</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Consideraciones previas a la instalación de SO libres y propietarios</h2><p class="text-slate-700 leading-relaxed mb-3">Antes de instalar hay que evaluar requisitos y compatibilidad para evitar fallos y costes.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Requisitos hardware</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li>CPU compatible (x86_64), RAM mínima (4 GB para SO actuales), disco con espacio y firmware (UEFI/BIOS).</li><li>Drivers: verificar que el fabricante ofrece soporte para el SO elegido.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Libre vs propietario</h3><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Aspecto</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Libre (Linux)</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Propietario (Windows)</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Coste</td><td class="px-4 py-2 border border-slate-200 align-top">Gratuito</td><td class="px-4 py-2 border border-slate-200 align-top">Licencia de pago</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Drivers</td><td class="px-4 py-2 border border-slate-200 align-top">Comunidad/overlay</td><td class="px-4 py-2 border border-slate-200 align-top">Fabricante</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Soporte</td><td class="px-4 py-2 border border-slate-200 align-top">Foros/empresas</td><td class="px-4 py-2 border border-slate-200 align-top">Soporte oficial</td></tr></tbody></table><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Planificación</h3><p class="text-slate-700 leading-relaxed mb-3">Decidir particionado, multiarranque, copia de seguridad previa y método de instalación (USB, red PXE, despliegue masivo). Todo ello se documenta (véase contenido 13).</p><pre class="mermaid">
+flowchart TD
+  A[Inventariar HW] --> B{¿UEFI?}
+  B -->|Sí| C[GPT + Secure Boot]
+  B -->|No| D[MBR]
+  C --> E[Elegir SO: libre/propietario]
+  D --> E
+  E --> F[Copia seguridad previa]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Previos))
+    HW
+    Firmware
+    Drivers
+    Licencia
+    Copia
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Checklist previa a instalar SO.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Verifica <b>arquitectura</b> (32/64 bits) compatible con el equipo.</li><li>Confirma <b>espacio en disco</b> y RAM suficientes.</li><li>Decide <b>tipo de instalación</b>: limpia vs actualización.</li><li>Asegura <b>copia de seguridad</b> de datos y claves de licencia.</li></ol>
+<pre class="mermaid">
+graph TD
+  ARQ[Arquitectura] --> ESP[Espacio]
+  ESP --> TIPO[Limpia/Actualizacion]
+  TIPO --> BAK[Copia seguridad]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno completa la checklist previa y la entrega antes de la instalación.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Antes de instalar = "leer el manual antes de montar el mueble".</b> Comprobar que las piezas (HW) encajan con el SO evita sorpresas a mitad.</li>
+<li><b>Compatibilidad no es "que arranque", es "que funcione".</b> Un SO puede instalarase pero faltarle drivers (sin wifi, sin vídeo); por eso se verifica soporte antes.</li>
+<li><b>Libre vs propietario afecta la "logística".</b> Linux se baja gratis; Windows exige licencia y activación. Eso cambia el plan de aula (coste, claves, activación).</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Inventario de hardware.</b> Anotar CPU (¿x86_64?), RAM, disco libre y firmware. Si es UEFI, el disco debe ir con GPT; si BIOS, con MBR. Errar aquí bloquea el arranque.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Drivers y soporte.</b> Windows suele traer drivers de fábrica o el fabricante los da; Linux los incluye en el núcleo (la "comunidad"), aunque algún componente propietario (wifi, NVIDIA) requiere pasos extra. Verificar antes ahorra líos.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Coste y licenciamiento.</b> Linux es gratuito y se puede clonar en todos los puestos; Windows necesita licencias (OEM/retail/suscripción) y activación. En un centro, eso se planifica con el departamento.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Copia de seguridad previa.</b> Antes de tocar particiones, respaldar datos y, si hay sistema, hacer una imagen. En el aula se hace una imagen "maestra" ya configurada para clonar el resto.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Planificación del particionado.</b> Decidir tamaños: una partición para el SO, otra para datos (para que al reinstalar no se pierdan), y en dual boot, dejar espacio para el segundo SO.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"Arranca" ≠ "funciona".</b> Falta de drivers deja el equipo medio ciego (sin red, sin gráficos). La compatibilidad es sobre el funcionamiento completo.</li>
+<li><b>GPT no es "mejor MBR por arte mágico".</b> Depende del firmware: UEFI usa GPT; forzar MBR con UEFI da problemas.</li>
+<li><b>Linux gratis no significa "sin plan".</b> Igual necesita particiones, drivers específicos y, en empresa, soporte de pago (Red Hat).</li>
+<li><b>Imagen ≠ copia de datos.</b> La imagen clona el sistema; los datos de usuario van aparte si quieres preservarlos al reinstalar.</li>
+<li><b>Licencia OEM no es transferible igual que retail.</b> La OEM va ligada al equipo; eso condiciona el plan de renovación.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) inventariar HW (CPU/RAM/disco/firmware) → (2) verificar drivers/soporte → (3) libre vs propietario (coste, licencia) → (4) copia de seguridad + imagen maestra → (5) planificar particiones (SO/datos/dual) → (6) ejecutar la instalación con el plan listo.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra2_05.html">Licencias</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra2_10.html">Instalación SO</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra2_d.html">Criterio RA2-d: planificar instalación</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Sistema_operativo" target="_blank" rel="noopener">Wikipedia — Sistema operativo</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Partici%C3%B3n_de_disco_duro" target="_blank" rel="noopener">Wikipedia — Partición de disco</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=5oAexbSPygE" target="_blank" rel="noopener">Buenas prácticas y seguridad en el PC</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=n2iodl7eASs" target="_blank" rel="noopener">Evolución de placas base de PC</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologías de acceso WAN | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra5.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA5 · Contenido 13</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Tecnologías de acceso WAN | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA5</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Tecnologías de acceso WAN</h2>
+<p class="text-slate-700 leading-relaxed mb-3">El acceso WAN conecta la red local con el proveedor de Internet (ISP) y otras sedes. Incluye tecnologías como ADSL, fibra óptica, 4G/5G y MPLS, así como VPN sitio-a-sitio para enlazar sedes de forma segura.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. ADSL y fibra</h3>
+<p class="text-slate-700 leading-relaxed mb-3">ADSL usa par de cobre (hasta ~20 Mbps); fibra óptica (FTTH) alcanza cientos de Mbps/Gbps con mayor estabilidad.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. 4G y 5G</h3>
+<p class="text-slate-700 leading-relaxed mb-3">Acceso móvil por radio; 5G ofrece baja latencia y alta velocidad, útil como respaldo WAN (backup).</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. MPLS</h3>
+<p class="text-slate-700 leading-relaxed mb-3">Conmutación de etiquetas que garantiza rutas y calidad de servicio (QoS) entre sedes de una operadora.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. VPN sitio-a-sitio</h3>
+<p class="text-slate-700 leading-relaxed mb-3">Túnel cifrado IPsec/WireGuard entre routers de dos sedes para interconectarlas como una sola LAN lógica.</p>
+<table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Tecnología</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Medio</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Uso</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">ADSL</td><td class="px-4 py-2 border border-slate-200 align-top">Cobre</td><td class="px-4 py-2 border border-slate-200 align-top">Hogar</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Fibra</td><td class="px-4 py-2 border border-slate-200 align-top">Óptica</td><td class="px-4 py-2 border border-slate-200 align-top">Alta velocidad</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">5G</td><td class="px-4 py-2 border border-slate-200 align-top">Radio</td><td class="px-4 py-2 border border-slate-200 align-top">Móvil/backup</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">MPLS</td><td class="px-4 py-2 border border-slate-200 align-top">Operadora</td><td class="px-4 py-2 border border-slate-200 align-top">Sedes</td></tr></tbody></table>
+<pre class="code"># Configurar interfaz WAN (ej. fibra/PPPoE)
+nmcli con add type pppoe con-name wan ifname enp0s3 username user@isp</pre>
+<pre class="mermaid">
+graph TD
+  LAN1 --> R1[Router sede 1]
+  R1 -->|Fibra/5G/MPLS| ISP[Operadora]
+  ISP --> R2[Router sede 2]
+  R2 --> LAN2
+  R1 -.->|VPN sitio-a-sitio| R2
+</pre>
+<pre class="mermaid">
+mindmap
+  root((WAN))
+    Acceso
+      ADSL
+      Fibra
+      5G
+    MPLS
+      QoS
+    VPN
+      Sitio-a-sitio
+</pre>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Configurar acceso WAN.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>El router del centro conecta la LAN con el ISP vía fibra/ADSL (WAN).</li><li>Configura PPPoE o IP pública según el proveedor.</li><li>Verifica salida a Internet con <code>traceroute</code>.</li><li>Explica que la <b>WAN</b> es la red extensa que une tu LAN con el mundo.</li></ol>
+<pre class="mermaid">
+graph LR
+  LAN[Aula] --> RT[Router]
+  RT --> ISP[Proveedor WAN]
+  ISP --> NET[Internet]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno traza la ruta hasta un servidor externo y explica el papel del ISP.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>La WAN es "el puente que sale del edificio".</b> La LAN es lo de dentro; la WAN es cómo salimos al mundo (ISP) o a otras sedes. El router de borde es la puerta.</li>
+<li><b>ADSL/fibra/5G = "distintos tipos de autopista".</b> Cobre viejo, luz por vidrio o radio móvil; misma función (llevar datos fuera), distinta capacidad y precio.</li>
+<li><b>VPN sitio-a-sitio = "un túnel seguro entre dos oficinas".</b> Enlaza dos LAN como si fueran una, por encima de Internet, sin que nadie lea por el medio.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>ADSL y fibra (acceso doméstico/empresa).</b> ADSL aprovecha el par de cobre (asimétrico, subida lenta); FTTH lleva fibra hasta casa y dispara velocidad y estabilidad. El medio marca el tope real.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>4G/5G como backup.</b> Si falla la fibra, el router bascula a la radio móvil. El 5G baja latencia y sube caudal; ideal para no parar la oficina, no como principal si hay fibra.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>MPLS.</b> La operadora etiqueta paquetes y los encamina con QoS (prioriza voz/datos). Caro pero fiable para muchas sedes; el cliente no gestiona el túnel, lo da el operador.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>VPN sitio-a-sitio.</b> Dos routers levantan un túnel IPsec/WireGuard; las dos LAN se ven como una sola. Frente a MPLS, es más barato (usa Internet) pero depende del ancho disponible.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>PPPoE.</b> Mucha fibra/ADSL autentica la sesión con usuario/clave del ISP (<code>nmcli con add pppoe</code>). Sin esa sesión, el enlace físico está pero no navega. Es la "llave" del acceso.</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"El cable está puesto pero no navego" suele ser falta de sesión.</b> Con PPPoE, el enlace físico no basta; falta autenticar con usuario/clave del ISP. Comprobar la sesión, no solo el LED.</li>
+<li><b>5G como principal cuando hay fibra = mal uso.</b> El móvil es respaldo (backup); usarlo como principal gasta datos y es menos estable. Bascular solo si falla la fija.</li>
+<li><b>MPLS no es "una VPN de Internet".</b> Lo da la operadora con QoS garantizado; una VPN sobre Internet es más barata pero sin garantía de ancho. No confundir modelos.</li>
+<li><b>VPN sitio-a-sitio no es "acceso remoto de un empleado".</b> La primera une redes (router-router); la segunda une un equipo (usuario-router). Mismo túnel, distinto caso.</li>
+<li><b>ADSL asimétrica: bajar rápido, subir lento.</b> Pensar que "20 Mbps" vale para los dos sentidos falla en videollamadas o subida de archivos grandes.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) WAN = puente fuera del edificio → (2) medios (ADSL/cobre, fibra, 5G backup) → (3) PPPoE (la llave de acceso) → (4) MPLS y QoS → (5) VPN sitio-a-sitio → (6) errores (sesión, 5G como principal, asimetría).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="../contenido_ra5_09.html">Interconexión de redes</a></li><li><a class="text-blue-600 hover:underline" href="../contenido_ra5_12.html">Seguridad de comunicaciones</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra5_e.html">Criterio RA5-e: acceso WAN</a></li></ul>
+  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/ADSL" target="_blank" rel="noopener">Wikipedia — ADSL</a></li><li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Fibra_%C3%B3ptica" target="_blank" rel="noopener">Wikipedia — Fibra óptica</a></li><li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/5G" target="_blank" rel="noopener">Wikipedia — 5G</a></li><li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/MPLS" target="_blank" rel="noopener">Wikipedia — MPLS</a></li>
+    </ul>
+  </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

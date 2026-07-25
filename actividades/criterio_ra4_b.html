@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA4-b Directivas cuenta/contraseña | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra4.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA4 · Criterio b</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">RA4-b Directivas cuenta/contraseña | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Criterio de evaluación · RA4</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Criterio RA4-b: Uso de directivas de cuenta y contraseñas</h2><span class="criterio-tag">RA4-b</span><p class="text-slate-700 leading-relaxed mb-3">Se evalúa el aseguramiento del acceso mediante directivas de cuenta (bloqueo, caducidad) y de contraseñas (complejidad, almacenamiento).</p><h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Test de conocimientos</h3><div class="mb-3"><p class="font-semibold text-slate-800">La caducidad de una contraseña en Linux se gestiona con:</p><ul class="list-[lower-alpha] pl-6 text-slate-700"><li>chage</li><li>chmod</li><li>passwd -l</li><li>usermod</li></ul><p class="text-sm text-green-700">Solución: a.</p></div><div class="mb-3"><p class="font-semibold text-slate-800">Una sal (salt) en el hash sirve para:</p><ul class="list-[lower-alpha] pl-6 text-slate-700"><li>Acelerar el login</li><li>Evitar tablas rainbow reutilizables</li><li>Borrar la contraseña</li><li>Cambiar el UID</li></ul><p class="text-sm text-green-700">Solución: b.</p></div><div class="mb-3"><p class="font-semibold text-slate-800">El archivo que guarda los hashes de contraseñas en Linux es:</p><ul class="list-[lower-alpha] pl-6 text-slate-700"><li>/etc/passwd</li><li>/etc/shadow</li><li>/etc/group</li><li>/etc/gshadow</li></ul><p class="text-sm text-green-700">Solución: b.</p></div><div class="mb-3"><p class="font-semibold text-slate-800">El bloqueo por intentos fallidos protege contra:</p><ul class="list-[lower-alpha] pl-6 text-slate-700"><li>Pérdida de disco</li><li>Ataques de fuerza bruta</li><li>Borrado accidental</li><li>Virus</li></ul><p class="text-sm text-green-700">Solución: b.</p></div><div class="mb-3"><p class="font-semibold text-slate-800">Un gestor de contraseñas sirve para:</p><ul class="list-[lower-alpha] pl-6 text-slate-700"><li>Compartir el usuario root</li><li>Generar y guardar claves únicas cifradas</li><li>Deshabilitar cuentas</li><li>Crear grupos</li></ul><p class="text-sm text-green-700">Solución: b.</p></div><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Ejemplo resuelto (NO evaluable)</h3><p class="text-slate-700 leading-relaxed mb-3">Configura la cuenta 'laura' para que su contraseña caduque cada 60 días y se avise 10 días antes: chage -M 60 -W 10 laura. El hash se guarda en /etc/shadow como $6$sal$hash.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Actividad evaluable</h3><p class="text-slate-700 leading-relaxed mb-3">Define una política de contraseñas para un aula: longitud mínima 12, caducidad 90 días, bloqueo tras 3 intentos. Explica cómo se aplica en Linux (login.defs/chage) y en Windows (secpol.msc). Entrega la propuesta y los comandos.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Rúbrica (sobre 10 puntos)</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li>3 pts — Identificación correcta de requisitos/elementos.</li><li>3 pts — Procedimiento ordenado y coherente.</li><li>2 pts — Uso correcto de herramientas/comandos.</li><li>2 pts — Documentación y justificación.</li></ul>  
+<section class="space-y-4 scroll-mt-6 print-break">
+    <div class="border-b border-slate-200 pb-4">
+        <h2 class="text-xl font-black text-slate-800 tracking-tight">Rúbrica de valoración (3 estados)</h2>
+        <p class="text-slate-500 text-sm">Instrumento cualitativo para el profesor: Ra4-b directivas cuenta/contraseña | sistemas informáticos.</p>
+    </div>
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 print-card">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border border-slate-200 rounded-xl overflow-hidden">
+                <thead class="bg-slate-50 text-slate-600 text-xs uppercase">
+                    <tr><th class="py-2 px-3">Estado</th><th class="py-2 px-3">Descripción</th></tr>
+                </thead>
+                <tbody>
+                    <tr class="border-t border-slate-100">
+                        <td class="py-2 px-3 text-sm font-bold text-red-700 align-top">A mejorar</td>
+                        <td class="py-2 pl-3 text-sm text-slate-600 align-top">El alumno no alcanza el criterio: errores conceptuales, omisiones graves o trabajo incomplete. Requiere refuerzo antes de certificar.</td>
+                    </tr>
+                    <tr class="border-t border-slate-100">
+                        <td class="py-2 px-3 text-sm font-bold text-amber-700 align-top">Aceptable</td>
+                        <td class="py-2 pl-3 text-sm text-slate-600 align-top">El alumno cumple el criterio con corrección: resuelve lo esencial, aunque con alguna imprecisión o apoyo parcial del profesor.</td>
+                    </tr>
+                    <tr class="border-t border-slate-100">
+                        <td class="py-2 px-3 text-sm font-bold text-emerald-700 align-top">Excelente</td>
+                        <td class="py-2 pl-3 text-sm text-slate-600 align-top">El alumno supera el criterio: preciso, autónomo y con profundidad; explica el porqué y aplica el conocimiento a casos nuevos.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para preparar el criterio:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Usuario_(inform%C3%A1tica)" target="_blank" rel="noopener">Wikipedia — Usuario (informática)</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://wiki.archlinux.org/title/Users_and_groups" target="_blank" rel="noopener">ArchWiki — Users and groups</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Cuenta_de_usuario" target="_blank" rel="noopener">Wikipedia — Cuenta de usuario</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Control_de_acceso" target="_blank" rel="noopener">Wikipedia — Control de acceso</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

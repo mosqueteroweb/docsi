@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copias de seguridad | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra3.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA3 · Contenido 05</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Copias de seguridad | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA3</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Realización y restauración de copias de seguridad</h2><p class="text-slate-700 leading-relaxed mb-3">Una <b>copia de seguridad (backup)</b> es una réplica de los datos para recuperarlos ante fallos de hardware, errores humanos o ciberataques. Una buena estrategia combina frecuencia, ubicación y verificación de la restauración.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Tipos de copia</h3><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Tipo</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Descripción</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Completa</td><td class="px-4 py-2 border border-slate-200 align-top">Copia todos los datos seleccionados.</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Incremental</td><td class="px-4 py-2 border border-slate-200 align-top">Solo los cambios desde la última copia.</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Diferencial</td><td class="px-4 py-2 border border-slate-200 align-top">Cambios desde la última copia completa.</td></tr></tbody></table><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Herramientas: rsync y dd</h3><p class="text-slate-700 leading-relaxed mb-3"><code>rsync</code> sincroniza archivos de forma eficiente (solo copia lo que cambia). <code>dd</code> hace una copia byte a byte, ideal para clonar discos completos o hacer imágenes.</p><pre class="code"># Copia incremental con rsync (conserva permisos)
+rsync -avh /home/usuario/ /mnt/backup/usuario/
+# Clonar un disco completo (¡cuidado con el orden!)
+sudo dd if=/dev/sda of=/dev/sdb bs=4M status=progress
+# Crear una imagen ISO de un disco
+sudo dd if=/dev/cdrom of=cd.iso bs=2048</pre><pre class="mermaid">
+flowchart TD
+    A[Datos origen] --> B{Strategia}
+    B -->|Completa| C[Copia todo]
+    B -->|Incremental| D[Solo cambios]
+    B -->|Diferencial| E[Desde completa]
+    C --> F[Medio: disco externo]
+    D --> F
+    E --> F
+    F --> G[Verificar restauración]
+    C --> H[Medio: nube]
+    D --> H
+    E --> H
+</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Copias de imagen y en la nube</h3><p class="text-slate-700 leading-relaxed mb-3">Las <b>copias de imagen</b> (ej. con Clonezilla o las herramientas de Windows) replican partición o disco enteros. La <b>nube</b> (servicios como almacenamiento en la nube) aporta la regla 3-2-1: 3 copias, 2 medios distintos, 1 externa.</p><pre class="mermaid">
+mindmap
+  root((Backup))
+    Herramientas
+      rsync
+      dd imagen
+      Clonezilla
+    Destinos
+      Disco externo
+      Nube
+      Red local
+    Regla 3-2-1
+      3 copias
+      2 medios
+      1 offsite
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Hacer y restaurar una copia de seguridad.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Elige qué respaldar (carpeta Documentos) y dónde (USB externo).</li><li>Windows: 'Historial de archivos'; Linux: <code>rsync -a /orig/ /dest/</code>.</li><li>Verifica que los archivos están en el destino (ábrelo).</li><li>Simula pérdida: borra el original y <b>restaura</b> desde la copia.</li></ol>
+<pre class="mermaid">
+graph TD
+  ORIG[Carpeta] --> CP[Copia en USB]
+  BORRA[Borrar orig] --> REST[Restaurar]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno hace una copia con rsync/History, la verifica y restaura tras borrar el original.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Una copia es "el seguro del seguro".</b> El disco puede morir, un ransomware puede cifrarlo, un alumno puede borrarlo. La copia es lo único que te salva.</li>
+<li><b>"Tener una copia" ≠ "tenerla bien".</b> Una copia en el mismo disco que se caiga no sirve; y una copia que nunca se probó restaurar puede estar corrupta. Por eso se habla de estrategia.</li>
+<li><b>Completa / incremental / diferencial son "cuánto se copia".</b> Completa = todo; incremental = lo que cambió desde la última (sea cual sea); diferencial = lo que cambió desde la última completa.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>rsync: eficiente y conserva permisos.</b> <code>rsync -avh</code> solo copia lo que cambió y mantiene dueño/permisos (clave para <code>/home</code>). Es la navaja suiza de las copias en Linux.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>dd: byte a byte, peligroso.</b> Clona discos o hace imágenes, pero <code>if=</code> (origen) y <code>of=</code> (destino) al revés = borrar el disco bueno. Por eso se usa con extremo cuidado y solo para imágenes completas.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Imágen vs copia de archivos.</b> La imágen (Clonezilla, dd) replica partición/disco y arranca igual; la copia de archivos (rsync) replica contenido pero hay que reinstalar el SO. Para recuperación rápida en aulas, la imágen maestra gana.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Regla 3-2-1.</b> 3 copias, en 2 medios distintos, 1 fuera de las instalaciones (offsite/nube). Cubre incendio, robo y fallo de un medio. Es el mínimo profesional.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Verificar la restauración.</b> Una copia no sirve si no se restaura. El plan serio incluye probar restaurar una copia de prueba periódicamente; si no, descubres que está corrupta el día que la necesitas.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"Hacer una copia" no es "seguridad".</b> Si está en el mismo equipo o nunca se probó restaurar, no es una copia fiable. Hace falta la regla 3-2-1 y verificar.</li>
+<li><b>dd no es "un copia rápida más".</b> Es peligroso: un <code>if</code>/<code>of</code> invertido destruye datos. Usarlo sin revisar el comando es un riesgo real.</li>
+<li><b>Incremental ≠ diferencial.</b> El incremental parte de la última copia (sea completa o no); el diferencial, siempre de la última completa. Afecta al tiempo de restauración.</li>
+<li><b>Imágen no es "copia de mis documentos".</b> La imágen replica el sistema entero; para solo tus archivos basta rsync. No confundir objetivos.</li>
+<li><b>La nube no es "infalible".</b> Un borrado sincronizado se borra también arriba; por eso la copia externa aislada importa.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) por qué hace falta copia → (2) completa/incremental/diferencial → (3) rsync vs dd vs Clonezilla → (4) imágen vs archivos → (5) regla 3-2-1 → (6) verificar la restauración (la parte que todos olvidan).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra3_01.html">Gestión de sistemas de archivos</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra3_06.html">Herramientas de administración de discos</a></li><li><a class="text-blue-600 hover:underline" href="../actividades/criterio_ra3_f.html">Criterio RA3-f: copias de seguridad</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Copia_de_seguridad" target="_blank" rel="noopener">Wikipedia — Copia de seguridad</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Rsync" target="_blank" rel="noopener">Wikipedia — Rsync</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Almacenamiento_en_la_nube" target="_blank" rel="noopener">Wikipedia — Almacenamiento en la nube</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Sistema_de_archivos" target="_blank" rel="noopener">Wikipedia — Sistema de archivos</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

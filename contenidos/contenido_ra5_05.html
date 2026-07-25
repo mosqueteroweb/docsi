@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas gráficas y comandos | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra5.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA5 · Contenido 05</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Herramientas gráficas y comandos | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA5</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Herramientas gráficas y comandos</h2>
+<p class="text-slate-700 leading-relaxed mb-3">La administración de red se realiza tanto por línea de comandos como por interfaces gráficas. Conocer ambas facilita la resolución de incidencias en Linux y Windows.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Línea de comandos en Linux</h3>
+<p class="text-slate-700 leading-relaxed mb-3">ip, nmcli, ss, ping, dig, traceroute permiten inspeccionar y modificar la configuración.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Interfaces gráficas en Linux</h3>
+<p class="text-slate-700 leading-relaxed mb-3">NetworkManager (applet), nmtui (texto) y entornos como GNOME Settings ofrecen configuración visual.</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Línea de comandos en Windows</h3>
+<p class="text-slate-700 leading-relaxed mb-3">netsh, ipconfig, ping, tracert, Get-NetIPConfiguration (PowerShell).</p>
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Interfaces gráficas en Windows</h3>
+<p class="text-slate-700 leading-relaxed mb-3">Centro de redes y recursos compartidos, y la app Configuración > Red e Internet.</p>
+<table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Tarea</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Linux</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Windows</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Ver IP</td><td class="px-4 py-2 border border-slate-200 align-top">ip -br addr</td><td class="px-4 py-2 border border-slate-200 align-top">ipconfig</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Estado</td><td class="px-4 py-2 border border-slate-200 align-top">nmcli</td><td class="px-4 py-2 border border-slate-200 align-top">ncpa.cpl</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Ruta</td><td class="px-4 py-2 border border-slate-200 align-top">ip route</td><td class="px-4 py-2 border border-slate-200 align-top">route print</td></tr></tbody></table>
+<pre class="code"># Linux: ver interfaces y estado
+ip link show
+nmcli device status
+# Windows: centro de redes
+ncpa.cpl</pre>
+<pre class="mermaid">
+graph TD
+  A[Administración de red] --> B[Línea de comandos]
+  A --> C[Interfaz gráfica]
+  B --> L[ip, nmcli, ss]
+  B --> W[netsh, ipconfig]
+  C --> LG[GNOME, nmtui]
+  C --> WG[Centro de redes]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Herramientas))
+    CLI
+      Linux ip
+      Windows netsh
+    GUI
+      GNOME
+      Windows
+</pre>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Usar herramientas gráficas y comandos.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Gráfico: el centro de redes muestra el estado y la velocidad.</li><li>Comando: <code>ipconfig /all</code> da MAC, DHCP, DNS.</li><li>Compara ambos: la GUI resume; el comando da detalle.</li><li>Explica cuándo prefieres uno u otro (diagnóstico rápido vs detalle).</li></ol>
+<pre class="mermaid">
+graph LR
+  GUI[Centro redes] --> EST[Estado]
+  CMD[ipconfig/all] --> DET[Detalle]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno obtiene la configuración por GUI y por comando y las compara.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>GUI y CLI son "el mismo destino por dos caminos".</b> La GUI es cómoda para lo de cada día; la CLI permite repetir, automatizar y acceder remoto. Un técnico usa ambas.</li>
+<li><b>nmtui = "la GUI en modo texto".</b> Para servidores sin escritorio, da menús visuales por terminal. Lo mejor de los dos mundos cuando no hay ratón.</li>
+<li><b>ncpa.cpl = "el panel de conexiones de Windows".</b> Abre el Centro de redes para ver adaptadores y cambiar IP a golpe de clic. Equivale a netsh pero visual.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Linux CLI.</b> <code>ip link show</code> lista interfaces; <code>nmcli device status</code> su estado; <code>ss</code>/<code>dig</code>/<code>ping</code> para diagnóstico. Repetible y scripteable en muchos equipos.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Linux GUI.</b> El applet de NetworkManager, <code>nmtui</code> (texto) y GNOME Settings. Para aula con escritorio, la GUI basta; para servidor, nmtui o CLI.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Windows CLI.</b> <code>netsh</code>, <code>ipconfig</code>, <code>tracert</code>, y <code>Get-NetIPConfiguration</code> (PowerShell, devuelve objetos). La CLI de Windows es potente para scripts de despliegue.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Windows GUI.</b> Centro de redes y recursos compartidos y Configuración → Red. <code>ncpa.cpl</code> abre directo el panel de adaptadores. Cómodo para el alumno que empieza.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Por qué enseñar las dos.</b> En un aula te encontrarás equipos con y sin escritorio; el examen FP pide ambas. Saber pasar de GUI a CLI (y viceversa) es la competencia real.</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"Solo sé la GUI" es insuficiente en FP.</b> El examen y los servidores exigen CLI; además, la GUI no se scriptea para 30 equipos. Hay que dominar ambas.</li>
+<li><b>nmtui no es "una GUI gráfica".</b> Es texto por terminal (sin escritorio); confundirlo con GNOME Settings lleva a buscar un ratón donde no lo hay.</li>
+<li><b>ipconfig no es "ip en Windows".</b> <code>ipconfig</code> (Windows) y <code>ip</code> (Linux) son distintos comandos; usar uno en el otro da error. Hay que saber el par.</li>
+<li><b>Get-NetIPConfiguration no es "ipconfig con otra cara".</b> Devuelve objetos que se filtran en PowerShell; tratarlo como texto plano pierde su potencia.</li>
+<li><b>La GUI y la CLI pueden desincronizarse.</b> Si cambias por CLI y la GUI no refresca, ves datos viejos. Hay que reabrir o usar la misma herramienta para confirmar.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) GUI vs CLI (mismo destino) → (2) Linux CLI (ip/nmcli/ss) y GUI (nmtui/GNOME) → (3) Windows CLI (netsh/ipconfig/Get-NetIP) y GUI (ncpa.cpl) → (4) nmtui = texto sin escritorio → (5) por qué enseñar ambas en FP → (6) errores (desincronización, nombres distintos).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="../contenido_ra5_02.html">Ficheros de configuración</a></li><li><a class="text-blue-600 hover:underline" href="../contenido_ra5_04.html">Resolución de problemas</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra5_g.html">Criterio RA5-g: verificar red</a></li></ul>
+  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/NetworkManager" target="_blank" rel="noopener">Wikipedia — NetworkManager</a></li><li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/TCP/IP" target="_blank" rel="noopener">Wikipedia — TCP/IP</a></li><li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Sistema_de_nombres_de_dominio" target="_blank" rel="noopener">Wikipedia — DNS</a></li>
+    </ul>
+  </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

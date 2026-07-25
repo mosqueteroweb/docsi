@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestores de arranque | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra2.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA2 · Contenido 07</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Gestores de arranque | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA2</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Gestores de arranque. Configuración y reparación</h2><p class="text-slate-700 leading-relaxed mb-3">El <b>gestor de arranque (bootloader)</b> es el primer software que se ejecuta tras el firmware; carga el núcleo del SO en memoria y le pasa el control. Su configuración es clave en sistemas multiarranque (varios SO).</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Firmware: BIOS vs UEFI</h3><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Aspecto</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">BIOS (legado)</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">UEFI (moderno)</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Tabla de particiones</td><td class="px-4 py-2 border border-slate-200 align-top">MBR</td><td class="px-4 py-2 border border-slate-200 align-top">GPT</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Arranque</td><td class="px-4 py-2 border border-slate-200 align-top">16-bit, lento</td><td class="px-4 py-2 border border-slate-200 align-top">32/64-bit, rápido</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Secure Boot</td><td class="px-4 py-2 border border-slate-200 align-top">No</td><td class="px-4 py-2 border border-slate-200 align-top">Sí</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Discos >2 TB</td><td class="px-4 py-2 border border-slate-200 align-top">No soportado</td><td class="px-4 py-2 border border-slate-200 align-top">Sí</td></tr></tbody></table><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Bootloaders comunes</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>GRUB2:</b> gestor multiarranque en Linux, configurable vía /etc/default/grub.</li><li><b>Windows Boot Manager:</b> gestor nativo de Windows.</li><li><b>systemd-boot:</b> ligero para UEFI en distros modernas.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Configuración y reparación</h3><p class="text-slate-700 leading-relaxed mb-3">En GRUB se edita el archivo de configuración y se regenera con <code>update-grub</code>. Si el arranque falla, se usa un <b>Live USB</b> para reparar el gestor (p.ej. <code>grub-install</code> / <code>boot-repair</code>) o restaurar el registro de arranque de Windows con <code>bootrec /fixboot</code>.</p><pre class="mermaid">
+flowchart TD
+  PWR[Encendido] --> FW[Firmware BIOS/UEFI]
+  FW --> BL[Bootloader GRUB/BootMgr]
+  BL --> K[Carga núcleo SO]
+  K --> OS[Sistema operativo]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Arranque))
+    Firmware
+      BIOS
+      UEFI
+    Bootloader
+      GRUB2
+      Win BootMgr
+    Reparación
+      Live USB
+</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Caso práctico de reparación</h3><p class="text-slate-700 leading-relaxed mb-3">Un PC con Windows y Linux deja de arrancar Linux tras reinstalar Windows (este sobreescribe el MBR/EFI). Se arranca con un Live USB de Linux y se reejecuta <code>grub-install</code> para restaurar GRUB como gestor principal.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Reparar el gestor de arranque (Linux).</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Arranca un live USB y entra en la terminal.</li><li>Monta la partición raíz: <code>mount /dev/sda1 /mnt</code>.</li><li>Reinstala GRUB: <code>grub-install --root-directory=/mnt /dev/sda</code>.</li><li>Reinicia y comprueba que el menú de arranque aparece.</li></ol>
+<pre class="mermaid">
+graph TD
+  LIVE[Live USB] --> MNT[mount /dev/sda1]
+  MNT --> GRUB[grub-install]
+  GRUB --> REB[Reiniciar]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno repara un GRUB roto en máquina virtual y entrega captura del menú de arranque.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>El arranque es una "escalera" de varios peldaños.</b> Firmware (BIOS/UEFI) → bootloader → núcleo → SO. Cada peldaño entrega el testigo al siguiente; si uno falla, no subes.</li>
+<li><b>El bootloader es el "portero" del arranque.</b> Sabe dónde está el núcleo en el disco y cómo cargarlo; en multiarranque, además, te deja elegir qué SO levantar.</li>
+<li><b>BIOS/UEFI no es opcional según gusto.</b> El firmware es lo que trae la placa; marca si usas MBR o GPT y si puedes usar Secure Boot.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>BIOS vs UEFI en la práctica.</b> BIOS arranca en modo real de 16 bits y busca el sector de arranque en MBR; frágil y limitado a 2 TB. UEFI lee un "EFI System Partition" (FAT32) con los bootloaders como archivos, soporta GPT, discos grandes y Secure Boot (firma criptográfica).</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>GRUB2 y Windows Boot Manager.</b> GRUB2 (Linux) es muy configurable y soporta múltiples SO; el Boot Manager de Windows es el de Microsoft. En dual boot, GRUB suele instalarse en la EFI y encadena o da entrada a Windows.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Por qué Windows "rompe" Linux.</b> Al reinstalar Windows, este escribe su propio gestor en la EFI y oculta/sustituye a GRUB. Por eso Linux deja de aparecer; se repara desde Live USB con <code>grub-install</code> y <code>update-grub</code>.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Secure Boot y sus molestias.</b> Bloquea cargadores no firmados; algunos Linux antiguos o drivers propietarios (NVIDIA) daban problemas. Hoy distros principales lo soportan; si no, se desactiva en UEFI (bajando algo la seguridad).</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Live USB como cuchara de rescate.</b> Un USB con Linux "en vivo" arranca sin tocar el disco instalado; permite reparar arranque, recuperar archivos o cambiar contraseñas. Es la herramienta básica de soporte.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Bootloader no es el firmware.</b> BIOS/UEFI es el firmware (placa); GRUB/BootMgr es el bootloader (disco). Dos peldaños distintos.</li>
+<li><b>Reinstalar Windows no "borra Linux".</b> Sobrescribe el gestor de arranque; los datos de Linux siguen en su partición. Se repara, no se reinstala.</li>
+<li><b>UEFI con MBR es combinación problemática.</b> Lo natural es UEFI+GPT; forzar MBR con UEFI da líos de arranque.</li>
+<li><b>Secure Boot no es "antivirus".</b> Solo verifica la firma del cargador en el arranque; no protege mientras usas el SO.</li>
+<li><b>Live USB arranca "fuera" del disco.</b> No confundir con instalar; es un SO temporal en memoria/USB para rescate.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) la escalera firmware→bootloader→núcleo→SO → (2) BIOS vs UEFI (MBR/GPT, Secure Boot) → (3) GRUB2 y Boot Manager → (4) multiarranque y por qué Windows pisa GRUB → (5) reparación con Live USB → (6) Secure Boot y sus implicaciones.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra2_06.html">Procedimiento de instalación</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra2_10.html">Instalación SO</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra2_f.html">Criterio RA2-f: actualización/recuperación</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Arranque_(inform%C3%A1tica)" target="_blank" rel="noopener">Wikipedia — Arranque del ordenador</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Partici%C3%B3n_de_disco_duro" target="_blank" rel="noopener">Wikipedia — Partición de disco</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=n2iodl7eASs" target="_blank" rel="noopener">Evolución de placas base de PC</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=5oAexbSPygE" target="_blank" rel="noopener">Buenas prácticas y seguridad en el PC</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

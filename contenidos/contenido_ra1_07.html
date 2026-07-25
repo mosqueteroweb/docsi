@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Componentes de una red informática | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra1.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA1 · Contenido 07</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Componentes de una red informática | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA1</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Componentes de una red informática</h2><p class="text-slate-700 leading-relaxed mb-3">Una red es el resultado de interconectar dispositivos con funciones especializadas. Comprender el papel de cada componente es imprescindible para instalar, configurar y, sobre todo, diagnosticar incidencias. A continuación se describen los elementos fundamentales, desde la interfaz del equipo hasta los dispositivos de interconexión y seguridad.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Tarjeta de red (NIC) y dirección MAC</h3><p class="text-slate-700 leading-relaxed mb-3">La <b>NIC (Network Interface Card)</b> es el hardware que permite al equipo conectarse físicamente a la red, bien mediante Ethernet (RJ45) o bien de forma inalámbrica (Wi-Fi). Toda NIC posee una <b>dirección MAC</b> (Media Access Control) de 48 bits representada en hexadecimal (ej. <code>3C:52:82:11:AA:09</code>), única en el mundo, asignada por el fabricante a través de su OUI (Organizationally Unique Identifier). La MAC opera en la <b>capa 2 (Enlace)</b> del modelo OSI y sirve para entregar tramas dentro de la misma red local.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Switch (conmutador) — Capa 2</h3><p class="text-slate-700 leading-relaxed mb-3">Dispositivo que interconecta los equipos de una LAN. A diferencia del obsoleto <b>hub</b>, el switch <b>aprende</b> qué dirección MAC hay en qué puerto y reenvía cada trama solo al puerto de destino (conmutación), reduciendo colisiones y mejorando el rendimiento. Los switches gestionables añaden <b>VLAN</b> (redes locales virtuales), <b>agregación de enlaces (LACP)</b> y protocolos como <b>STP (Spanning Tree)</b> para evitar bucles.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Router (enrutador) — Capa 3</h3><p class="text-slate-700 leading-relaxed mb-3">Dispositivo que conecta distintas redes y <b>encamina paquetes</b> entre ellas utilizando la <b>dirección IP</b> (capa 3). Es el equipo que da salida a Internet en la mayoría de hogares y empresas. Además de enrutar, suele realizar <b>NAT</b> (traducción de direcciones), asignar IPs mediante <b>DHCP</b>, filtrar tráfico con <b>firewall</b> y mantener tablas de enrutamiento (estáticas o mediante protocolos como OSPF/RIP/BGP).</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Punto de acceso (AP) y dispositivos inalámbricos</h3><p class="text-slate-700 leading-relaxed mb-3">El <b>AP (Access Point)</b> hace de puente entre los dispositivos inalámbricos (Wi-Fi) y la red cableada. En redes domésticas suele estar integrado en el propio router. En redes empresariales se despliegan varios AP para dar cobertura y capacidad, a menudo gestionados centralmente (controladora o cloud).</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">5. Servidores y servicios de red</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Servidor de archivos:</b> almacena y comparte ficheros centralizados.</li><li><b>Servidor de impresión:</b> gestiona colas de impresión y acceso a impresoras de red.</li><li><b>Servidor de aplicaciones:</b> ejecuta aplicaciones a las que acceden los clientes.</li><li><b>Servidor DNS:</b> traduce nombres (www.ejemplo.com) a IP.</li><li><b>Servidor DHCP:</b> asigna automáticamente configuración IP a los clientes.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">6. Firewall</h3><p class="text-slate-700 leading-relaxed mb-3">Dispositivo o software que <b>filtra el tráfico</b> según reglas de seguridad (por IP, puerto, protocolo, estado de la conexión). Puede ser un appliance dedicado, un router con funciones de cortafuegos o un firewall de software en el propio equipo.</p><pre class="mermaid">
+graph TD
+  PC1[PC] --> SW[Switch L2]
+  PC2[PC] --> SW
+  SW --> R[Router L3]
+  R --> AP[AP Wi-Fi] --> MOVIL[Móvil]
+  R --> FW((Firewall)) --> INTERNET((Internet))
+  R -. DHCP / NAT .-> PC1
+</pre>
+<pre class="mermaid">
+flowchart LR
+  L1[Capa 1 Física] --> L2[Capa 2 Enlace: NIC-Switch]
+  L2 --> L3[Capa 3 Red: Router IP]
+  L3 --> L4[L4 Transporte: TCP/UDP]
+  L4 --> L7[L7 Aplicación: DNS/HTTP]
+</pre><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Componente</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Capa OSI</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Función principal</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Ejemplo de fallo típico</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">NIC</td><td class="px-4 py-2 border border-slate-200 align-top">2 (Enlace)</td><td class="px-4 py-2 border border-slate-200 align-top">Interfaz física/lógica del equipo</td><td class="px-4 py-2 border border-slate-200 align-top">Controlador desactualizado</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Switch</td><td class="px-4 py-2 border border-slate-200 align-top">2 (Enlace)</td><td class="px-4 py-2 border border-slate-200 align-top">Conmuta tramas dentro de la LAN</td><td class="px-4 py-2 border border-slate-200 align-top">Bucle sin STP = tormenta de broadcast</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Router</td><td class="px-4 py-2 border border-slate-200 align-top">3 (Red)</td><td class="px-4 py-2 border border-slate-200 align-top">Enruta paquetes entre redes</td><td class="px-4 py-2 border border-slate-200 align-top">Tabla incorrecta = sin salida a Internet</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">AP</td><td class="px-4 py-2 border border-slate-200 align-top">1/2</td><td class="px-4 py-2 border border-slate-200 align-top">Conecta Wi-Fi a la LAN</td><td class="px-4 py-2 border border-slate-200 align-top">Cobertura o interferencias</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Firewall</td><td class="px-4 py-2 border border-slate-200 align-top">3–7</td><td class="px-4 py-2 border border-slate-200 align-top">Filtra tráfico por seguridad</td><td class="px-4 py-2 border border-slate-200 align-top">Regla mal puesta bloquea servicio</td></tr></tbody></table><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Caso práctico: una LAN básica</h3><p class="text-slate-700 leading-relaxed mb-3">En un aula se conectan 24 PC a un switch de 24 puertos; el switch se enlaza al router que da DHCP y salida a Internet; un AP da Wi-Fi al portátil del profesor. Si un alumno no tiene red, se comprueba su NIC, el puerto del switch (LED), la concesión DHCP del router y, por último, el firewall. Este flujo de diagnóstico es exactamente lo que se evalúa en el criterio RA1-f.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Inventariar componentes de la red del aula.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Localiza el <b>router</b> (puerta de enlace) y el <b>switch</b> que da puertos a los equipos.</li><li>Cuenta los <b>hosts</b> (PC, impresora de red) con dirección IP en la subred.</li><li>Identifica el <b>medio</b>: cable UTP categoría 6 hasta el switch, fibra desde el router del centro.</li><li>Dibuja el esquema: equipos → switch → router → Internet.</li></ol>
+<pre class="mermaid">
+graph LR
+  PC1[PC] --> SW[Switch]
+  PC2[PC] --> SW
+  SW --> RT[Router]
+  RT --> NET[Internet]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno entrega un inventario de componentes de red del aula (router, switch, hosts, medios).</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Cada componente "habla" en su capa.</b> La NIC y el switch trabajan con direcciones de la red local (MAC, capa 2); el router trabaja con direcciones de red (IP, capa 3). Por eso el switch no necesita IP para conmutar, pero el router sí para enrutar.</li><li><b>MAC es de fábrica; IP es de préstamo.</b> La MAC la graba el fabricante y no cambia; la IP la asigna la red (DHCP) y puede cambiar al reconectar. Confundirlas es el error más común al diagnosticar.</li><li><b>Los dispositivos se apilan según el trabajo.</b> Equipo → NIC → switch (dentro de la LAN) → router (a otras redes) → firewall (filtro) → Internet. Cada salto añade una función; entender el orden ayuda a aislar fallos.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>NIC, MAC y OUI.</b> Los 3 primeros bytes de la MAC son el OUI del fabricante; los 3 últimos, un número de serie. Por eso la MAC es única mundialmente. La NIC puede ser cableada (RJ45), Wi-Fi o incluso virtual (en máquinas virtuales, vNIC).</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Switch gestionable: VLAN, STP, LACP.</b> Una VLAN divide una sola red física en varias lógicas (p. ej. alumnos/profesor/invitados) sin cablear aparte. STP (Spanning Tree) desactiva puertos en bucle para evitar tormentas de broadcast. LACP agrupa enlaces para dar más ancho de banda y redundancia.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Router, NAT y DHCP.</b> El router enruta paquetes entre redes y suele hacer <b>NAT</b>: traduce las IP privadas de casa a una pública para salir a Internet, permitiendo reusar el rango privado 192.168.x.x. El <b>DHCP</b> que integra reparte IPs automáticamente a los equipos.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>AP y cobertura.</b> El punto de acceso lleva la señal Wi-Fi a la LAN cableada. Sus fallos típicos no son de configuración sino de radio: cobertura insuficiente, canal saturado o interferencias (microondas, otros Wi-Fi). Por eso a veces basta reubicarlo.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Firewall = filtro por reglas.</b> Decide qué tráfico pasa según origen/destino/puerto. Puede ser un aparato dedicado o software en el propio equipo/router. En el modelo de capas actúa de capa 3 a 7 (red a aplicación).</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Switch (capa 2) ≠ Router (capa 3).</b> El switch conmuta dentro de la LAN usando MAC; el router conecta redes distintas usando IP. Confundirlos es error base.</li><li><b>MAC no es IP.</b> MAC = identidad de fábrica (capa 2, local); IP = dirección lógica (capa 3, enrutable). No sirven para lo mismo.</li><li><b>Un bucle sin STP hunde la red.</b> Dos switches conectados por dos cables sin STP generan tormenta de broadcast. Por eso los switches gestionables usan STP.</li><li><b>NAT no es "ocultar por magia".</b> Es traducción de direcciones; explica por qué varios móviles comparten una sola IP pública.</li><li><b>AP no es router.</b> El AP solo lleva Wi-Fi a la LAN; el router da salida a Internet. A veces vienen juntos en el mismo cacharro del operador, pero son funciones distintas.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) la NIC y la MAC → (2) el switch y la conmutación (capa 2) → (3) el router y el enrutado (capa 3, NAT/DHCP) → (4) el AP y la cobertura → (5) el firewall y el filtrado → (6) cómo se apilan para formar la LAN que sale a Internet.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra1_06.html">Tipos de redes</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra1_09.html">Tipos de cableado y conectores</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra1_10.html">Mapa físico y lógico de red</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra1_f.html">Criterio RA1-f: componentes de red</a></li></ul>
+      <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Tarjeta_de_red" target="_blank" rel="noopener">Wikipedia — Tarjeta de red</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Conmutador_de_red" target="_blank" rel="noopener">Wikipedia — Conmutador (switch)</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=Gky8-OVYmT4" target="_blank" rel="noopener">Diferencias entre HUB, SWITCH y ROUTER</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=_JNPvSxG6oM" target="_blank" rel="noopener">Conceptos básicos de redes en 15 minutos</a></li>
+    </ul>
+  </section>
+
+</main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

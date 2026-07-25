@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas de monitorización | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra4.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA4 · Contenido 07</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Herramientas de monitorización | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA4</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Herramientas de monitorización del sistema</h2><p class="text-slate-700 leading-relaxed mb-3">La <b>monitorización</b> permite conocer el estado del equipo, detectar cuellos de botella y diagnosticar incidencias. Se apoya en dos fuentes: los <b>registros o logs</b> (qué ha ocurrido) y los <b>visores de recursos</b> (qué está consumiendo el sistema ahora).</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Registros y logs</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>syslog:</b> sistema de registro estándar en UNIX; suele guardar en <code>/var/log/</code> (p.ej. <code>/var/log/syslog</code>, <code>/var/log/auth.log</code>).</li><li><b>systemd-journald:</b> registro estructurado accesible con <code>journalctl</code>.</li><li><b>Windows:</b> el <b>Visor de sucesos (Event Viewer)</b> organiza los eventos en Registros de Windows (Sistema, Aplicación, Seguridad).</li></ul><pre class="code"><code># Linux: ver errores del sistema
+journalctl -p err -b        # errores desde el arranque actual
+tail -f /var/log/syslog      # seguir el log en vivo
+# Windows: abrir visor de sucesos
+eventvwr.msc</code></pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Visores de sucesos / eventos</h3><p class="text-slate-700 leading-relaxed mb-3">El Visor de sucesos de Windows clasifica los eventos por nivel (Información, Advertencia, Error, Crítico) y facilita filtros y suscripciones. En Linux, además de <code>journalctl</code>, las herramientas <code>dmesg</code> muestran los mensajes del kernel.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Monitor de recursos (CPU, RAM, disco, red)</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Linux:</b> <code>top</code>, <code>htop</code>, <code>free -h</code> (memoria), <code>df -h</code> (disco), <code>iotop</code>, <code>iftop</code> (red).</li><li><b>Windows:</b> Administrador de tareas (Rendimiento), Monitor de recursos (<code>resmon</code>) y Monitor de rendimiento (<code>perfmon</code>).</li></ul><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Métrica</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Linux</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Windows</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">CPU</td><td class="px-4 py-2 border border-slate-200 align-top">htop / top</td><td class="px-4 py-2 border border-slate-200 align-top">Administrador de tareas</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Memoria</td><td class="px-4 py-2 border border-slate-200 align-top">free -h</td><td class="px-4 py-2 border border-slate-200 align-top">Rendimiento → Memoria</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Disco</td><td class="px-4 py-2 border border-slate-200 align-top">df -h / iotop</td><td class="px-4 py-2 border border-slate-200 align-top">resmon → Disco</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Red</td><td class="px-4 py-2 border border-slate-200 align-top">iftop / ip -s</td><td class="px-4 py-2 border border-slate-200 align-top">resmon → Red</td></tr></tbody></table><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">4. Buenas prácticas</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li>Revisar periódicamente los logs de errores y seguridad (auth.log).</li><li>Configurar alertas cuando un servicio cae o la carga supera umbrales.</li><li>Guardar logs rotados (logrotate) para no llenar el disco.</li></ul><pre class="mermaid">
+flowchart TD
+  E[Evento] --> L[Logger]
+  L --> K[(Kernel ring buffer)]
+  L --> J[Journald]
+  L --> F[/var/log/*.log/]
+  V[Visor] -->|lee| J
+  V2[Event Viewer] -->|lee| W[Windows logs]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Monitorización))
+    Logs
+      syslog
+      journald
+      Event Viewer
+    Recursos
+      CPU
+      RAM
+      Disco
+      Red
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Monitorizar el uso de recursos.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Abre el monitor de rendimiento y observa <b>CPU, RAM y disco</b>.</li><li>En Linux: <code>top</code> / <code>htop</code> en tiempo real.</li><li>Detecta un proceso que consume el 90% de CPU: investiga de qué es.</li><li>Explica para qué sirve monitorizar (detectar cuellos de botella).</li></ol>
+<pre class="mermaid">
+graph LR
+  CPU[CPU%] --> MON[Monitor]
+  RAM[RAM%] --> MON
+  DISK[Disco%] --> MON
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno captura el uso de recursos y señala el proceso más exigente.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Monitorizar = "el cuadro de mandos del coche".</b> Te dice si va sobrado de gasolina (disco), si el motor suda (CPU) o si algo ha avisado (log). Sin él, conduces a ciegas.</li>
+<li><b>Logs y recursos son "el qué pasó" vs "el qué pasa".</b> Los logs cuentan eventos pasados; los visores de recursos muestran el consumo en este instante. Los dos juntos dan la foto completa.</li>
+<li><b>Un evento "Error" no siempre es "fuego".</b> Hay niveles (Info, Advertencia, Error, Crítico); aprender a leer el nivel evita correr por cada aviso.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Logs en Linux: syslog, journald, dmesg.</b> <code>/var/log/</code> guarda histórico; <code>journalctl</code> lee el registro estructurado de systemd; <code>dmesg</code> muestra mensajes del kernel (hardware, arranque). <code>journalctl -p err -b</code> filtra errores desde el último arranque.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Windows: Event Viewer.</b> <code>eventvwr.msc</code> organiza en Sistema/Aplicación/Seguridad; cada evento tiene ID y nivel. Es la primera parada para diagnosticar un cuelgue o un fallo de inicio de sesión.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Recursos: qué mirar.</b> <code>top/htop</code> (CPU/procesos), <code>free -h</code> (RAM), <code>df -h</code> (disco libre), <code>iftop</code> (red). En Windows, Administrador de tareas → Rendimiento y <code>resmon</code> dan lo mismo.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Cuellos de botella.</b> Si la RAM está llena, el sistema usa disco como memoria (swap) y se vuelve lento; si el disco está al 100%, todo se atasca. La monitorización dice dónde aprieta.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>tail -f y seguimiento en vivo.</b> <code>tail -f /var/log/syslog</code> muestra los nuevos mensajes en tiempo real; ideal para ver qué pasa cuando reproduces un fallo. En Windows se filtra el log en vivo.</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>"Error" en el log no es siempre "avería".</b> Hay niveles; un error de un servicio que luego arranca bien es ruido. Hay que leer contexto, no solo el nivel.</li>
+<li><b>df -h no es "el uso de la carpeta".</b> Muestra espacio por sistema de archivos; para ver el tamaño de una carpeta hay que <code>du</code>. Confundirlos da números que no cuadran.</li>
+<li><b>free -h y el "buff/cache" engaña.</b> Linux usa RAM libre como caché; "usada al 90%" no significa falta memoria si el caché se libera. Hay que mirar disponible.</li>
+<li><b>journalctl no es "tail de un archivo".</b> Lee la base de journald, no un .log plano; si el servicio cayó antes del arranque actual, hace falta quitar <code>-b</code>.</li>
+<li><b>Event Viewer no es solo "el visor de errores".</b> Tiene filtros y suscripciones; usarlo a ojo entre miles de eventos es inútil sin filtrar por ID/nivel.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) monitorizar = cuadro de mandos → (2) logs (syslog/journald/Event Viewer) y niveles → (3) recursos (top/free/df vs Admin tareas/resmon) → (4) cuellos de botella (RAM→swap, disco 100%) → (5) tail -f y filtros → (6) errores típicos de lectura.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra4_05.html">Servicios y procesos</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra4_06.html">Comandos admin</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra4_f.html">Criterio RA4-f: monitorización</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Syslog" target="_blank" rel="noopener">Wikipedia — Syslog</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://en.wikipedia.org/wiki/Log_file" target="_blank" rel="noopener">Wikipedia (EN) — Log file</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://wiki.archlinux.org/title/System_maintenance" target="_blank" rel="noopener">ArchWiki — System maintenance</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Registro_de_Windows" target="_blank" rel="noopener">Wikipedia — Registro de Windows</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

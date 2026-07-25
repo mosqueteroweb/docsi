@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas ofimáticas y colaborativas | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra7.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA7 · Contenido 02</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Herramientas ofimáticas y colaborativas | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA7</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Herramientas ofimáticas y de trabajo colaborativo</h2><p class="text-slate-700 leading-relaxed mb-3">La ofimática cubre las tareas de texto, cálculo y presentación; el trabajo colaborativo permite edición concurrente y compartición en la nube.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Suite ofimática</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Procesador de texto:</b> Word, Writer (LibreOffice).</li><li><b>Hoja de cálculo:</b> Excel, Calc.</li><li><b>Presentaciones:</b> PowerPoint, Impress.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Colaborativo en la nube</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Google Docs/Sheets:</b> edición concurrente vía navegador.</li><li><b>Microsoft 365:</b> equivalente con OneDrive.</li><li><b>Nextcloud:</b> autoalojado (privado).</li><li><b>Wikit/Notion:</b> documentación compartida.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Formatos</h3><p class="text-slate-700 leading-relaxed mb-3">Documentos abiertos (ODF, .odt/.ods) vs cerrados (.docx/.xlsx). Lo abierto favorece interoperabilidad y no dependencia de un fabricante.</p><pre class="mermaid">
+graph TD
+  U[Usuario] -->|escribe| D[Documento]
+  D -->|sincroniza| N[Nube: Docs/365]
+  N -->|colabora| O[Otro usuario]
+  D -->|exporta ODF| F[Formato abierto]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Ofimática))
+    Texto
+    Cálculo
+    Presentación
+    Nube
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Comparar ofimática local y colaborativa.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Abre LibreOffice Writer (local) y Google Docs (colaborativo) con el mismo texto.</li><li>Edita en Docs con un compañero a la vez: ves los cambios en vivo.</li><li>Guarda en ODF (.odt) y compáralo con .docx (formato abierto vs cerrado).</li><li>Explica cuándo prefieres cada uno (trabajo individual vs en equipo).</li></ol>
+<pre class="mermaid">
+graph LR
+  LOCAL[LibreOffice] --> ODF[.odt abierto]
+  COLAB[Google Docs] --> VIVO[Edición en vivo]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno edita un documento en local y en colaborativo y compara formatos.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Ofimática = "la mesa de escritorio digital".</b> Texto, hoja de cálculo y presentación son las tres patas del trabajo de oficina; casi cualquier puesto las usa.</li>
+<li><b>Colaborativo en nube = "un documento vivo".</b> Varios escriben a la vez y ven los cambios; no es un archivo que se pasa por correo, es compartido en tiempo real.</li>
+<li><b>ODF vs docx = "formato abierto vs formato de marca".</b> El abierto se lee con cualquier suite; el cerrado ata al fabricante. Interoperabilidad vs dependencia.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Suite ofimática.</b> Procesador (Word/Writer), hoja de cálculo (Excel/Calc) y presentaciones (PowerPoint/Impress). LibreOffice es la alternativa libre a Microsoft 365.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Colaborativo.</b> Google Docs/Sheets y Microsoft 365 editan varios a la vez por navegador; Nextcloud es autoalojado (tus datos, tu servidor). La edición concurrente evita "varios archivos final_v3".</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Formatos abiertos (ODF).</b> .odt/.ods/.odp son estándar ISO y no dependen de un fabricante; favorecen que cualquiera abra el documento sin licencia de pago.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Formatos cerrados (.docx/.xlsx).</b> Dominantes, pero atan al ecosistema; una versión antigua puede no abrir lo nuevo. El intercambio con terceros suele exigirlos.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Control de versiones en la nube.</b> Estas herramientas guardan historial; puedes volver atrás. No es "guardar y rezar", sino "guardar y recuperar".</p>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Revisión didáctica</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>".docx siempre abre igual" es falso.</b> Una versión antigua de Word puede no abrir features nuevas; el formato cerrado no garantiza fidelidad entre versiones. ODF también tiene sus compatibilidades.</li>
+<li><b>"Le paso el archivo por correo" no es colaborar.</b> Es repartir copias; se crean versiones divergentes. La nube (Docs/365) mantiene uno solo y vivo. El medio cambia el flujo.</li>
+<li><b>ODF no es "Word mal hecho".</b> Es estándar abierto ISO; quién lo usa evita quedar atado al fabricante. No es peor, es distinto y portable.</li>
+<li><b>Nextcloud no es "una nube pública".</b> Es autoalojado: tú controlas el servidor y los datos. Confundirlo con Google Drive ignora quién tiene tus archivos.</li>
+<li><b>La edición concurrente no borra lo ajeno.</b> Los cambios se mezclan o avisan; no es "el último machaca". Quien tema perder trabajo no entiende el historial de versiones.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) ofimática = tres patas → (2) suites (LibreOffice vs 365) → (3) colaborativo en nube (Docs/365/Nextcloud) → (4) formatos ODF vs docx → (5) versiones → (6) errores (correo≠colaborar, ODF mal visto).</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra7_01.html">Software</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra7_03.html">Utilidades</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra7_c.html">Criterio RA7-c: ofimática</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Software" target="_blank" rel="noopener">Wikipedia — Software</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Aplicaci%C3%B3n_inform%C3%A1tica" target="_blank" rel="noopener">Wikipedia — Aplicación de propósito general</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Ofim%C3%A1tica" target="_blank" rel="noopener">Wikipedia — Ofimática</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=5oAexbSPygE" target="_blank" rel="noopener">Buenas prácticas y seguridad en el PC</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

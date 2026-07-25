@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalación de SO libres/propietarios | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra2.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA2 · Contenido 10</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Instalación de SO libres/propietarios | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA2</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Instalación de sistemas operativos libres y propietarios. Requisitos, versiones y licencias.</h2><p class="text-slate-700 leading-relaxed mb-3">El proceso de instalación es similar en ambos mundos, pero difiere en herramientas, licencias y post-instalación.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. GNU/Linux (libre)</h3><ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3"><li>Descargar ISO de la distro (Ubuntu, Debian…).</li><li>Grabar en USB booteable (Rufus/BalenaEtcher).</li><li>Arrancar, particionar (GPT) y seguir el asistente.</li><li>Instalar drivers/paquetes vía gestor (apt, dnf).</li><li>Actualizar y crear usuario.</li></ol><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Microsoft Windows (propietario)</h3><ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3"><li>Disponer de licencia/clave válida.</li><li>Crear medio con Media Creation Tool.</li><li>Instalar, activar con la clave, instalar drivers del fabricante.</li><li>Aplicar Windows Update.</li></ol><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">3. Requisitos y versiones</h3><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">SO</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">RAM mín.</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Disco</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Licencia</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Ubuntu 22.04</td><td class="px-4 py-2 border border-slate-200 align-top">4 GB</td><td class="px-4 py-2 border border-slate-200 align-top">25 GB</td><td class="px-4 py-2 border border-slate-200 align-top">GPL (gratis)</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Windows 11</td><td class="px-4 py-2 border border-slate-200 align-top">4 GB</td><td class="px-4 py-2 border border-slate-200 align-top">64 GB</td><td class="px-4 py-2 border border-slate-200 align-top">Propietaria (clave)</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Debian 12</td><td class="px-4 py-2 border border-slate-200 align-top">2 GB</td><td class="px-4 py-2 border border-slate-200 align-top">10 GB</td><td class="px-4 py-2 border border-slate-200 align-top">GPL</td></tr></tbody></table><pre class="mermaid">
+flowchart TD
+  A[ISO/Medio] --> B[Arranque]
+  B --> C[Particionar]
+  C --> D{SO?}
+  D -->|Linux| E[apt install]
+  D -->|Windows| F[Activar clave]
+</pre>
+<pre class="mermaid">
+mindmap
+  root((Instalación))
+    Linux
+      apt/dnf
+    Windows
+      Clave
+    Común
+      Particionar
+      Drivers
+</pre>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Instalar un SO (ejemplo Windows/Linux).</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li>Arranca desde el medio y elige 'Instalar ahora'.</li><li>Selecciona el <b>disco/partición</b> y formato (NTFS/ext4).</li><li>Introduce la <b>licencia</b> (o prueba de 30 días) y crea el usuario.</li><li>Tras reiniciar, instala controladores y <b>actualizaciones</b>.</li></ol>
+<pre class="mermaid">
+graph TD
+  MED[Medio] --> DISK[Partición]
+  DISK --> LIC[Licencia]
+  LIC --> UPD[Actualizaciones]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno instala el SO en MV y entrega captura del sistema ya configurado.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Libre y propietario comparten el "esqueleto" de instalación.</b> ISO → USB → arranque → particionar → copiar → configurar. Lo que cambia son las herramientas y el paso de licencia.</li>
+<li><b>La licencia es el paso que solo aparece en el propietario.</b> Linux pregunta "¿usuario?"; Windows pregunta "¿clave?". Esa es la gran diferencia práctica.</li>
+<li><b>Gestor de paquetes vs Windows Update.</b> Linux instala software y actualizaciones con un comando (apt/dnf); Windows lo hace con Windows Update y ejecutables. Distinto modelo de "mantener el SO".</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Linux: el gestor de paquetes es la clave.</b> Tras instalar, todo (drivers incluidos en el núcleo, navegador, editor) se añade con <code>apt install</code> o <code>dnf</code>. Las actualizaciones son archivos firmados del repositorio; por eso Linux rara vez necesita "buscar el driver en la web del fabricante".</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Windows: licencia y activación.</b> Necesitas una clave válida (OEM/retail/suscripción). La Media Creation Tool crea el USB oficial. Tras instalar, activas con la clave y aplicas Windows Update (drivers + seguridad). Los drivers propietarios suelen bajarse del fabricante.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Versiones y ediciones.</b> Ubuntu tiene LTS (soporte largo, ideal aula) y versiones normales; Windows separa Home/Pro/Enterprise y Server. Elegir la edición correcta evita líos de funciones (ej. Active Directory solo en Pro/Server).</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Requisitos reales vs mínimos.</b> Los mínimos oficiales (4 GB RAM) dan un SO lento; para uso aula conviene el doble. El disco: 25 GB de Ubuntu es justo; dejar margen para actualizaciones.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Post-instalación distinta.</b> En Linux, añadir software y usuario es inmediato vía gestor. En Windows, activar, instalar drivers del fabricante y luego el software de aula. Planificar esto ahorra tiempo en un centro.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>ISO no es "el SO ya instalado".</b> Es la imagen de instalación; hay que volcarla al disco. Error típico creer que basta copiarla.</li>
+<li><b>La clave de Windows no es "opcional".</b> Sin activación, el SO funciona limitado y con marca de agua. En aula se gestiona centralizadamente.</li>
+<li><b>apt no es "una tienda cualquiera".</b> Instala paquetes del sistema y resuelve dependencias; no confundir con un instalador de .exe suelto.</li>
+<li><b>LTS no es "versión vieja peor".</b> Es la de soporte largo, la recomendada para producción/aula por estabilidad.</li>
+<li><b>Los requisitos mínimos no son "recomendados".</b> Cumplirlos apenas arranca; para uso real conviene superarlos.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) esqueleto común de instalación → (2) Linux: ISO→apt, sin clave → (3) Windows: ISO→clave→Update, con licencia → (4) versiones/ediciones y cuándo usar cada una → (5) requisitos reales vs mínimos → (6) post-instalación en cada mundo.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra2_06.html">Procedimiento</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra2_05.html">Licencias</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra2_e.html">Criterio RA2-e: instalar/actualizar SO</a></li></ul>  <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Sistema_operativo" target="_blank" rel="noopener">Wikipedia — Sistema operativo</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Linux" target="_blank" rel="noopener">Wikipedia — Linux</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=5oAexbSPygE" target="_blank" rel="noopener">Buenas prácticas y seguridad en el PC</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=n2iodl7eASs" target="_blank" rel="noopener">Evolución de placas base de PC</a></li>
+    </ul>
+  </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>

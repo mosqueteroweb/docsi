@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa físico y lógico de una red local | Sistemas Informáticos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .back-btn { position: fixed; top: 20px; left: 20px; z-index: 100; }
+        .mermaid { background:#fff; border-radius:12px; padding:12px; margin:16px 0; }
+        pre.code { background:#1e293b; color:#e2e8f0; padding:16px; border-radius:12px; overflow-x:auto; font-size:13px; }
+        .criterio-tag { display:inline-block; background:#dbeafe; color:#1d4ed8; font-weight:700; border-radius:9999px; padding:2px 10px; font-size:12px; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <!-- Back Button -->
+    <a href="../ra1.html" class="back-btn bg-white p-3 rounded-full shadow-lg hover:bg-blue-50 text-blue-600 transition-all border border-blue-100 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 mb-12">
+        <div class="max-w-5xl mx-auto px-6 py-8">
+            <div class="inline-block bg-orange-100 text-orange-600 text-xs font-bold px-3 py-1 rounded-full mb-3">RA1 · Contenido 10</div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">Mapa físico y lógico de una red local | Sistemas Informáticos</h1>
+            <p class="text-slate-500 text-lg">Contenido básico · RA1</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 space-y-10">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Mapa físico y lógico de una red local</h2><p class="text-slate-700 leading-relaxed mb-3">Documentar una red correctamente exige disponer de dos vistas complementarias. El <b>mapa físico</b> representa la ubicación real de cableado, armarios (RACK), equipos y tomas; el <b>mapa lógico</b> representa cómo fluye la información (direccionamiento IP, subredes, VLAN y enrutamiento), con independencia de dónde esté cada cable. Ambos son imprescindibles para instalar, mantener y diagnosticar.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Mapa físico</h3><p class="text-slate-700 leading-relaxed mb-3">Muestra la planta del edificio, la situación de las rosetas, el trazado del cableado estructurado, la localización de los switches/routers y las canalizaciones. Es la 'foto real' de la instalación y resulta crítica para tareas de mantenimiento, ampliación y localización de averías.</p><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">2. Mapa lógico</h3><p class="text-slate-700 leading-relaxed mb-3">Muestra las <b>subredes</b> (ej. 192.168.1.0/24), las puertas de enlace, los servidores DNS/DHCP, las <b>VLAN</b> (ej. VLAN 10 = administración, VLAN 20 = alumnos) y cómo se enruta el tráfico. Permite entender el diseño funcional de la red sin importar la disposición física de los cables.</p><pre class="mermaid">
+graph TD
+  subgraph FISICO[Físico - planta]
+    A1[PC aula 1] --- R1[Rack planta 1]
+    A2[PC aula 2] --- R1
+  end
+  subgraph LOGICO[Lógico - direccionamiento]
+    V10[VLAN 10: Admin 192.168.10.0/24]
+    V20[VLAN 20: Alumnos 192.168.20.0/24]
+    GW[Router 192.168.1.1]
+    V10 --> GW
+    V20 --> GW
+  end
+</pre>
+<pre class="mermaid">
+flowchart TD
+  PC -->|ARP| SW[Switch]
+  SW -->|IP| R[Router]
+  R -->|NAT| NET((Internet))
+  R -->|DHCP| PC
+</pre><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Diferencias clave</h3><table class="w-full text-left text-sm text-slate-700 border border-slate-300 rounded-lg overflow-hidden mb-4"><thead><tr><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Aspecto</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Mapa físico</th><th class="px-4 py-2 border border-slate-300 bg-slate-50 text-slate-800 font-bold">Mapa lógico</th></tr></thead><tbody><tr><td class="px-4 py-2 border border-slate-200 align-top">Qué muestra</td><td class="px-4 py-2 border border-slate-200 align-top">Cables, ubicaciones, armarios</td><td class="px-4 py-2 border border-slate-200 align-top">IP, subredes, VLAN, rutas</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Capa OSI</td><td class="px-4 py-2 border border-slate-200 align-top">Capa 1 (Física)</td><td class="px-4 py-2 border border-slate-200 align-top">Capas 2–3 (Enlace/Red)</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Para qué sirve</td><td class="px-4 py-2 border border-slate-200 align-top">Instalar y cablear</td><td class="px-4 py-2 border border-slate-200 align-top">Diseñar y diagnosticar tráfico</td></tr><tr><td class="px-4 py-2 border border-slate-200 align-top">Cambia con...</td><td class="px-4 py-2 border border-slate-200 align-top">Obra/mudanza</td><td class="px-4 py-2 border border-slate-200 align-top">Reconfiguración de red</td></tr></tbody></table><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Comandos de diagnóstico útiles</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><code>ipconfig</code> (Windows) / <code>ifconfig</code> o <code>ip a</code> (Linux): ver configuración IP.</li><li><code>ping</code>: comprobar conectividad básica.</li><li><code>tracert</code> / <code>traceroute</code>: ver la ruta hasta un destino.</li><li><code>arp -a</code>: tabla de resolución IP→MAC de la LAN.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Herramientas de diagramación</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li>Editores gráficos: draw.io, Microsoft Visio, Lucidchart.</li><li>Documentación en HTML (este propio material) y wikis técnicas.</li><li>Inventarios automáticos con gestores de red.</li></ul><h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Caso práctico</h3><p class="text-slate-700 leading-relaxed mb-3">Un instituto documenta su red: el mapa físico sitúa el rack en el aula de tecnología y el trazado de cada aula; el mapa lógico define la VLAN 10 para administración (192.168.10.0/24) y la VLAN 20 para alumnos (192.168.20.0/24), ambas con salida por el router 192.168.1.1. Si un alumno no navega, el mapa lógico orienta a comprobar su pertenencia a la VLAN 20 y la concesión DHCP.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Ejemplo resuelto en clase</h2>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Caso práctico:</b> Dibujar mapa físico y lógico del aula.</p>
+<ol class="list-decimal pl-6 text-slate-700 space-y-1 mb-3">
+<li><b>Mapa físico:</b> sitúa en plano los equipos, switch y router con su ubicación real.</li><li><b>Mapa lógico:</b> representa la subred, p. ej. 192.168.1.0/24, con el router en .1 y los PC en .10+.</li><li>En el lógico, indica la <b>puerta de enlace</b> y la <b>máscara</b>.</li><li>Relaciona ambos: cada caja del físico tiene su IP en el lógico.</li></ol>
+<pre class="mermaid">
+graph LR
+  FIS[Aula: PC+Switch+Router] --> LOG[Subred 192.168.1.0/24]
+  LOG --> GW[Gateway .1]
+</pre>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Ejercicio para resolver (que propone el profesor al alumno):</b> El alumno entrega mapa físico (ubicación) y lógico (IP/máscara/gateway) del aula.</p>
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-indigo-500 pl-4 mb-3 mt-8">Ampliación de contenido</h2>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para entender lo anterior (puentes conceptuales)</h3>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>El mapa físico es "dónde está el cable"; el lógico es "cómo hablan los equipos".</b> Uno es la obra (capa 1); el otro es el diseño de direcciones (capas 2-3). Se necesitan los dos para cualquier incidencia real.</li><li><b>Una misma red lógica puede repartirse en varios edificios.</b> Las VLAN y las subredes no siguen el cable: una VLAN "alumnos" puede abarcar varias aulas físicas. Por eso el mapa lógico "no mira el plano".</li><li><b>Documentar es parte de mantener.</b> Sin mapa, arreglar un fallo es adivinar. El mapa es la memoria de la red.</li></ul>
+
+<h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">Para profundizar en los contenidos actuales</h3>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Mapa físico: cableado estructurado.</b> No es dibujar equipos sueltos: es el tendido ordenado (armarios RACK, canaletas, rosetas, etiquetado de puertos). El estándar ISO/IEC 11801 define cómo se hace el cableado estructurado de un edificio. Un buen etiquetado ahorra horas de avería.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Mapa lógico: direccionamiento y VLAN.</b> Aquí se pintan las subredes (192.168.10.0/24), las VLAN (10=admin, 20=alumnos) y el router/gateway. Explica por qué un PC de alumnos "ve" ciertos recursos y no otros, aunque esté enchufado al mismo switch que uno de admin.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Por qué importa el diagnóstico.</b> Los comandos (ipconfig/ip a, ping, tracert, arp -a) leen la vista lógica. Si un equipo no navega, se comprueba primero su IP (¿tiene? ¿correcta?), luego el gateway (¿hace ping?) y luego el exterior. El mapa lógico dice qué esperar en cada paso.</p>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Físico y lógico se cruzan en el RACK.</b> En el armario convergen los cables físicos (patch panel) y la configuración lógica (switch con VLAN). Entender ambos planos es la base del trabajo real del técnico.</p>
+
+<h2 class="text-2xl font-bold text-slate-800 border-l-4 border-amber-500 pl-4 mb-3 mt-8">Revisión didáctica</h2>
+<ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><b>Físico ≠ lógico.</b> Misma ubicación puede tener IPs de distintas VLAN; misma VLAN puede estar en edificios distintos. No confundir planos.</li><li><b>El mapa físico no muestra IPs.</b> Es ubicación y cable; las direcciones van en el lógico.</li><li><b>VLAN no es subred, aunque suelen ir juntas.</b> VLAN separa tráfico en capa 2; subred separa en capa 3. Se suelen combinar, pero son conceptos distintos.</li><li><b>ping al gateway es la prueba clave.</b> Si haces ping a una web pero no al gateway, el problema es interno; si al gateway sí pero fuera no, es del router/Internet.</li><li><b>Documentar no es opcional.</b> El mapa es parte del entregable, no un extra.</li></ul>
+<p class="text-slate-700 leading-relaxed mb-3"><b>Hilo de aprendizaje sugerido:</b> (1) ¿por qué dos mapas? → (2) mapa físico (RACK, cableado, etiquetas) → (3) mapa lógico (IP, subred, VLAN, gateway) → (4) cómo se cruzan en el armario → (5) diagnóstico con comandos → (6) documentar como entregable.</p>
+
+<h3 class="text-lg font-bold text-slate-700 mt-6 mb-2">Enlaces relacionados</h3><ul class="list-disc pl-6 text-slate-700 space-y-1 mb-3"><li><a class="text-blue-600 hover:underline" href="contenido_ra1_07.html">Componentes de red</a></li><li><a class="text-blue-600 hover:underline" href="contenido_ra1_06.html">Tipos de redes</a></li><li><a class="text-blue-600 hover:underline" href="../criterio_ra1_g.html">Criterio RA1-g: mapas físicos/lógicos</a></li></ul>
+      <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mt-6">
+    <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-green-500 pl-4 mb-4">Recursos externos</h2>
+    <p class="text-slate-600 mb-4">Vídeos y artículos recomendados para ampliar y preparar el tema:</p>
+    <ul class="list-disc pl-6 text-slate-700 space-y-1">
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Red_de_%C3%A1rea_local" target="_blank" rel="noopener">Wikipedia — Red de área local (LAN)</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://es.wikipedia.org/wiki/Subred" target="_blank" rel="noopener">Wikipedia — Subred</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=_JNPvSxG6oM" target="_blank" rel="noopener">Conceptos básicos de redes en 15 minutos</a></li>
+      <li><a class="text-blue-600 hover:underline" href="https://www.youtube.com/watch?v=Gky8-OVYmT4" target="_blank" rel="noopener">Diferencias entre HUB, SWITCH y ROUTER</a></li>
+    </ul>
+  </section>
+
+</main>
+
+    <footer class="bg-white border-t border-slate-200 mt-20 py-12">
+        <div class="max-w-5xl mx-auto px-6 text-center text-slate-400 text-sm">
+            <p>Módulo 0483 – Sistemas Informáticos (DAM, FP Madrid) · Generado con Hermes Agent</p>
+        </div>
+    </footer>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>
