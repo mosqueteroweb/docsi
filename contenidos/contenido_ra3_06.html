@@ -34,7 +34,7 @@
     </header>
 
     <main class="max-w-5xl mx-auto px-6 space-y-10">
-        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Particiones, volúmenes y mantenimiento de discos</h2><p class="text-slate-700 leading-relaxed mb-3">Administrar discos implica crear <b>particiones</b> (divisiones lógicas del disco), gestionar <b>volúmenes</b> (con LVM), desfragmentar, chequear errores y cifrar datos. Cada sistema ofrece herramientas de línea de comandos y gráficas.</p><img src="img/ra3_06_2.jpg" alt="ssd drive" class="w-full rounded-xl my-4 shadow-sm border border-slate-200">
+        <h2 class="text-2xl font-bold text-slate-800 border-l-4 border-blue-500 pl-4 mb-3 mt-8">Particiones, volúmenes y mantenimiento de discos</h2><p class="text-slate-700 leading-relaxed mb-3">Administrar discos implica crear <b>particiones</b> (divisiones lógicas del disco), gestionar <b>volúmenes</b> (con LVM), desfragmentar, chequear errores y cifrar datos. Cada sistema ofrece herramientas de línea de comandos y gráficas.</p><img src="../img/ra3_06_2.jpg" alt="ssd drive" class="w-full rounded-xl my-4 shadow-sm border border-slate-200">
 <h3 class="text-xl font-bold text-slate-700 mb-2 mt-6">1. Particionado: fdisk y gparted</h3><p class="text-slate-700 leading-relaxed mb-3"><code>fdisk</code> es la herramienta clásica de particionado en Linux (MBR); <code>gparted</code> es su equivalente gráfico. En Windows se usa el <b>Administrador de discos</b>.</p><pre class="code"># Listar tablas de particiones
 sudo fdisk -l
 # Iniciar particionado interactivo de /dev/sdb
